@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		832F9F0919C47EA500139D48 /* AuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D50FEF19BE7835000C37D6 /* AuthorizationStatus.swift */; };
+		832F9F0A19C47EA500139D48 /* CompositeNameFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8380931419BF81540023B664 /* CompositeNameFormat.swift */; };
+		832F9F0B19C47EA500139D48 /* ImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8380931219BF7EF90023B664 /* ImageFormat.swift */; };
+		832F9F0D19C47EA500139D48 /* PropertyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830DF8B519C240EC0053A01F /* PropertyType.swift */; };
+		832F9F0E19C47EA500139D48 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F54C7019BCC885009F5820 /* Result.swift */; };
+		832F9F0F19C47EA500139D48 /* SortOrdering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8380931019BF792B0023B664 /* SortOrdering.swift */; };
+		832F9F1019C47EA500139D48 /* SourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0478E19C106ED006C1F93 /* SourceType.swift */; };
+		832F9F1119C47ECA00139D48 /* MultiValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6265019C24BC600A35F37 /* MultiValueType.swift */; };
+		832F9F1619C4823500139D48 /* PersonKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6264E19C2435F00A35F37 /* PersonKind.swift */; };
+		832F9F1819C4823500139D48 /* GLVExternalChangeCallbacks.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0A70919BE82160040B7AB /* GLVExternalChangeCallbacks.m */; };
+		832F9F1919C4823500139D48 /* PostalAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83503BCD19C25748003F2740 /* PostalAddress.swift */; };
+		832F9F1A19C4823500139D48 /* InstantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83503BCB19C25733003F2740 /* InstantMessage.swift */; };
+		832F9F1B19C4823500139D48 /* SocialProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83503BD319C258C3003F2740 /* SocialProfile.swift */; };
+		832F9F1C19C4823500139D48 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB753D19BC8974007F98CC /* AddressBook.swift */; };
+		832F9F1D19C4823500139D48 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0E19BE8E8F00821633 /* Group.swift */; };
+		832F9F1E19C4823500139D48 /* MultiValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313F22119C0B59600FBF59F /* MultiValue.swift */; };
+		832F9F1F19C4823500139D48 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0C19BE8E8400821633 /* Person.swift */; };
+		832F9F2019C4823500139D48 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0A19BE8E7900821633 /* Record.swift */; };
+		832F9F2119C4823500139D48 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A1019BE8E9500821633 /* Source.swift */; };
+		837528C119BE7E710055C271 /* GLVExternalChangeCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 837528BF19BE7E710055C271 /* GLVExternalChangeCallbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83B6DB1119C4A8E800EA6B64 /* AlternateBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */; };
+		83C5559819CB78E200DE8506 /* Gulliver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB751419BC891B007F98CC /* Gulliver.framework */; };
+		83C555A419CB7A3600DE8506 /* EnumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C555A319CB7A3600DE8506 /* EnumTests.swift */; };
+		83E305DD19CB6E7300213B1C /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305DC19CB6E7300213B1C /* Email.swift */; };
+		83E305DF19CB6F6100213B1C /* RelatedName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305DE19CB6F6100213B1C /* RelatedName.swift */; };
+		83E305E119CB71AC00213B1C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305E019CB71AC00213B1C /* Date.swift */; };
+		83E305E319CB725100213B1C /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305E219CB725100213B1C /* PhoneNumber.swift */; };
+		83E305E519CB72EE00213B1C /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305E419CB72EE00213B1C /* URL.swift */; };
+		83EB751A19BC891B007F98CC /* Gulliver.h in Headers */ = {isa = PBXBuildFile; fileRef = 83EB751919BC891B007F98CC /* Gulliver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83F0E08719CA040200D1F900 /* LabeledValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F0E08619CA040200D1F900 /* LabeledValue.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		83C5559919CB78E200DE8506 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83EB750B19BC891B007F98CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83EB751319BC891B007F98CC;
+			remoteInfo = Gulliver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		830DF8B519C240EC0053A01F /* PropertyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PropertyType.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8313F22119C0B59600FBF59F /* MultiValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiValue.swift; sourceTree = "<group>"; };
+		83503BCB19C25733003F2740 /* InstantMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InstantMessage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		83503BCD19C25748003F2740 /* PostalAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostalAddress.swift; sourceTree = "<group>"; };
+		83503BD319C258C3003F2740 /* SocialProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialProfile.swift; sourceTree = "<group>"; };
+		837528BF19BE7E710055C271 /* GLVExternalChangeCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVExternalChangeCallbacks.h; sourceTree = "<group>"; };
+		837E3A0A19BE8E7900821633 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		837E3A0C19BE8E8400821633 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Person.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		837E3A0E19BE8E8F00821633 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		837E3A1019BE8E9500821633 /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		8380931019BF792B0023B664 /* SortOrdering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SortOrdering.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8380931219BF7EF90023B664 /* ImageFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ImageFormat.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8380931419BF81540023B664 /* CompositeNameFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CompositeNameFormat.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternateBirthday.swift; sourceTree = "<group>"; };
+		83C5559219CB78E200DE8506 /* Gulliver Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gulliver Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83C5559519CB78E200DE8506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83C555A319CB7A3600DE8506 /* EnumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTests.swift; sourceTree = "<group>"; };
+		83D0478E19C106ED006C1F93 /* SourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SourceType.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		83D0A70919BE82160040B7AB /* GLVExternalChangeCallbacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVExternalChangeCallbacks.m; sourceTree = "<group>"; };
+		83D50FEF19BE7835000C37D6 /* AuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationStatus.swift; sourceTree = "<group>"; };
+		83E305DC19CB6E7300213B1C /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		83E305DE19CB6F6100213B1C /* RelatedName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedName.swift; sourceTree = "<group>"; };
+		83E305E019CB71AC00213B1C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		83E305E219CB725100213B1C /* PhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
+		83E305E419CB72EE00213B1C /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		83E6264E19C2435F00A35F37 /* PersonKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonKind.swift; sourceTree = "<group>"; };
+		83E6265019C24BC600A35F37 /* MultiValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiValueType.swift; sourceTree = "<group>"; };
+		83EB751419BC891B007F98CC /* Gulliver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gulliver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83EB751819BC891B007F98CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83EB751919BC891B007F98CC /* Gulliver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gulliver.h; sourceTree = "<group>"; };
+		83EB753D19BC8974007F98CC /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
+		83F0E08619CA040200D1F900 /* LabeledValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledValue.swift; sourceTree = "<group>"; };
+		83F54C7019BCC885009F5820 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		83C5558F19CB78E200DE8506 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C5559819CB78E200DE8506 /* Gulliver.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83EB751019BC891B007F98CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		83503BCF19C257A8003F2740 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				83D50FEF19BE7835000C37D6 /* AuthorizationStatus.swift */,
+				8380931419BF81540023B664 /* CompositeNameFormat.swift */,
+				8380931219BF7EF90023B664 /* ImageFormat.swift */,
+				83E6264E19C2435F00A35F37 /* PersonKind.swift */,
+				830DF8B519C240EC0053A01F /* PropertyType.swift */,
+				83F54C7019BCC885009F5820 /* Result.swift */,
+				8380931019BF792B0023B664 /* SortOrdering.swift */,
+				83D0478E19C106ED006C1F93 /* SourceType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		83503BD019C257C4003F2740 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				83EB753D19BC8974007F98CC /* AddressBook.swift */,
+				837E3A0E19BE8E8F00821633 /* Group.swift */,
+				8313F22119C0B59600FBF59F /* MultiValue.swift */,
+				837E3A0C19BE8E8400821633 /* Person.swift */,
+				837E3A0A19BE8E7900821633 /* Record.swift */,
+				837E3A1019BE8E9500821633 /* Source.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		83503BD119C257C8003F2740 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				837528BF19BE7E710055C271 /* GLVExternalChangeCallbacks.h */,
+				83D0A70919BE82160040B7AB /* GLVExternalChangeCallbacks.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		83503BD219C257CD003F2740 /* Multi Value Types */ = {
+			isa = PBXGroup;
+			children = (
+				83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */,
+				83E305E019CB71AC00213B1C /* Date.swift */,
+				83E305DC19CB6E7300213B1C /* Email.swift */,
+				83503BCB19C25733003F2740 /* InstantMessage.swift */,
+				83F0E08619CA040200D1F900 /* LabeledValue.swift */,
+				83E6265019C24BC600A35F37 /* MultiValueType.swift */,
+				83E305E219CB725100213B1C /* PhoneNumber.swift */,
+				83503BCD19C25748003F2740 /* PostalAddress.swift */,
+				83E305DE19CB6F6100213B1C /* RelatedName.swift */,
+				83503BD319C258C3003F2740 /* SocialProfile.swift */,
+				83E305E419CB72EE00213B1C /* URL.swift */,
+			);
+			path = "Multi Value Types";
+			sourceTree = "<group>";
+		};
+		83C5559319CB78E200DE8506 /* Gulliver Tests */ = {
+			isa = PBXGroup;
+			children = (
+				83C5559E19CB78E800DE8506 /* Source */,
+				83C5559419CB78E200DE8506 /* Supporting Files */,
+			);
+			path = "Gulliver Tests";
+			sourceTree = "<group>";
+		};
+		83C5559419CB78E200DE8506 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83C5559519CB78E200DE8506 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83C5559E19CB78E800DE8506 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				83C555A319CB7A3600DE8506 /* EnumTests.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		83EB750A19BC891B007F98CC = {
+			isa = PBXGroup;
+			children = (
+				83EB751619BC891B007F98CC /* Gulliver */,
+				83C5559319CB78E200DE8506 /* Gulliver Tests */,
+				83EB751519BC891B007F98CC /* Products */,
+			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			tabWidth = 4;
+		};
+		83EB751519BC891B007F98CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83EB751419BC891B007F98CC /* Gulliver.framework */,
+				83C5559219CB78E200DE8506 /* Gulliver Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83EB751619BC891B007F98CC /* Gulliver */ = {
+			isa = PBXGroup;
+			children = (
+				83EB753C19BC8966007F98CC /* Source */,
+				83EB751719BC891B007F98CC /* Supporting Files */,
+			);
+			path = Gulliver;
+			sourceTree = "<group>";
+		};
+		83EB751719BC891B007F98CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83EB751919BC891B007F98CC /* Gulliver.h */,
+				83EB751819BC891B007F98CC /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83EB753C19BC8966007F98CC /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				83503BCF19C257A8003F2740 /* Enums */,
+				83503BD119C257C8003F2740 /* Helpers */,
+				83503BD219C257CD003F2740 /* Multi Value Types */,
+				83503BD019C257C4003F2740 /* Types */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		83EB751119BC891B007F98CC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83EB751A19BC891B007F98CC /* Gulliver.h in Headers */,
+				837528C119BE7E710055C271 /* GLVExternalChangeCallbacks.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		83C5559119CB78E200DE8506 /* Gulliver Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83C5559D19CB78E200DE8506 /* Build configuration list for PBXNativeTarget "Gulliver Tests" */;
+			buildPhases = (
+				83C5558E19CB78E200DE8506 /* Sources */,
+				83C5558F19CB78E200DE8506 /* Frameworks */,
+				83C5559019CB78E200DE8506 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83C5559A19CB78E200DE8506 /* PBXTargetDependency */,
+			);
+			name = "Gulliver Tests";
+			productName = "Gulliver Tests";
+			productReference = 83C5559219CB78E200DE8506 /* Gulliver Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		83EB751319BC891B007F98CC /* Gulliver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83EB752719BC891B007F98CC /* Build configuration list for PBXNativeTarget "Gulliver" */;
+			buildPhases = (
+				83EB750F19BC891B007F98CC /* Sources */,
+				83EB751019BC891B007F98CC /* Frameworks */,
+				83EB751119BC891B007F98CC /* Headers */,
+				83EB751219BC891B007F98CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gulliver;
+			productName = Gulliver;
+			productReference = 83EB751419BC891B007F98CC /* Gulliver.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83EB750B19BC891B007F98CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Pandamonia LLC";
+				TargetAttributes = {
+					83C5559119CB78E200DE8506 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					83EB751319BC891B007F98CC = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 83EB750E19BC891B007F98CC /* Build configuration list for PBXProject "Gulliver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 83EB750A19BC891B007F98CC;
+			productRefGroup = 83EB751519BC891B007F98CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				83EB751319BC891B007F98CC /* Gulliver */,
+				83C5559119CB78E200DE8506 /* Gulliver Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83C5559019CB78E200DE8506 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83EB751219BC891B007F98CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		83C5558E19CB78E200DE8506 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C555A419CB7A3600DE8506 /* EnumTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83EB750F19BC891B007F98CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				832F9F1619C4823500139D48 /* PersonKind.swift in Sources */,
+				832F9F1819C4823500139D48 /* GLVExternalChangeCallbacks.m in Sources */,
+				832F9F1919C4823500139D48 /* PostalAddress.swift in Sources */,
+				832F9F1A19C4823500139D48 /* InstantMessage.swift in Sources */,
+				832F9F1B19C4823500139D48 /* SocialProfile.swift in Sources */,
+				83E305E519CB72EE00213B1C /* URL.swift in Sources */,
+				832F9F1C19C4823500139D48 /* AddressBook.swift in Sources */,
+				832F9F1D19C4823500139D48 /* Group.swift in Sources */,
+				832F9F1E19C4823500139D48 /* MultiValue.swift in Sources */,
+				832F9F1F19C4823500139D48 /* Person.swift in Sources */,
+				83B6DB1119C4A8E800EA6B64 /* AlternateBirthday.swift in Sources */,
+				832F9F2019C4823500139D48 /* Record.swift in Sources */,
+				832F9F2119C4823500139D48 /* Source.swift in Sources */,
+				832F9F0919C47EA500139D48 /* AuthorizationStatus.swift in Sources */,
+				83E305DD19CB6E7300213B1C /* Email.swift in Sources */,
+				832F9F1119C47ECA00139D48 /* MultiValueType.swift in Sources */,
+				832F9F0A19C47EA500139D48 /* CompositeNameFormat.swift in Sources */,
+				832F9F0B19C47EA500139D48 /* ImageFormat.swift in Sources */,
+				83F0E08719CA040200D1F900 /* LabeledValue.swift in Sources */,
+				83E305E319CB725100213B1C /* PhoneNumber.swift in Sources */,
+				832F9F0D19C47EA500139D48 /* PropertyType.swift in Sources */,
+				83E305E119CB71AC00213B1C /* Date.swift in Sources */,
+				832F9F0E19C47EA500139D48 /* Result.swift in Sources */,
+				832F9F0F19C47EA500139D48 /* SortOrdering.swift in Sources */,
+				83E305DF19CB6F6100213B1C /* RelatedName.swift in Sources */,
+				832F9F1019C47EA500139D48 /* SourceType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		83C5559A19CB78E200DE8506 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83EB751319BC891B007F98CC /* Gulliver */;
+			targetProxy = 83C5559919CB78E200DE8506 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		83C5559B19CB78E200DE8506 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Gulliver Tests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		83C5559C19CB78E200DE8506 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Gulliver Tests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		83EB752519BC891B007F98CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		83EB752619BC891B007F98CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		83EB752819BC891B007F98CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "Gulliver/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		83EB752919BC891B007F98CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "Gulliver/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83C5559D19CB78E200DE8506 /* Build configuration list for PBXNativeTarget "Gulliver Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83C5559B19CB78E200DE8506 /* Debug */,
+				83C5559C19CB78E200DE8506 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83EB750E19BC891B007F98CC /* Build configuration list for PBXProject "Gulliver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83EB752519BC891B007F98CC /* Debug */,
+				83EB752619BC891B007F98CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83EB752719BC891B007F98CC /* Build configuration list for PBXNativeTarget "Gulliver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83EB752819BC891B007F98CC /* Debug */,
+				83EB752919BC891B007F98CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83EB750B19BC891B007F98CC /* Project object */;
+}

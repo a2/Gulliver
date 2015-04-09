@@ -1,6 +1,6 @@
 public struct Date: DebugPrintable, MultiValueRepresentable {
     public struct Labels {
-        static let Anniversary = String(kABPersonAnniversaryLabel)
+        public static let Anniversary = String(kABPersonAnniversaryLabel)
     }
 
     public var dateValue: NSDate

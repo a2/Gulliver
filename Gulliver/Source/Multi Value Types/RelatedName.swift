@@ -2,17 +2,17 @@ import AddressBook
 
 public struct RelatedName: DebugPrintable, MultiValueRepresentable, Printable {
     public struct Labels {
-        static let Father = String(kABPersonFatherLabel)
-        static let Mother = String(kABPersonMotherLabel)
-        static let Parent = String(kABPersonParentLabel)
-        static let Brother = String(kABPersonBrotherLabel)
-        static let Sister = String(kABPersonSisterLabel)
-        static let Child = String(kABPersonChildLabel)
-        static let Friend = String(kABPersonFriendLabel)
-        static let Spouse = String(kABPersonSpouseLabel)
-        static let Partner = String(kABPersonPartnerLabel)
-        static let Assistant = String(kABPersonAssistantLabel)
-        static let Manager = String(kABPersonManagerLabel)
+        public static let Father = String(kABPersonFatherLabel)
+        public static let Mother = String(kABPersonMotherLabel)
+        public static let Parent = String(kABPersonParentLabel)
+        public static let Brother = String(kABPersonBrotherLabel)
+        public static let Sister = String(kABPersonSisterLabel)
+        public static let Child = String(kABPersonChildLabel)
+        public static let Friend = String(kABPersonFriendLabel)
+        public static let Spouse = String(kABPersonSpouseLabel)
+        public static let Partner = String(kABPersonPartnerLabel)
+        public static let Assistant = String(kABPersonAssistantLabel)
+        public static let Manager = String(kABPersonManagerLabel)
     }
 
     public var stringValue: String

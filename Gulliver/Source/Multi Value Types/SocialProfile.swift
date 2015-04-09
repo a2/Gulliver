@@ -2,13 +2,13 @@ import AddressBook
 
 public struct SocialProfile: MultiValueRepresentable {
     public struct Labels {
-        static let Twitter = String(kABPersonSocialProfileServiceTwitter)
-        static let SinaWeibo = String(kABPersonSocialProfileServiceSinaWeibo)
-        static let GameCenter = String(kABPersonSocialProfileServiceGameCenter)
-        static let Facebook = String(kABPersonSocialProfileServiceFacebook)
-        static let Myspace = String(kABPersonSocialProfileServiceMyspace)
-        static let LinkedIn = String(kABPersonSocialProfileServiceLinkedIn)
-        static let Flickr = String(kABPersonSocialProfileServiceFlickr)
+        public static let Twitter = String(kABPersonSocialProfileServiceTwitter)
+        public static let SinaWeibo = String(kABPersonSocialProfileServiceSinaWeibo)
+        public static let GameCenter = String(kABPersonSocialProfileServiceGameCenter)
+        public static let Facebook = String(kABPersonSocialProfileServiceFacebook)
+        public static let Myspace = String(kABPersonSocialProfileServiceMyspace)
+        public static let LinkedIn = String(kABPersonSocialProfileServiceLinkedIn)
+        public static let Flickr = String(kABPersonSocialProfileServiceFlickr)
     }
 
     public var URL: String

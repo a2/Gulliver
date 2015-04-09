@@ -1,9 +1,6 @@
 platform :ios, '8.0'
+link_with 'Gulliver', 'Gulliver Tests'
 
 use_frameworks!
 
-target 'Gulliver' do
-  pod 'Lustre',
-    git: 'https://github.com/zwaldowski/Lustre.git',
-    tag: 'v0.6.3'
-end
+pod 'Lustre', '~> 0.6.1'

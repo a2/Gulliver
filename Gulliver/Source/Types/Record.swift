@@ -1,97 +1,50 @@
-//
-//  Record.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/9/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import AddressBook
 import Foundation
+import Lustre
 
 public typealias RecordID = ABRecordID
 
-public class Record {
+public class Record: RecordType {
+    public let state: ABRecordRef
 
-    public let recordRef: ABRecordRef
-
-    internal init(record: ABRecordRef) {
-        self.recordRef = record
+    public required init(state: ABRecordRef) {
+        self.state = state
     }
 
     public var recordID: RecordID {
-        return ABRecordGetRecordID(recordRef)
+        return ABRecordGetRecordID(state)
     }
 
-    private func genericValue<T>(property: ABPropertyID) -> T? {
-        if let value = ABRecordCopyValue(recordRef, property) {
-            return value.takeRetainedValue() as? T
+    public var recordKind: RecordKind {
+        return RecordKind(rawValue: ABRecordGetRecordType(state))!
+    }
+
+    public func value<P: ReadablePropertyType>(forProperty property: P) -> P.ValueType? {
+        if let unmanagedValue = ABRecordCopyValue(state, property.propertyID) {
+            let value: CFTypeRef = unmanagedValue.takeRetainedValue()
+            return property.readTransform?(value) ?? (value as! P.ValueType)
+        } else {
+            return nil
         }
-
-        return nil
     }
 
-    public func value(property: ABPropertyID) -> String? {
-        return genericValue(property)
-    }
-
-    public func value(property: ABPropertyID) -> NSDate? {
-        return genericValue(property)
-    }
-
-    public func value(property: ABPropertyID) -> NSNumber? {
-        return genericValue(property)
-    }
-
-    func multiValue<T: MultiValueRepresentable where T.MultiValueType == CFTypeRef>(property: ABPropertyID) -> MultiValue<T>? {
-        if let value = ABRecordCopyValue(recordRef, property) {
-            let multiValue: ABMultiValueRef = value.takeRetainedValue()
-            return MultiValue<T>(multiValue: multiValue)
-        }
-
-        return nil
-    }
-
-    private func setGenericValue(property: ABPropertyID, _ newValue: AnyObject?) -> Result {
+    public func setValue<P: WritablePropertyType>(value: P.ValueType?, forProperty property: P) -> VoidResult {
         var error: Unmanaged<CFErrorRef>? = nil
-        if newValue != nil {
-            if ABRecordSetValue(recordRef, property, newValue, &error) {
-                return .Success
+        if let value = value {
+            let transformedValue: CFTypeRef = property.writeTransform?(value) ?? (value as! CFTypeRef)
+            if ABRecordSetValue(state, property.propertyID, transformedValue, &error) {
+                return success()
             }
         } else {
-            if ABRecordRemoveValue(recordRef, property, &error) {
-                return .Success
+            if ABRecordRemoveValue(state, property.propertyID, &error) {
+                return success()
             }
         }
 
-        return .Failure(error!.takeRetainedValue() as AnyObject as NSError)
-    }
-
-    public func setValue(property: ABPropertyID, _ newValue: String?) -> Result {
-        return setGenericValue(property, newValue)
-    }
-
-    public func setValue(property: ABPropertyID, _ newValue: NSDate?) -> Result {
-        return setGenericValue(property, newValue)
-    }
-
-    public func setValue(property: ABPropertyID, _ newValue: NSNumber?) -> Result {
-        return setGenericValue(property, newValue)
-    }
-
-    public func setMultiValue<T: MultiValueRepresentable where T.MultiValueType == CFTypeRef>(property: ABPropertyID, _ newValue: MultiValue<T>?) -> Result {
-        var error: Unmanaged<CFErrorRef>? = nil
-        if newValue != nil {
-            if ABRecordSetValue(recordRef, property, newValue!.multiValueRef(), &error) {
-                return .Success
-            }
+        if let error = error {
+            return failure(error.takeUnretainedValue())
         } else {
-            if ABRecordRemoveValue(recordRef, property, &error) {
-                return .Success
-            }
+            return failure("An unknown error occurred.")
         }
-
-        return .Failure(error!.takeRetainedValue() as AnyObject as NSError)
     }
-
 }

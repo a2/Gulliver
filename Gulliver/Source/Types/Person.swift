@@ -1,48 +1,30 @@
-//
-//  Person.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/9/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import AddressBook
+import Lustre
 
-public let WorkLabel: String = kABWorkLabel
-public let HomeLabel: String = kABHomeLabel
-public let OtherLabel: String = kABOtherLabel
+public let WorkLabel = String(kABWorkLabel)
+public let HomeLabel = String(kABHomeLabel)
+public let OtherLabel = String(kABOtherLabel)
 
-public class Person : Record {
+public final class Person: Record, PersonType {
+    public typealias GroupState = ABRecordRef
+    public typealias SourceState = ABRecordRef
 
-    internal override init(record: ABRecordRef) {
-        super.init(record: record)
+    public required init(state: ABRecordRef) {
+        precondition(RecordKind(rawValue: ABRecordGetRecordType(state)) == .Person, "ABRecordRef \(state) is not a person")
+        super.init(state: state)
     }
 
     public convenience init() {
-        let person: ABRecordRef = ABPersonCreate().takeRetainedValue()
-        self.init(record: person)
-    }
-
-    public convenience init(inSource source: Source) {
-        let person: ABRecordRef = ABPersonCreateInSource(source.recordRef).takeRetainedValue()
-        self.init(record: person)
+        let state: ABRecordRef = ABPersonCreate().takeRetainedValue()
+        self.init(state: state)
     }
 
     public var hasImageData: Bool {
-        return ABPersonHasImageData(recordRef)
-    }
-
-    public func removeImageData() -> Result {
-        var error: Unmanaged<CFErrorRef>? = nil
-        if ABPersonRemoveImageData(recordRef, &error) {
-            return .Success
-        } else {
-            return .Failure(error!.takeRetainedValue() as AnyObject as NSError)
-        }
+        return ABPersonHasImageData(state)
     }
 
     public func imageData() -> NSData? {
-        if let data = ABPersonCopyImageData(recordRef) {
+        if let data = ABPersonCopyImageData(state) {
             return data.takeUnretainedValue() as NSData
         } else {
             return nil
@@ -50,43 +32,62 @@ public class Person : Record {
     }
 
     public func imageData(format: ImageFormat) -> NSData? {
-        if let data = ABPersonCopyImageDataWithFormat(recordRef, format.rawValue) {
+        if let data = ABPersonCopyImageDataWithFormat(state, format.rawValue) {
             return data.takeRetainedValue() as NSData
         } else {
             return nil
         }
     }
 
-    public var sortOrdering: SortOrdering {
+    public func setImageData(imageData: NSData?) -> VoidResult {
+        var error: Unmanaged<CFErrorRef>? = nil
+        if let imageData = imageData {
+            if ABPersonSetImageData(state, imageData, &error) {
+                return success()
+            }
+        } else {
+            if ABPersonRemoveImageData(state, &error) {
+                return success()
+            }
+        }
+
+        if let error = error {
+            return failure(error.takeUnretainedValue())
+        } else {
+            return failure("An unexpected error occurred.")
+        }
+    }
+
+    public static var sortOrdering: SortOrdering {
         return SortOrdering(rawValue: ABPersonGetSortOrdering())!
     }
 
-    public var source: Source {
-        let sourceRef: ABRecordRef = ABPersonCopySource(recordRef)!.takeRetainedValue()
-        return Source(record: sourceRef)
+    public func source<S: _SourceType where S.State == SourceState>() -> S {
+        let sourceState: ABRecordRef = ABPersonCopySource(state).takeRetainedValue()
+        return S(state: sourceState)
     }
 
-    public func linkedPeople() -> [Person] {
-        let people = ABPersonCopyArrayOfAllLinkedPeople(recordRef)
+    public func linkedPeople<P: _PersonType where P.State == Person.State>() -> [P] {
+        let people = ABPersonCopyArrayOfAllLinkedPeople(state)
         let array = people!.takeRetainedValue() as [ABRecordRef]
-        return array.map({ Person(record: $0) })
+        return array.map({ P(state: $0) })
     }
 
     public var compositeNameFormat: CompositeNameFormat {
-        return CompositeNameFormat(rawValue: ABPersonGetCompositeNameFormatForRecord(recordRef))!
+        return CompositeNameFormat(rawValue: ABPersonGetCompositeNameFormatForRecord(state))!
     }
 
     public var compositeNameDelimiter: String {
-        return ABPersonCopyCompositeNameDelimiterForRecord(recordRef)!.takeRetainedValue()
+        return ABPersonCopyCompositeNameDelimiterForRecord(state)!.takeRetainedValue() as String
     }
 
-    public class func vCardRepresentation(people: [Person]) -> NSData {
-        let people = people.map({ $0.recordRef })
-        return ABPersonCreateVCardRepresentationWithPeople(people)!.takeRetainedValue() as NSData
+    public class func vCardRepresentation<P: _PersonType where P.State == Person.State>(people: [P]) -> NSData {
+        let personStates = people.map({ $0.state })
+        return ABPersonCreateVCardRepresentationWithPeople(personStates)!.takeRetainedValue() as NSData
     }
 
-    public class func compare(person1: Person, person2: Person, ordering: SortOrdering) -> NSComparisonResult {
-        switch ABPersonComparePeopleByName(person1.recordRef, person2.recordRef, ordering.rawValue) {
+    public class func compare<P1: _PersonType, P2: _PersonType where P1.State == Person.State, P2.State == Person.State>(person1: P1, person2: P2, ordering: SortOrdering) -> NSComparisonResult {
+        switch ABPersonComparePeopleByName(person1.state, person2.state, ordering.rawValue) {
         case .CompareEqualTo:
             return .OrderedSame
         case .CompareGreaterThan:
@@ -96,223 +97,41 @@ public class Person : Record {
         }
     }
 
-    public class func people(vCardRepresentation: NSData, source: Source?) -> [Person]? {
-        let unmanagedPeople: Unmanaged<CFArrayRef>? = ABPersonCreatePeopleInSourceWithVCardRepresentation(source?.recordRef, vCardRepresentation as CFDataRef)
-        if unmanagedPeople != nil {
-            let people = unmanagedPeople!.takeRetainedValue() as [ABRecordRef]
-            return people.map({ Person(record: $0) })
+    public class func people<P: _PersonType, S: _SourceType where P.State == Person.State, S.State == SourceState>(vCardRepresentation: NSData, source: S?) -> [P]? {
+        if let unmanagedPeople = ABPersonCreatePeopleInSourceWithVCardRepresentation(source?.state, vCardRepresentation as CFDataRef) {
+            let people = unmanagedPeople.takeRetainedValue() as [ABRecordRef]
+            return people.map({ P(state: $0) })
         } else {
             return nil
         }
     }
+}
 
-    public var firstName: String? {
-        return value(kABPersonFirstNameProperty)
-    }
-
-    public func updateFirstName(newValue: String?) -> Result {
-        return setValue(kABPersonFirstNameProperty, newValue)
-    }
-
-    public var lastName: String? {
-        return value(kABPersonLastNameProperty)
-    }
-
-    public func updateLastName(newValue: String?) -> Result {
-        return setValue(kABPersonLastNameProperty, newValue)
-    }
-
-    public var middleName: String? {
-        return value(kABPersonMiddleNameProperty)
-    }
-
-    public func updateMiddleName(newValue: String?) -> Result {
-        return setValue(kABPersonMiddleNameProperty, newValue)
-    }
-
-    public var prefix: String? {
-        return value(kABPersonPrefixProperty)
-    }
-
-    public func updatePrefix(newValue: String?) -> Result {
-        return setValue(kABPersonPrefixProperty, newValue)
-    }
-
-    public var suffix: String? {
-        return value(kABPersonSuffixProperty)
-    }
-
-    public func updateSuffix(newValue: String?) -> Result {
-        return setValue(kABPersonSuffixProperty, newValue)
-    }
-
-    public var nickname: String? {
-        return value(kABPersonNicknameProperty)
-    }
-
-    public func updateNickname(newValue: String?) -> Result {
-        return setValue(kABPersonNicknameProperty, newValue)
-    }
-
-    public var firstNamePhonetic: String? {
-        return value(kABPersonFirstNamePhoneticProperty)
-    }
-
-    public func updateFirstNamePhonetic(newValue: String?) -> Result {
-        return setValue(kABPersonFirstNamePhoneticProperty, newValue)
-    }
-
-    public var lastNamePhonetic: String? {
-        return value(kABPersonLastNamePhoneticProperty)
-    }
-
-    public func updateLastNamePhonetic(newValue: String?) -> Result {
-        return setValue(kABPersonLastNamePhoneticProperty, newValue)
-    }
-
-    public var middleNamePhonetic: String? {
-        return value(kABPersonMiddleNamePhoneticProperty)
-    }
-
-    public func updateMiddleNamePhonetic(newValue: String?) -> Result {
-        return setValue(kABPersonMiddleNamePhoneticProperty, newValue)
-    }
-
-    public var organization: String? {
-        return value(kABPersonOrganizationProperty)
-    }
-
-    public func updateOrganization(newValue: String?) -> Result {
-        return setValue(kABPersonOrganizationProperty, newValue)
-    }
-
-    public var jobTitle: String? {
-        return value(kABPersonJobTitleProperty)
-    }
-
-    public func updateJobTitle(newValue: String?) -> Result {
-        return setValue(kABPersonJobTitleProperty, newValue)
-    }
-
-    public var department: String? {
-        return value(kABPersonDepartmentProperty)
-    }
-
-    public func updateDepartment(newValue: String?) -> Result {
-        return setValue(kABPersonDepartmentProperty, newValue)
-    }
-
-    public var email: MultiValue<Email>? {
-        return multiValue(kABPersonEmailProperty)
-    }
-
-    public func updateEmail(newValue: MultiValue<Email>?) -> Result {
-        return setMultiValue(kABPersonEmailProperty, newValue)
-    }
-
-    public var birthday: NSDate? {
-        return value(kABPersonBirthdayProperty)
-    }
-
-    public func updateBirthday(newValue: NSDate?) -> Result {
-        return setValue(kABPersonBirthdayProperty, newValue)
-    }
-
-    public var note: String? {
-        return value(kABPersonNoteProperty)
-    }
-
-    public func updateNote(newValue: String?) -> Result {
-        return setValue(kABPersonNoteProperty, newValue)
-    }
-
-    public var creationDate: NSDate? {
-        return value(kABPersonCreationDateProperty)
-    }
-
-    public func updateCreationDate(newValue: NSDate?) -> Result {
-        return setValue(kABPersonCreationDateProperty, newValue)
-    }
-
-    public var modificationDate: NSDate? {
-        return value(kABPersonModificationDateProperty)
-    }
-
-    public func updateModificationDate(newValue: NSDate?) -> Result {
-        return setValue(kABPersonModificationDateProperty, newValue)
-    }
-
-    public var address: MultiValue<PostalAddress>? {
-        return multiValue(kABPersonAddressProperty)
-    }
-
-    public func updateAddress(newValue: MultiValue<PostalAddress>?) -> Result {
-        return setMultiValue(kABPersonAddressProperty, newValue)
-    }
-
-    public var dates: MultiValue<Date>? {
-        return multiValue(kABPersonDateProperty)
-    }
-
-    public func updateDates(newValue: MultiValue<Date>?) -> Result {
-        return setMultiValue(kABPersonDateProperty, newValue)
-    }
-
-    public var kind: PersonKind {
-        let kind: NSNumber = value(kABPersonKindProperty)!
-        return PersonKind(rawValue: kind)!
-    }
-
-    public func updateKind(newValue: PersonKind) -> Result{
-        return setValue(kABPersonKindProperty, newValue.rawValue)
-    }
-
-    public var phones: MultiValue<PhoneNumber>? {
-        return multiValue(kABPersonPhoneProperty)
-    }
-
-    public func updatePhones(newValue: MultiValue<PhoneNumber>?) -> Result {
-        return setMultiValue(kABPersonPhoneProperty, newValue)
-    }
-
-    public var instantMessages: MultiValue<InstantMessageAddress>? {
-        return multiValue(kABPersonInstantMessageProperty)
-    }
-
-    public func updateInstantMessages(newValue: MultiValue<InstantMessageAddress>?) -> Result {
-        return setMultiValue(kABPersonInstantMessageProperty, newValue)
-    }
-
-    public var URLs: MultiValue<URL>? {
-        return multiValue(kABPersonURLProperty)
-    }
-
-    public func updateURLs(newValue: MultiValue<URL>?) -> Result {
-        return setMultiValue(kABPersonURLProperty, newValue)
-    }
-
-    public var relatedNames: MultiValue<RelatedName>? {
-        return multiValue(kABPersonRelatedNamesProperty)
-    }
-
-    public func updateRelatedNames(newValue: MultiValue<RelatedName>?) -> Result {
-        return setMultiValue(kABPersonRelatedNamesProperty, newValue)
-    }
-
-    public var socialProfiles: MultiValue<SocialProfile>? {
-        return multiValue(kABPersonSocialProfileProperty)
-    }
-
-    public func updateSocialProfiles(newValue: MultiValue<SocialProfile>?) -> Result {
-        return setMultiValue(kABPersonSocialProfileProperty, newValue)
-    }
-
-    public var alternateBirthdays: MultiValue<AlternateBirthday>? {
-        return multiValue(kABPersonAlternateBirthdayProperty)
-    }
-    
-    public func updateAlternateBirthdays(newValue: MultiValue<AlternateBirthday>?) -> Result {
-        return setMultiValue(kABPersonAlternateBirthdayProperty, newValue)
-    }
-
+public struct PersonProperty {
+    public static let FirstName = MutableProperty<String>(propertyID: kABPersonFirstNameProperty)
+    public static let LastName = MutableProperty<String>(propertyID: kABPersonLastNameProperty)
+    public static let MiddleName = MutableProperty<String>(propertyID: kABPersonMiddleNameProperty)
+    public static let Prefix = MutableProperty<String>(propertyID: kABPersonPrefixProperty)
+    public static let Suffix = MutableProperty<String>(propertyID: kABPersonSuffixProperty)
+    public static let Nickname = MutableProperty<String>(propertyID: kABPersonNicknameProperty)
+    public static let FirstNamePhonetic = MutableProperty<String>(propertyID: kABPersonFirstNamePhoneticProperty)
+    public static let LatNamePhonetic = MutableProperty<String>(propertyID: kABPersonLastNamePhoneticProperty)
+    public static let MiddleNamePhonetic = MutableProperty<String>(propertyID: kABPersonMiddleNamePhoneticProperty)
+    public static let Organization = MutableProperty<String>(propertyID: kABPersonOrganizationProperty)
+    public static let JobTitle = MutableProperty<String>(propertyID: kABPersonJobTitleProperty)
+    public static let Department = MutableProperty<String>(propertyID: kABPersonDepartmentProperty)
+    public static let Emails = MutableProperty<MultiValue<Email>>(propertyID: kABPersonEmailProperty) // TODO:
+    public static let Birthday = MutableProperty<NSDate>(propertyID: kABPersonBirthdayProperty)
+    public static let Note = MutableProperty<String>(propertyID: kABPersonNoteProperty)
+    public static let CreationDate = Property<NSDate>(propertyID: kABPersonCreationDateProperty)
+    public static let ModificationDate = Property<NSDate>(propertyID: kABPersonModificationDateProperty)
+    public static let Addresses = MutableProperty<MultiValue<PostalAddress>>(propertyID: kABPersonAddressProperty)
+    public static let Dates = MutableProperty<MultiValue<Date>>(propertyID: kABPersonDateProperty)
+    public static let Kind = MutableProperty<PersonKind>(propertyID: kABPersonKindProperty, readTransform: readTransform, writeTransform: writeTransform)
+    public static let Phones = MutableProperty<MultiValue<PhoneNumber>>(propertyID: kABPersonPhoneProperty)
+    public static let InstantMessages = MutableProperty<MultiValue<InstantMessageAddress>>(propertyID: kABPersonInstantMessageProperty)
+    public static let URLs = MutableProperty<MultiValue<URL>>(propertyID: kABPersonURLProperty)
+    public static let RelatedNames = MutableProperty<MultiValue<RelatedName>>(propertyID: kABPersonRelatedNamesProperty)
+    public static let SocialProfiles = MutableProperty<MultiValue<SocialProfile>>(propertyID: kABPersonSocialProfileProperty)
+    public static let AlternateBirthdays = MutableProperty<MultiValue<AlternateBirthday>>(propertyID: kABPersonAlternateBirthdayProperty)
 }

@@ -1,13 +1,5 @@
-
-//
-//  EnumTests.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/18/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import Gulliver
+import Lustre
 import XCTest
 
 class EnumTests: XCTestCase {
@@ -64,28 +56,28 @@ class EnumTests: XCTestCase {
         }
     }
 
-    func testPropertyTypeRawRepresentable() {
+    func testPropertyKindRawRepresentable() {
         let rawValues: [ABPropertyType] = [
-            ABPropertyType(kABInvalidPropertyType),
-            ABPropertyType(kABStringPropertyType),
-            ABPropertyType(kABIntegerPropertyType),
-            ABPropertyType(kABRealPropertyType),
-            ABPropertyType(kABDateTimePropertyType),
-            ABPropertyType(kABDictionaryPropertyType),
-            ABPropertyType(kABMultiStringPropertyType),
-            ABPropertyType(kABMultiIntegerPropertyType),
-            ABPropertyType(kABMultiRealPropertyType),
-            ABPropertyType(kABMultiDateTimePropertyType),
-            ABPropertyType(kABMultiDictionaryPropertyType),
+            numericCast(kABInvalidPropertyType),
+            numericCast(kABStringPropertyType),
+            numericCast(kABIntegerPropertyType),
+            numericCast(kABRealPropertyType),
+            numericCast(kABDateTimePropertyType),
+            numericCast(kABDictionaryPropertyType),
+            numericCast(kABMultiStringPropertyType),
+            numericCast(kABMultiIntegerPropertyType),
+            numericCast(kABMultiRealPropertyType),
+            numericCast(kABMultiDateTimePropertyType),
+            numericCast(kABMultiDictionaryPropertyType),
         ]
 
         for rawValue in rawValues {
-            XCTAssertEqual(PropertyType(rawValue: rawValue)!.rawValue, rawValue, "\(rawValue) did not transform successfully")
+            XCTAssertEqual(PropertyKind(rawValue: rawValue)!.rawValue, rawValue, "\(rawValue) did not transform successfully")
         }
     }
 
-    func testPropertyTypeIsMulti() {
-        let propertyTypes: [PropertyType : Bool] = [
+    func testPropertyKindIsMulti() {
+        let propertyTypes: [PropertyKind : Bool] = [
             .Invalid: false,
             .String: false,
             .Integer: false,
@@ -104,8 +96,8 @@ class EnumTests: XCTestCase {
         }
     }
 
-    func testPropertyTypeIsValid() {
-        let propertyTypes: [PropertyType : Bool] = [
+    func testPropertyKindIsValid() {
+        let propertyTypes: [PropertyKind : Bool] = [
             .Invalid: false,
             .String: true,
             .Integer: true,
@@ -126,8 +118,8 @@ class EnumTests: XCTestCase {
 
     func testSortOrderingRawRepresentable() {
         let rawValues: [ABPersonSortOrdering] = [
-            ABPersonSortOrdering(kABPersonSortByFirstName),
-            ABPersonSortOrdering(kABPersonSortByLastName),
+            numericCast(kABPersonSortByFirstName),
+            numericCast(kABPersonSortByLastName),
         ]
 
         for rawValue in rawValues {
@@ -135,24 +127,24 @@ class EnumTests: XCTestCase {
         }
     }
 
-    func testSourceTypeRawRepresentable() {
+    func testSourceKindRawRepresentable() {
         let rawValues: [ABSourceType] = [
-            ABSourceType(kABSourceTypeLocal),
-            ABSourceType(kABSourceTypeExchange),
-            ABSourceType(kABSourceTypeExchangeGAL),
-            ABSourceType(kABSourceTypeMobileMe),
-            ABSourceType(kABSourceTypeLDAP),
-            ABSourceType(kABSourceTypeCardDAV),
-            ABSourceType(kABSourceTypeCardDAVSearch),
+            numericCast(kABSourceTypeLocal),
+            numericCast(kABSourceTypeExchange),
+            numericCast(kABSourceTypeExchangeGAL),
+            numericCast(kABSourceTypeMobileMe),
+            numericCast(kABSourceTypeLDAP),
+            numericCast(kABSourceTypeCardDAV),
+            numericCast(kABSourceTypeCardDAVSearch),
         ]
 
         for rawValue in rawValues {
-            XCTAssertEqual(SourceType(rawValue: rawValue)!.rawValue, rawValue, "\(rawValue) did not transform successfully")
+            XCTAssertEqual(SourceKind(rawValue: rawValue)!.rawValue, rawValue, "\(rawValue) did not transform successfully")
         }
     }
 
-    func testSourceTypeIsSearchable() {
-        let sourceTypes: [SourceType : Bool] = [
+    func testSourceKindIsSearchable() {
+        let sourceKinds: [SourceKind : Bool] = [
             .Local: false,
             .Exchange: false,
             .ExchangeGAL: true,
@@ -162,8 +154,8 @@ class EnumTests: XCTestCase {
             .CardDAVSearch: true,
         ]
 
-        for (sourceType, isSearchable) in sourceTypes {
-            XCTAssertEqual(sourceType.isSearchable, isSearchable, "Expected \(sourceType).isSearchable == \(isSearchable)")
+        for (sourceKind, isSearchable) in sourceKinds {
+            XCTAssertEqual(sourceKind.isSearchable, isSearchable, "Expected \(sourceKind).isSearchable == \(isSearchable)")
         }
     }
 

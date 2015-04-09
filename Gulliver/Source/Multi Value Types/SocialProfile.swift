@@ -1,21 +1,14 @@
-//
-//  SocialProfile.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/11/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
+import AddressBook
 
-public struct SocialProfile {
-
+public struct SocialProfile: MultiValueRepresentable {
     public struct Labels {
-        static let Twitter: String = kABPersonSocialProfileServiceTwitter
-        static let SinaWeibo: String = kABPersonSocialProfileServiceSinaWeibo
-        static let GameCenter: String = kABPersonSocialProfileServiceGameCenter
-        static let Facebook: String = kABPersonSocialProfileServiceFacebook
-        static let Myspace: String = kABPersonSocialProfileServiceMyspace
-        static let LinkedIn: String = kABPersonSocialProfileServiceLinkedIn
-        static let Flickr: String = kABPersonSocialProfileServiceFlickr
+        static let Twitter = String(kABPersonSocialProfileServiceTwitter)
+        static let SinaWeibo = String(kABPersonSocialProfileServiceSinaWeibo)
+        static let GameCenter = String(kABPersonSocialProfileServiceGameCenter)
+        static let Facebook = String(kABPersonSocialProfileServiceFacebook)
+        static let Myspace = String(kABPersonSocialProfileServiceMyspace)
+        static let LinkedIn = String(kABPersonSocialProfileServiceLinkedIn)
+        static let Flickr = String(kABPersonSocialProfileServiceFlickr)
     }
 
     public var URL: String
@@ -23,40 +16,37 @@ public struct SocialProfile {
     public var username: String?
     public var userIdentifier: String?
 
-    public init(URL: String) {
+    public init(URL: String, service: String? = nil, username: String? = nil, userIdentifier: String? = nil) {
         self.URL = URL
+        self.service = service
+        self.username = username
+        self.userIdentifier = userIdentifier
     }
 
-}
+    public static let multiValueType = PropertyKind.MultiDictionary
 
-extension SocialProfile: MultiValueRepresentable {
-
-    public static var multiValueType: PropertyType {
-        return .MultiDictionary
-    }
-
-    public var multiValueRepresentation: AnyObject {
+    public var multiValueRepresentation: CFTypeRef {
         var result = [String : String]()
-        result[kABPersonSocialProfileURLKey] = URL
+        result[String(kABPersonSocialProfileURLKey)] = URL
 
-        if service != nil {
-            result[kABPersonSocialProfileServiceKey] = service
+        if let service = service {
+            result[String(kABPersonSocialProfileServiceKey)] = service
         }
 
-        if username != nil {
-            result[kABPersonSocialProfileUsernameKey] = username
+        if let username = username {
+            result[String(kABPersonSocialProfileUsernameKey)] = username
         }
 
-        if userIdentifier != nil {
-            result[kABPersonSocialProfileUserIdentifierKey] = userIdentifier
+        if let userIdentifier = userIdentifier {
+            result[String(kABPersonSocialProfileUserIdentifierKey)] = userIdentifier
         }
 
         return result
     }
 
-    public init?(multiValueRepresentation: AnyObject) {
+    public init?(multiValueRepresentation: CFTypeRef) {
         if let dictionary = multiValueRepresentation as? [String : String] {
-            if let URL = dictionary[kABPersonSocialProfileURLKey] {
+            if let URL = dictionary[String(kABPersonSocialProfileURLKey)] {
                 self.URL = URL
             } else {
                 return nil
@@ -64,11 +54,11 @@ extension SocialProfile: MultiValueRepresentable {
 
             for (key, value) in dictionary {
                 switch key {
-                case kABPersonSocialProfileServiceKey:
+                case String(kABPersonSocialProfileServiceKey):
                     self.service = value
-                case kABPersonSocialProfileUsernameKey:
+                case String(kABPersonSocialProfileUsernameKey):
                     self.username = value
-                case kABPersonSocialProfileUserIdentifierKey:
+                case String(kABPersonSocialProfileUserIdentifierKey):
                     self.userIdentifier = value
                 default:
                     break
@@ -78,5 +68,4 @@ extension SocialProfile: MultiValueRepresentable {
             return nil
         }
     }
-    
 }

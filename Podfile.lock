@@ -1,0 +1,20 @@
+PODS:
+  - Lustre (0.6.1)
+
+DEPENDENCIES:
+  - Lustre (from `https://github.com/zwaldowski/Lustre.git`, tag `v0.6.3`)
+
+EXTERNAL SOURCES:
+  Lustre:
+    :git: https://github.com/zwaldowski/Lustre.git
+    :tag: v0.6.3
+
+CHECKOUT OPTIONS:
+  Lustre:
+    :git: https://github.com/zwaldowski/Lustre.git
+    :tag: v0.6.3
+
+SPEC CHECKSUMS:
+  Lustre: d9359cf119ba68543e0d1bc4e821dbd6d10fbf96
+
+COCOAPODS: 0.36.3

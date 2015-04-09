@@ -1,24 +1,32 @@
-//
-//  Source.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/9/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
+import AddressBook
+import Lustre
 
-public class Source : Record {
+public final class Source: Record, SourceType {
+    public typealias PersonState = ABRecordRef
+    public typealias GroupState = ABRecordRef
 
-    public var name: String? {
-        return value(kABSourceNameProperty)
+    public required init(state: ABRecordRef) {
+        precondition(RecordKind(rawValue: ABRecordGetRecordType(state)) == .Source, "ABRecordRef \(state) is not a source")
+        super.init(state: state)
     }
 
-    public func updateName(newValue: String?) -> Result {
-        return setValue(kABSourceNameProperty, newValue)
+    private static let sourceKindProperty = Property<SourceKind>(propertyID: kABSourceTypeProperty, readTransform: readTransform)
+
+    public var sourceKind: SourceKind {
+        return value(forProperty: Source.sourceKindProperty)!
     }
 
-    public var sourceType: SourceType {
-        let kind: NSNumber = value(kABSourceNameProperty)!
-        return SourceType(rawValue: ABSourceType(kind.integerValue))!
+    public func newPerson<P: PersonType where P.State == PersonState>() -> P {
+        let personState: ABRecordRef = ABPersonCreateInSource(state).takeRetainedValue()
+        return P(state: personState)
     }
 
+    public func newGroup<G: GroupType where G.State == GroupState>() -> G {
+        let groupState: ABRecordRef = ABGroupCreateInSource(state).takeRetainedValue()
+        return G(state: groupState)
+    }
+}
+
+public struct SourceProperty {
+    public static let Name = MutableProperty<String>(propertyID: kABSourceNameProperty)
 }

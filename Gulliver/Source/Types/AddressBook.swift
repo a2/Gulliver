@@ -1,149 +1,134 @@
-//
-//  AddressBook.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/7/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import AddressBook
 import Foundation
+import Lustre
 
 public typealias ExternalChangeHandler = GLVExternalChangeHandler
 public typealias ExternalChangeToken = GLVExternalChangeToken
 
-public class AddressBook {
+public func localizedLabel(label: String) -> String? {
+    return ABAddressBookCopyLocalizedLabel(label).takeRetainedValue() as String
+}
 
-    public enum Error: Int {
-        case AccessDenied
+public func systemAddressBook() -> ObjectResult<AddressBook> {
+    var error: Unmanaged<CFErrorRef>? = nil
+    if let addressBook = ABAddressBookCreateWithOptions(nil, &error) {
+        return success(AddressBook(state: addressBook.takeRetainedValue()))
+    } else if let error = error {
+        return failure(error.takeUnretainedValue())
+    } else {
+        return failure("An unknown error occurred.")
+    }
+}
 
-        private static let domain = "Gullver.AddressBook"
+public final class AddressBook: AddressBookType {
+    public typealias RecordState = ABRecordRef
+    public typealias PersonState = ABRecordRef
+    public typealias GroupState = ABRecordRef
+    public typealias SourceState = ABRecordRef
 
-        public var error: NSError {
-            return NSError(domain: Error.domain, code: rawValue, userInfo: nil)
-        }
+    public let state: ABAddressBookRef
+
+    public init(state: ABAddressBookRef) {
+        self.state = state
     }
 
-    public class var errorDomain: String {
-        return Error.domain
-    }
-
-    public var addressBookRef: ABAddressBookRef {
-        return addressBookStorage!
-    }
-
-    private var addressBookStorage: ABAddressBookRef?
-
-    public init?() {
-        if let addressBook = ABAddressBookCreateWithOptions(nil, nil) {
-            self.addressBookStorage = addressBook.takeRetainedValue()
-        } else {
-            return nil
-        }
-    }
-
-    public init(addressBook: ABAddressBookRef) {
-        self.addressBookStorage = addressBook
-    }
-
-    public class func authorizationStatus() -> AuthorizationStatus {
+    public static var authorizationStatus: AuthorizationStatus {
         return AuthorizationStatus(rawValue: ABAddressBookGetAuthorizationStatus())!
     }
 
-    public class func localizedLabel(label: String) -> String? {
-        if let localizedLabel = ABAddressBookCopyLocalizedLabel(label) {
-            return localizedLabel.takeRetainedValue()
-        } else {
-            return nil
+    public func requestAccess(completionHandler: VoidResult -> Void) {
+        ABAddressBookRequestAccessWithCompletion(state) { hasAccess, error in
+            if hasAccess {
+                completionHandler(success())
+            } else if let error = error {
+                completionHandler(failure(error))
+            } else {
+                completionHandler(failure("An unknown error occu"))
+            }
         }
     }
 
-    public func requestAccess(completionHandler: ResultHandler?) {
-        ABAddressBookRequestAccessWithCompletion(addressBookRef, {
-            (success: Bool, error: CFErrorRef!) in
-            if success {
-                completionHandler?(.Success)
-            } else {
-                completionHandler?(.Failure(error as AnyObject as NSError))
-            }
-        })
-    }
-
     public var hasUnsavedChanges: Bool {
-        return ABAddressBookHasUnsavedChanges(addressBookRef)
+        return ABAddressBookHasUnsavedChanges(state)
     }
 
-    public func save() -> Result {
+    public func save() -> VoidResult {
         var error: Unmanaged<CFErrorRef>? = nil
-        if ABAddressBookSave(addressBookRef, &error) {
-            return .Success
+        if ABAddressBookSave(state, &error) {
+            return success()
+        } else if let error = error {
+            return failure(error.takeUnretainedValue())
         } else {
-            return .Failure(error!.takeRetainedValue() as AnyObject as NSError)
+            return failure("An unknown error occurred.")
         }
     }
 
     public func registerForExternalChanges(f: ExternalChangeHandler) -> ExternalChangeToken {
-        return GLVAddressBookRegisterExternalChangeHandler(addressBookRef, f)
+        return GLVAddressBookRegisterExternalChangeHandler(state, f)
     }
 
     public func unregisterForExternalChanges(token: ExternalChangeToken) {
-        GLVAddressBookUnregisterExternalChangeHandler(addressBookRef, token)
+        GLVAddressBookUnregisterExternalChangeHandler(state, token)
     }
 
-    public func addRecord(record: Record) -> Result {
+    public func addRecord<R: _RecordType where R.State == RecordState>(record: R) -> VoidResult {
         var error: Unmanaged<CFErrorRef>? = nil
-        if ABAddressBookAddRecord(addressBookRef, record.recordRef, &error) {
-            return .Success
+        if ABAddressBookAddRecord(state, record.state, &error) {
+            return success()
+        } else if let error = error {
+            return failure(error.takeUnretainedValue())
         } else {
-            return .Failure(error!.takeRetainedValue() as AnyObject as NSError)
+            return failure("An unknown error occurred.")
         }
     }
 
-    public func removeRecord(record: Record) -> Result {
+    public func removeRecord<R: _RecordType where R.State == RecordState>(record: R) -> VoidResult {
         var error: Unmanaged<CFErrorRef>? = nil
-        if ABAddressBookRemoveRecord(addressBookRef, record.recordRef, &error) {
-            return .Success
+        if ABAddressBookRemoveRecord(state, record.state, &error) {
+            return success()
+        } else if let error = error {
+            return failure(error.takeUnretainedValue())
         } else {
-            return .Failure(error!.takeRetainedValue() as AnyObject as NSError)
+            return failure("An unknown error occurred.")
         }
     }
 
     // MARK: - People
 
     public var personCount: Int {
-        return ABAddressBookGetPersonCount(addressBookRef)
+        return ABAddressBookGetPersonCount(state)
     }
 
-    public func person(recordID: RecordID) -> Person? {
-        if let record = ABAddressBookGetPersonWithRecordID(addressBookRef, recordID) {
-            return Person(record: record.takeUnretainedValue())
+    public func person<P: _PersonType where P.State == PersonState>(recordID: RecordID) -> P? {
+        if let record = ABAddressBookGetPersonWithRecordID(state, recordID) {
+            return P(state: record.takeUnretainedValue())
         } else {
             return nil
         }
     }
 
-    public func people(name: String) -> [Person] {
-        if let people = ABAddressBookCopyPeopleWithName(addressBookRef, name) {
-            let people = people.takeRetainedValue() as [ABRecordRef]
-            return people.map({ Person(record: $0) })
+    public func people<P: _PersonType where P.State == PersonState>(name: String) -> [P] {
+        if let people = ABAddressBookCopyPeopleWithName(state, name) {
+            let states = people.takeRetainedValue() as [ABRecordRef]
+            return states.map({ P(state: $0) })
         } else {
             return []
         }
     }
 
-    public func allPeople(source: Source) -> [Person] {
-        if let people = ABAddressBookCopyArrayOfAllPeopleInSource(addressBookRef, source.recordRef) {
-            let people = people.takeRetainedValue() as [ABRecordRef]
-            return people.map({ Person(record: $0) })
+    public func allPeople<P: _PersonType, S: _SourceType where P.State == PersonState, S.State == SourceState>(source: S) -> [P] {
+        if let people = ABAddressBookCopyArrayOfAllPeopleInSource(state, source.state) {
+            let records = people.takeRetainedValue() as [ABRecordRef]
+            return records.map({ P(state: $0) })
         } else {
             return []
         }
     }
 
-    public func allPeople(source: Source, sortOrdering: SortOrdering) -> [Person] {
-        if let people = ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(addressBookRef, source.recordRef, sortOrdering.rawValue) {
-            let people = people.takeRetainedValue() as [ABRecordRef]
-            return people.map({ Person(record: $0) })
+    public func allPeople<P: _PersonType, S: _SourceType where P.State == PersonState, S.State == SourceState>(source: S, sortOrdering: SortOrdering) -> [P] {
+        if let people = ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(state, source.state, sortOrdering.rawValue) {
+            let states = people.takeRetainedValue() as [ABRecordRef]
+            return states.map({ P(state: $0) })
         } else {
             return []
         }
@@ -152,58 +137,56 @@ public class AddressBook {
     // MARK: - Groups
 
     public var groupCount: Int {
-        return ABAddressBookGetGroupCount(addressBookRef)
+        return ABAddressBookGetGroupCount(state)
     }
 
-    public func group(recordID: RecordID) -> Group? {
-        if let record = ABAddressBookGetGroupWithRecordID(addressBookRef, recordID) {
-            return Group(record: record.takeUnretainedValue())
+    public func group<G: _GroupType where G.State == GroupState>(recordID: RecordID) -> G? {
+        if let record = ABAddressBookGetGroupWithRecordID(state, recordID) {
+            return G(state: record.takeUnretainedValue())
         } else {
             return nil
         }
     }
 
-    public func allGroups() -> [Group] {
-        if let array = ABAddressBookCopyArrayOfAllGroups(addressBookRef) {
+    public func allGroups<G: _GroupType where G.State == GroupState>() -> [G] {
+        if let array = ABAddressBookCopyArrayOfAllGroups(state) {
             let groups = array.takeRetainedValue() as [ABRecordRef]
-            return groups.map({ Group(record: $0) })
+            return groups.map({ G(state: $0) })
         } else {
             return []
         }
     }
 
-    public func allGroups(source: Source) -> [Group] {
-        if let groups = ABAddressBookCopyArrayOfAllGroupsInSource(addressBookRef, source.recordRef) {
-            let groups = groups.takeRetainedValue() as [ABRecordRef]
-            return groups.map({ Group(record: $0) })
+    public func allGroups<G: _GroupType, S: _SourceType where G.State == GroupState, S.State == SourceState>(source: S) -> [G] {
+        if let records = ABAddressBookCopyArrayOfAllGroupsInSource(state, source.state) {
+            let array = records.takeRetainedValue() as [ABRecordRef]
+            return array.map({ G(state: $0) })
         } else {
             return []
         }
     }
-
 
     // MARK: - Sources
 
-    public var defaultSource: Source {
-        let source: ABRecordRef = ABAddressBookCopyDefaultSource(addressBookRef).takeRetainedValue()
-        return Source(record: source)
+    public func defaultSource<S: _SourceType where S.State == SourceState>() -> S {
+        let sourceState: ABRecordRef = ABAddressBookCopyDefaultSource(state).takeRetainedValue()
+        return S(state: sourceState)
     }
 
-    public func source(recordID: RecordID) -> Source? {
-        if let record = ABAddressBookGetSourceWithRecordID(addressBookRef, recordID) {
-            return Source(record: record.takeUnretainedValue())
+    public func source<S: _SourceType where S.State == SourceState>(recordID: RecordID) -> S? {
+        if let record = ABAddressBookGetSourceWithRecordID(state, recordID) {
+            return S(state: record.takeUnretainedValue())
         } else {
             return nil
         }
     }
 
-    public func allSources() -> [Source] {
-        if let array = ABAddressBookCopyArrayOfAllSources(addressBookRef) {
-            let sources = array.takeRetainedValue() as [ABRecordRef]
-            return sources.map({ Source(record: $0) })
+    public func allSources<S: _SourceType where S.State == SourceState>() -> [S] {
+        if let array = ABAddressBookCopyArrayOfAllSources(state) {
+            let states = array.takeRetainedValue() as [ABRecordRef]
+            return states.map({ S(state: $0) })
         } else {
             return []
         }
     }
-
 }

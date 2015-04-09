@@ -1,32 +1,24 @@
-//
-//  URL.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/18/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
+import AddressBook
 
-public struct URL {
-
+public struct URL: MultiValueRepresentable {
     public struct Labels {
-        static let HomePage: String = kABPersonHomePageLabel
+        static let HomePage = String(kABPersonHomePageLabel)
     }
 
     public var stringValue: String
-
-}
-
-extension URL: MultiValueRepresentable {
-
-    public static var multiValueType: PropertyType {
-        return .MultiString
+    
+    public init(stringValue: String) {
+        self.stringValue = stringValue
     }
 
-    public var multiValueRepresentation: AnyObject {
+
+    public static let multiValueType = PropertyKind.MultiString
+
+    public var multiValueRepresentation: CFTypeRef {
         return stringValue
     }
 
-    public init?(multiValueRepresentation: AnyObject) {
+    public init?(multiValueRepresentation: CFTypeRef) {
         if let stringValue = multiValueRepresentation as? String {
             self = URL(stringValue: stringValue)
         } else {

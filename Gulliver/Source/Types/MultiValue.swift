@@ -1,19 +1,10 @@
-//
-//  MultiValue.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/10/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import AddressBook
 
 public typealias MultiValueIdentifier = ABMultiValueIdentifier
 
 public let MultiValueIdentifierInvalid: MultiValueIdentifier = kABMultiValueInvalidIdentifier
 
-public class MultiValue<T: MultiValueRepresentable where T.MultiValueType == CFTypeRef> {
-
+public class MultiValue<T: MultiValueRepresentable> {
     public var count: Int {
         return values.count
     }
@@ -39,9 +30,9 @@ public class MultiValue<T: MultiValueRepresentable where T.MultiValueType == CFT
 
         let count: Int = ABMultiValueGetCount(multiValue)
         for i in 0..<count {
-            let label = ABMultiValueCopyLabelAtIndex(multiValue, i)!.takeRetainedValue()
+            let label = ABMultiValueCopyLabelAtIndex(multiValue, i)!.takeRetainedValue() as String
 
-            let dictionaryRepresenation: CFTypeRef = ABMultiValueCopyValueAtIndex(multiValue, i)!.takeRetainedValue() as T.MultiValueType
+            let dictionaryRepresenation: CFTypeRef = ABMultiValueCopyValueAtIndex(multiValue, i)!.takeRetainedValue()
             let value = T(multiValueRepresentation: dictionaryRepresenation)!
 
             self.values.append(LabeledValue(label: label, value: value))
@@ -74,7 +65,7 @@ public class MultiValue<T: MultiValueRepresentable where T.MultiValueType == CFT
 
 }
 
-public struct MultiValueGenerator<T: MultiValueRepresentable> : GeneratorType {
+public struct MultiValueGenerator<T: MultiValueRepresentable>: GeneratorType {
 
     private typealias SubGeneratorType = IndexingGenerator<[LabeledValue<T>]>
     private var generator: SubGeneratorType

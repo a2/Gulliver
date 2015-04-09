@@ -1,30 +1,17 @@
-//
-//  LabeledValue.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/17/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
-public struct LabeledValue<T> {
-
+public struct LabeledValue<T>: DebugPrintable, Printable {
     var label: String
     var value: T
 
-}
-
-extension LabeledValue: Printable {
+    public init(label: String, value: T) {
+        self.label = label
+        self.value = value
+    }
 
     public var description: String {
-        return "\(label): \(value)"
+        return "\(label): \(toString(value))"
     }
-
-}
-
-extension LabeledValue: DebugPrintable {
 
     public var debugDescription: String {
-        return description
+        return "\(label): \(toDebugString(value))"
     }
-
 }

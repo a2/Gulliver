@@ -1,14 +1,6 @@
-//
-//  PropertyType.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/11/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import AddressBook
 
-public enum PropertyType {
+public enum PropertyKind: RawRepresentable {
     case Invalid
     case String
     case Integer
@@ -26,45 +18,44 @@ public enum PropertyType {
     }
 
     public var isMulti: Bool {
-        return self.rawValue.toIntMax() & kABMultiValueMask.toIntMax() != 0
+        switch self {
+        case .MultiString, .MultiInteger, .MultiReal, .MultiDateTime, .MultiDictionary:
+            return true
+        default:
+            return false
+        }
     }
-}
-
-extension PropertyType: RawRepresentable {
 
     public var rawValue: ABPropertyType {
-        var intValue: Int
-
         switch self {
         case .Invalid:
-            intValue = kABInvalidPropertyType
+            return numericCast(kABInvalidPropertyType)
         case .String:
-            intValue = kABStringPropertyType
+            return numericCast(kABStringPropertyType)
         case .Integer:
-            intValue = kABIntegerPropertyType
+            return numericCast(kABIntegerPropertyType)
         case .Real:
-            intValue = kABRealPropertyType
+            return numericCast(kABRealPropertyType)
         case .DateTime:
-            intValue = kABDateTimePropertyType
+            return numericCast(kABDateTimePropertyType)
         case .Dictionary:
-            intValue = kABDictionaryPropertyType
+            return numericCast(kABDictionaryPropertyType)
         case .MultiString:
-            intValue = kABMultiStringPropertyType
+            return numericCast(kABMultiStringPropertyType)
         case .MultiInteger:
-            intValue = kABMultiIntegerPropertyType
+            return numericCast(kABMultiIntegerPropertyType)
         case .MultiReal:
-            intValue = kABMultiRealPropertyType
+            return numericCast(kABMultiRealPropertyType)
         case .MultiDateTime:
-            intValue = kABMultiDateTimePropertyType
+            return numericCast(kABMultiDateTimePropertyType)
         case .MultiDictionary:
-            intValue = kABMultiDictionaryPropertyType
+            return numericCast(kABMultiDictionaryPropertyType)
         }
-
-        return ABPropertyType(intValue)
     }
 
     public init?(rawValue: ABPropertyType) {
-        switch Int(rawValue) {
+        let intValue: Int = numericCast(rawValue)
+        switch intValue {
         case kABInvalidPropertyType:
             self = .Invalid
         case kABStringPropertyType:
@@ -91,5 +82,4 @@ extension PropertyType: RawRepresentable {
             return nil
         }
     }
-    
 }

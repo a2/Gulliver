@@ -1,58 +1,58 @@
-//
-//  Group.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/9/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
+import AddressBook
+import Lustre
 
-public class Group : Record {
+public final class Group: Record, GroupType {
+    public typealias PersonState = ABRecordRef
+    public typealias SourceState = ABRecordRef
 
-    internal override init(record: ABRecordRef) {
-        super.init(record: record)
+    public required init(state: ABRecordRef) {
+        precondition(RecordKind(rawValue: ABRecordGetRecordType(state)) == .Group, "ABRecordRef \(state) is not a group")
+        super.init(state: state)
     }
 
     public convenience init() {
-        let group: ABRecordRef = ABGroupCreate().takeRetainedValue()
-        self.init(record: group)
+        let state: ABRecordRef = ABGroupCreate().takeRetainedValue()
+        self.init(state: state)
     }
 
-    public convenience init(inSource source: Source) {
-        let group: ABRecordRef = ABGroupCreateInSource(source.recordRef).takeRetainedValue()
-        self.init(record: group)
+    public func source<S: _SourceType where S.State == SourceState>() -> S {
+        let sourceState: ABRecordRef = ABGroupCopySource(state).takeRetainedValue()
+        return S(state: sourceState)
     }
 
-    public var source: Source {
-        let source: ABRecordRef = ABGroupCopySource(recordRef).takeRetainedValue()
-        return Source(record: source)
+    public func allMembers<P: _PersonType where P.State == PersonState>() -> [P] {
+        let array = ABGroupCopyArrayOfAllMembers(state).takeRetainedValue() as [ABRecordRef]
+        return array.map({ P(state: $0) })
     }
 
-    public func allMembers() -> [Person] {
-        let array = ABGroupCopyArrayOfAllMembers(recordRef).takeRetainedValue() as [ABRecordRef]
-        return array.map({ Person(record: $0) })
+    public func allMembers<P: _PersonType where P.State == PersonState>(sortOrdering: SortOrdering) -> [P] {
+        let array = ABGroupCopyArrayOfAllMembersWithSortOrdering(state, sortOrdering.rawValue).takeRetainedValue() as [ABRecordRef]
+        return array.map({ P(state: $0) })
     }
 
-    public func allMembers(sortOrdering: SortOrdering) -> [Person] {
-        let array = ABGroupCopyArrayOfAllMembersWithSortOrdering(recordRef, sortOrdering.rawValue).takeRetainedValue() as [ABRecordRef]
-        return array.map({ Person(record: $0) })
-    }
-
-    public func add(member: Person) -> Result {
+    public func add<P: _PersonType where P.State == PersonState>(member: P) -> VoidResult {
         var error: Unmanaged<CFErrorRef>? = nil
-        if ABGroupAddMember(recordRef, member.recordRef, &error) {
-            return .Success
+        if ABGroupAddMember(state, member.state, &error) {
+            return success()
+        } else if let error = error {
+            return failure(error.takeUnretainedValue())
         } else {
-            return .Failure(error!.takeRetainedValue() as AnyObject as NSError)
+            return failure("An unknown error occurred.")
         }
     }
 
-    public func remove(member: Person) -> Result {
+    public func remove<P: _PersonType where P.State == PersonState>(member: P) -> VoidResult {
         var error: Unmanaged<CFErrorRef>? = nil
-        if ABGroupRemoveMember(recordRef, member.recordRef, &error) {
-            return .Success
+        if ABGroupRemoveMember(state, member.state, &error) {
+            return success()
+        } else if let error = error {
+            return failure(error.takeUnretainedValue())
         } else {
-            return .Failure(error!.takeRetainedValue() as AnyObject as NSError)
+            return failure("An unknown error occurred.")
         }
     }
+}
 
+public struct GroupProperty {
+    public static let Name = MutableProperty<String>(propertyID: kABGroupNameProperty)
 }

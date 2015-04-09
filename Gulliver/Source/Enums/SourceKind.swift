@@ -1,14 +1,6 @@
-//
-//  SourceType.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/10/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import AddressBook
 
-public enum SourceType {
+public enum SourceKind: RawRepresentable {
     case Local
     case Exchange
     case ExchangeGAL
@@ -18,37 +10,31 @@ public enum SourceType {
     case CardDAVSearch
 
     public var isSearchable: Bool {
-        return self.rawValue & kABSourceTypeSearchableMask != 0
+        return rawValue & kABSourceTypeSearchableMask != 0
     }
-}
-
-extension SourceType: RawRepresentable {
 
     public var rawValue: ABSourceType {
-        var intValue: Int
-
         switch self {
         case .Local:
-            intValue = kABSourceTypeLocal
+            return numericCast(kABSourceTypeLocal)
         case .Exchange:
-            intValue = kABSourceTypeExchange
+            return numericCast(kABSourceTypeExchange)
         case .ExchangeGAL:
-            intValue = kABSourceTypeExchangeGAL
+            return numericCast(kABSourceTypeExchangeGAL)
         case .MobileMe:
-            intValue = kABSourceTypeMobileMe
+            return numericCast(kABSourceTypeMobileMe)
         case .LDAP:
-            intValue = kABSourceTypeLDAP
+            return numericCast(kABSourceTypeLDAP)
         case .CardDAV:
-            intValue = kABSourceTypeCardDAV
+            return numericCast(kABSourceTypeCardDAV)
         case .CardDAVSearch:
-            intValue = kABSourceTypeCardDAVSearch
+            return numericCast(kABSourceTypeCardDAVSearch)
         }
-
-        return ABSourceType(intValue)
     }
 
     public init?(rawValue: ABSourceType) {
-        switch Int(rawValue) {
+        let intValue: Int = numericCast(rawValue)
+        switch intValue {
         case kABSourceTypeLocal:
             self = .Local
         case kABSourceTypeExchange:
@@ -67,5 +53,4 @@ extension SourceType: RawRepresentable {
             return nil
         }
     }
-
 }

@@ -1,16 +1,7 @@
-//
-//  PostalAddress.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/11/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import AddressBook
 import AddressBookUI
 
-public struct PostalAddress {
-
+public struct PostalAddress: DebugPrintable, MultiValueRepresentable, Printable {
     public var street: String?
     public var city: String?
     public var state: String?
@@ -19,84 +10,79 @@ public struct PostalAddress {
     public var countryCode: String?
     public var otherFields: [String : String] = [:]
 
-    public init() {
-
-    }
-    
-}
-
-extension PostalAddress: MultiValueRepresentable {
-
-    public static var multiValueType: PropertyType {
-        return .MultiDictionary
+    public init(street: String? = nil, city: String? = nil, state: String? = nil, ZIP: String? = nil, country: String? = nil, countryCode: String? = nil, otherFields: [String : String] = [:]) {
+        self.street = street
+        self.city = city
+        self.state = state
+        self.ZIP = ZIP
+        self.country = country
+        self.countryCode = countryCode
+        self.otherFields = otherFields
     }
 
-    public var multiValueRepresentation: AnyObject {
+    public static let multiValueType = PropertyKind.MultiDictionary
+
+    public var multiValueRepresentation: CFTypeRef {
         var result = otherFields
 
-        if street != nil {
-            result[kABPersonAddressStreetKey] = street
+        if let street = street {
+            result[String(kABPersonAddressStreetKey)] = street
         }
 
-        if city != nil {
-            result[kABPersonAddressCityKey] = city
+        if let city = city {
+            result[String(kABPersonAddressCityKey)] = city
         }
 
-        if state != nil {
-            result[kABPersonAddressStateKey] = state
+        if let state = state {
+            result[String(kABPersonAddressStateKey)] = state
         }
 
-        if ZIP != nil {
-            result[kABPersonAddressZIPKey] = ZIP
+        if let ZIP = ZIP {
+            result[String(kABPersonAddressZIPKey)] = ZIP
         }
 
-        if country != nil {
-            result[kABPersonAddressCountryKey] = country
+        if let country = country {
+            result[String(kABPersonAddressCountryKey)] = country
         }
 
-        if countryCode != nil {
-            result[kABPersonAddressCountryCodeKey] = countryCode
+        if let countryCode = countryCode {
+            result[String(kABPersonAddressCountryCodeKey)] = countryCode
         }
 
         return result
     }
 
-    public init?(multiValueRepresentation: AnyObject) {
-        for (key, value) in multiValueRepresentation as [String : String] {
-            switch key {
-            case kABPersonAddressStreetKey:
-                self.street = value
-            case kABPersonAddressCityKey:
-                self.city = value
-            case kABPersonAddressStateKey:
-                self.state = value
-            case kABPersonAddressZIPKey:
-                self.ZIP = value
-            case kABPersonAddressCountryKey:
-                self.country = value
-            case kABPersonAddressCountryCodeKey:
-                self.countryCode = value
-            default:
-                self.otherFields[key] = value
+    public init?(multiValueRepresentation: CFTypeRef) {
+        if let multiValueRepresentation = multiValueRepresentation as? [String : String] {
+            for (key, value) in multiValueRepresentation {
+                switch key {
+                case String(kABPersonAddressStreetKey):
+                    self.street = value
+                case String(kABPersonAddressCityKey):
+                    self.city = value
+                case String(kABPersonAddressStateKey):
+                    self.state = value
+                case String(kABPersonAddressZIPKey):
+                    self.ZIP = value
+                case String(kABPersonAddressCountryKey):
+                    self.country = value
+                case String(kABPersonAddressCountryCodeKey):
+                    self.countryCode = value
+                default:
+                    self.otherFields[key] = value
+                }
             }
+        } else {
+            return nil
         }
     }
 
-}
-
-extension PostalAddress: Printable {
-
     public var description: String {
-        let address = multiValueRepresentation as NSDictionary
+        let address = multiValueRepresentation as! [NSObject : AnyObject]
         return ABCreateStringWithAddressDictionary(address, true)
     }
 
-}
-
-extension PostalAddress: DebugPrintable {
-
     public var debugDescription: String {
-        return "\(multiValueRepresentation)"
+        return toDebugString(multiValueRepresentation)
     }
-
 }

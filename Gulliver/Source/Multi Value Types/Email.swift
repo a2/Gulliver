@@ -1,28 +1,17 @@
-//
-//  Email.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/18/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
-public struct Email {
-
+public struct Email: DebugPrintable, MultiValueRepresentable, Printable {
     public var stringValue: String
 
-}
-
-extension Email: MultiValueRepresentable {
-
-    public static var multiValueType: PropertyType {
-        return .MultiString
+    public init(stringValue: String) {
+        self.stringValue = stringValue
     }
 
-    public var multiValueRepresentation: AnyObject {
+    public static let multiValueType: PropertyKind = .MultiString
+
+    public var multiValueRepresentation: CFTypeRef {
         return stringValue
     }
 
-    public init?(multiValueRepresentation: AnyObject) {
+    public init?(multiValueRepresentation: CFTypeRef) {
         if let stringValue = multiValueRepresentation as? String {
             self = Email(stringValue: stringValue)
         } else {
@@ -30,20 +19,11 @@ extension Email: MultiValueRepresentable {
         }
     }
 
-}
-
-extension Email: Printable {
-
     public var description: String {
         return stringValue
     }
 
-}
-
-extension Email: DebugPrintable {
-
     public var debugDescription: String {
         return stringValue
     }
-
 }

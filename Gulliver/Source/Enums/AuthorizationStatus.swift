@@ -1,21 +1,10 @@
-//
-//  AuthorizationStatus.swift
-//  Gulliver
-//
-//  Created by Alexsander Akers on 9/9/14.
-//  Copyright (c) 2014 Pandamonia LLC. All rights reserved.
-//
-
 import AddressBook
 
-public enum AuthorizationStatus {
+public enum AuthorizationStatus: RawRepresentable {
     case NotDetermined
     case Restricted
     case Denied
     case Authorized
-}
-
-extension AuthorizationStatus: RawRepresentable {
 
     public var rawValue: ABAuthorizationStatus {
         switch self {
@@ -42,5 +31,4 @@ extension AuthorizationStatus: RawRepresentable {
             self = .Authorized
         }
     }
-
 }

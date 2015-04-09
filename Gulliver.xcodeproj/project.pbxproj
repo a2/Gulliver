@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011211B2407E27842AAEDD29 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD17F2F58F7B492D5F03AAF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		83016B5C1AD6661F00468602 /* Gulliver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB751419BC891B007F98CC /* Gulliver.framework */; };
 		832F9F0919C47EA500139D48 /* AuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D50FEF19BE7835000C37D6 /* AuthorizationStatus.swift */; };
 		832F9F0A19C47EA500139D48 /* CompositeNameFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8380931419BF81540023B664 /* CompositeNameFormat.swift */; };
 		832F9F0B19C47EA500139D48 /* ImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8380931219BF7EF90023B664 /* ImageFormat.swift */; };
@@ -31,7 +31,6 @@
 		83B4DDD01AD2F32800D8A83E /* AddressBookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */; };
 		83B4DDD61AD305CE00D8A83E /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDD51AD305CE00D8A83E /* RecordType.swift */; };
 		83B6DB1119C4A8E800EA6B64 /* AlternateBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */; };
-		83C5559819CB78E200DE8506 /* Gulliver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB751419BC891B007F98CC /* Gulliver.framework */; };
 		83C555A419CB7A3600DE8506 /* EnumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C555A319CB7A3600DE8506 /* EnumTests.swift */; };
 		83CF12BF1AD3380000F411E0 /* RecordKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF12BE1AD3380000F411E0 /* RecordKind.swift */; };
 		83CF12C11AD33B4500F411E0 /* PersonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF12C01AD33B4500F411E0 /* PersonType.swift */; };
@@ -45,10 +44,11 @@
 		83E305E519CB72EE00213B1C /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305E419CB72EE00213B1C /* URL.swift */; };
 		83EB751A19BC891B007F98CC /* Gulliver.h in Headers */ = {isa = PBXBuildFile; fileRef = 83EB751919BC891B007F98CC /* Gulliver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83F0E08719CA040200D1F900 /* LabeledValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F0E08619CA040200D1F900 /* LabeledValue.swift */; };
+		B951E3B04AF1F457C882347A /* Pods_Gulliver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAE7015441827DBA1B09C0C /* Pods_Gulliver.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		83C5559919CB78E200DE8506 /* PBXContainerItemProxy */ = {
+		83016B5D1AD6662500468602 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83EB750B19BC891B007F98CC /* Project object */;
 			proxyType = 1;
@@ -58,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7CAE7015441827DBA1B09C0C /* Pods_Gulliver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gulliver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83016B581AD664E800468602 /* Pods-Gulliver.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Gulliver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gulliver/Pods-Gulliver.debug.xcconfig"; sourceTree = "<group>"; };
+		83016B591AD664E800468602 /* Pods-Gulliver.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-Gulliver.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gulliver/Pods-Gulliver.release.xcconfig"; sourceTree = "<group>"; };
 		830DF8B519C240EC0053A01F /* PropertyKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PropertyKind.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8313F22119C0B59600FBF59F /* MultiValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiValue.swift; sourceTree = "<group>"; };
 		83503BCB19C25733003F2740 /* InstantMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InstantMessage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -73,8 +76,6 @@
 		8380931419BF81540023B664 /* CompositeNameFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CompositeNameFormat.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83B4DDCC1AD2F18600D8A83E /* Failure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
 		83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookType.swift; sourceTree = "<group>"; };
-		83B4DDD11AD300D100D8A83E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		83B4DDD21AD300D100D8A83E /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		83B4DDD51AD305CE00D8A83E /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternateBirthday.swift; sourceTree = "<group>"; };
 		83C5559219CB78E200DE8506 /* Gulliver Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gulliver Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +101,6 @@
 		83EB751919BC891B007F98CC /* Gulliver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gulliver.h; sourceTree = "<group>"; };
 		83EB753D19BC8974007F98CC /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AddressBook.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83F0E08619CA040200D1F900 /* LabeledValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledValue.swift; sourceTree = "<group>"; };
-		FDD17F2F58F7B492D5F03AAF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83C5559819CB78E200DE8506 /* Gulliver.framework in Frameworks */,
+				83016B5C1AD6661F00468602 /* Gulliver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				011211B2407E27842AAEDD29 /* Pods.framework in Frameworks */,
+				B951E3B04AF1F457C882347A /* Pods_Gulliver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +126,8 @@
 		292B22B423D3EF078A82DDE9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				83B4DDD11AD300D100D8A83E /* Pods.debug.xcconfig */,
-				83B4DDD21AD300D100D8A83E /* Pods.release.xcconfig */,
+				83016B581AD664E800468602 /* Pods-Gulliver.debug.xcconfig */,
+				83016B591AD664E800468602 /* Pods-Gulliver.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -281,7 +281,7 @@
 		B531C3EC6358A984DCA805E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FDD17F2F58F7B492D5F03AAF /* Pods.framework */,
+				7CAE7015441827DBA1B09C0C /* Pods_Gulliver.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				83C5559A19CB78E200DE8506 /* PBXTargetDependency */,
+				83016B5E1AD6662500468602 /* PBXTargetDependency */,
 			);
 			name = "Gulliver Tests";
 			productName = "Gulliver Tests";
@@ -405,7 +405,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gulliver/Pods-Gulliver-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C474CFC1052A182955E548AC /* Copy Pods Resources */ = {
@@ -420,7 +420,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gulliver/Pods-Gulliver-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C5356F921983FCB06C326DEF /* Check Pods Manifest.lock */ = {
@@ -492,10 +492,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		83C5559A19CB78E200DE8506 /* PBXTargetDependency */ = {
+		83016B5E1AD6662500468602 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 83EB751319BC891B007F98CC /* Gulliver */;
-			targetProxy = 83C5559919CB78E200DE8506 /* PBXContainerItemProxy */;
+			targetProxy = 83016B5D1AD6662500468602 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -535,7 +535,6 @@
 		};
 		83EB752519BC891B007F98CC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83B4DDD11AD300D100D8A83E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -582,7 +581,6 @@
 		};
 		83EB752619BC891B007F98CC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83B4DDD21AD300D100D8A83E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -622,7 +620,7 @@
 		};
 		83EB752819BC891B007F98CC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83B4DDD11AD300D100D8A83E /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 83016B581AD664E800468602 /* Pods-Gulliver.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -641,7 +639,7 @@
 		};
 		83EB752919BC891B007F98CC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83B4DDD21AD300D100D8A83E /* Pods.release.xcconfig */;
+			baseConfigurationReference = 83016B591AD664E800468602 /* Pods-Gulliver.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;

@@ -8,7 +8,7 @@ public struct PostalAddress: DebugPrintable, MultiValueRepresentable, Printable 
     public var ZIP: String?
     public var country: String?
     public var countryCode: String?
-    public var otherFields: [String : String] = [:]
+    public var otherFields = [String : String]()
 
     public init(street: String? = nil, city: String? = nil, state: String? = nil, ZIP: String? = nil, country: String? = nil, countryCode: String? = nil, otherFields: [String : String] = [:]) {
         self.street = street

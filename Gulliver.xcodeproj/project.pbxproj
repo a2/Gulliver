@@ -155,11 +155,12 @@
 			children = (
 				83EB753D19BC8974007F98CC /* AddressBook.swift */,
 				837E3A0E19BE8E8F00821633 /* Group.swift */,
+				83F0E08619CA040200D1F900 /* LabeledValue.swift */,
 				8313F22119C0B59600FBF59F /* MultiValue.swift */,
 				837E3A0C19BE8E8400821633 /* Person.swift */,
+				83E048C51AD5F6B9003533C9 /* Property.swift */,
 				837E3A0A19BE8E7900821633 /* Record.swift */,
 				837E3A1019BE8E9500821633 /* Source.swift */,
-				83E048C51AD5F6B9003533C9 /* Property.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -181,8 +182,6 @@
 				83E305E019CB71AC00213B1C /* Date.swift */,
 				83E305DC19CB6E7300213B1C /* Email.swift */,
 				83503BCB19C25733003F2740 /* InstantMessage.swift */,
-				83F0E08619CA040200D1F900 /* LabeledValue.swift */,
-				83E6265019C24BC600A35F37 /* MultiValueRepresentable.swift */,
 				83E305E219CB725100213B1C /* PhoneNumber.swift */,
 				83503BCD19C25748003F2740 /* PostalAddress.swift */,
 				83E305DE19CB6F6100213B1C /* RelatedName.swift */,
@@ -197,6 +196,7 @@
 			children = (
 				83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */,
 				83CF12C21AD33B6300F411E0 /* GroupType.swift */,
+				83E6265019C24BC600A35F37 /* MultiValueRepresentable.swift */,
 				83CF12C01AD33B4500F411E0 /* PersonType.swift */,
 				83B4DDD51AD305CE00D8A83E /* RecordType.swift */,
 				83CF12C31AD33B6300F411E0 /* SourceType.swift */,

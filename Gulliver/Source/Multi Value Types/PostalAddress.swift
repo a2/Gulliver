@@ -26,27 +26,27 @@ public struct PostalAddress: DebugPrintable, MultiValueRepresentable, Printable 
         var result = otherFields
 
         if let street = street {
-            result[String(kABPersonAddressStreetKey)] = street
+            result[kABPersonAddressStreetKey as String] = street
         }
 
         if let city = city {
-            result[String(kABPersonAddressCityKey)] = city
+            result[kABPersonAddressCityKey as String] = city
         }
 
         if let state = state {
-            result[String(kABPersonAddressStateKey)] = state
+            result[kABPersonAddressStateKey as String] = state
         }
 
         if let ZIP = ZIP {
-            result[String(kABPersonAddressZIPKey)] = ZIP
+            result[kABPersonAddressZIPKey as String] = ZIP
         }
 
         if let country = country {
-            result[String(kABPersonAddressCountryKey)] = country
+            result[kABPersonAddressCountryKey as String] = country
         }
 
         if let countryCode = countryCode {
-            result[String(kABPersonAddressCountryCodeKey)] = countryCode
+            result[kABPersonAddressCountryCodeKey as String] = countryCode
         }
 
         return result
@@ -56,17 +56,17 @@ public struct PostalAddress: DebugPrintable, MultiValueRepresentable, Printable 
         if let multiValueRepresentation = multiValueRepresentation as? [String : String] {
             for (key, value) in multiValueRepresentation {
                 switch key {
-                case String(kABPersonAddressStreetKey):
+                case kABPersonAddressStreetKey as! String:
                     self.street = value
-                case String(kABPersonAddressCityKey):
+                case kABPersonAddressCityKey as! String:
                     self.city = value
-                case String(kABPersonAddressStateKey):
+                case kABPersonAddressStateKey as! String:
                     self.state = value
-                case String(kABPersonAddressZIPKey):
+                case kABPersonAddressZIPKey as! String:
                     self.ZIP = value
-                case String(kABPersonAddressCountryKey):
+                case kABPersonAddressCountryKey as! String:
                     self.country = value
-                case String(kABPersonAddressCountryCodeKey):
+                case kABPersonAddressCountryCodeKey as! String:
                     self.countryCode = value
                 default:
                     self.otherFields[key] = value

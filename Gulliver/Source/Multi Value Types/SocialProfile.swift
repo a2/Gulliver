@@ -2,13 +2,13 @@ import AddressBook
 
 public struct SocialProfile: MultiValueRepresentable {
     public struct Labels {
-        public static let Twitter = String(kABPersonSocialProfileServiceTwitter)
-        public static let SinaWeibo = String(kABPersonSocialProfileServiceSinaWeibo)
-        public static let GameCenter = String(kABPersonSocialProfileServiceGameCenter)
-        public static let Facebook = String(kABPersonSocialProfileServiceFacebook)
-        public static let Myspace = String(kABPersonSocialProfileServiceMyspace)
-        public static let LinkedIn = String(kABPersonSocialProfileServiceLinkedIn)
-        public static let Flickr = String(kABPersonSocialProfileServiceFlickr)
+        public static let Twitter = kABPersonSocialProfileServiceTwitter as String
+        public static let SinaWeibo = kABPersonSocialProfileServiceSinaWeibo as String
+        public static let GameCenter = kABPersonSocialProfileServiceGameCenter as String
+        public static let Facebook = kABPersonSocialProfileServiceFacebook as String
+        public static let Myspace = kABPersonSocialProfileServiceMyspace as String
+        public static let LinkedIn = kABPersonSocialProfileServiceLinkedIn as String
+        public static let Flickr = kABPersonSocialProfileServiceFlickr as String
     }
 
     public var URL: String
@@ -27,18 +27,18 @@ public struct SocialProfile: MultiValueRepresentable {
 
     public var multiValueRepresentation: CFTypeRef {
         var result = [String : String]()
-        result[String(kABPersonSocialProfileURLKey)] = URL
+        result[kABPersonSocialProfileURLKey as String] = URL
 
         if let service = service {
-            result[String(kABPersonSocialProfileServiceKey)] = service
+            result[kABPersonSocialProfileServiceKey as String] = service
         }
 
         if let username = username {
-            result[String(kABPersonSocialProfileUsernameKey)] = username
+            result[kABPersonSocialProfileUsernameKey as String] = username
         }
 
         if let userIdentifier = userIdentifier {
-            result[String(kABPersonSocialProfileUserIdentifierKey)] = userIdentifier
+            result[kABPersonSocialProfileUserIdentifierKey as String] = userIdentifier
         }
 
         return result
@@ -46,7 +46,7 @@ public struct SocialProfile: MultiValueRepresentable {
 
     public init?(multiValueRepresentation: CFTypeRef) {
         if let dictionary = multiValueRepresentation as? [String : String] {
-            if let URL = dictionary[String(kABPersonSocialProfileURLKey)] {
+            if let URL = dictionary[kABPersonSocialProfileURLKey as String] {
                 self.URL = URL
             } else {
                 return nil
@@ -54,11 +54,11 @@ public struct SocialProfile: MultiValueRepresentable {
 
             for (key, value) in dictionary {
                 switch key {
-                case String(kABPersonSocialProfileServiceKey):
+                case kABPersonSocialProfileServiceKey as! String:
                     self.service = value
-                case String(kABPersonSocialProfileUsernameKey):
+                case kABPersonSocialProfileUsernameKey as! String:
                     self.username = value
-                case String(kABPersonSocialProfileUserIdentifierKey):
+                case kABPersonSocialProfileUserIdentifierKey as! String:
                     self.userIdentifier = value
                 default:
                     break

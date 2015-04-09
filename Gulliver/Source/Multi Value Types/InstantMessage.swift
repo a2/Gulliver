@@ -2,16 +2,16 @@ import AddressBook
 
 public struct InstantMessageAddress: MultiValueRepresentable {
     public struct Services {
-        static let Yahoo = String(kABPersonInstantMessageServiceYahoo)
-        static let Jabber = String(kABPersonInstantMessageServiceJabber)
-        static let MSN = String(kABPersonInstantMessageServiceMSN)
-        static let ICQ = String(kABPersonInstantMessageServiceICQ)
-        static let AIM = String(kABPersonInstantMessageServiceAIM)
-        static let QQ = String(kABPersonInstantMessageServiceQQ)
-        static let GoogleTalk = String(kABPersonInstantMessageServiceGoogleTalk)
-        static let Skype = String(kABPersonInstantMessageServiceSkype)
-        static let Facebook = String(kABPersonInstantMessageServiceFacebook)
-        static let GaduGadu = String(kABPersonInstantMessageServiceGaduGadu)
+        static let Yahoo = kABPersonInstantMessageServiceYahoo as String
+        static let Jabber = kABPersonInstantMessageServiceJabber as String
+        static let MSN = kABPersonInstantMessageServiceMSN as String
+        static let ICQ = kABPersonInstantMessageServiceICQ as String
+        static let AIM = kABPersonInstantMessageServiceAIM as String
+        static let QQ = kABPersonInstantMessageServiceQQ as String
+        static let GoogleTalk = kABPersonInstantMessageServiceGoogleTalk as String
+        static let Skype = kABPersonInstantMessageServiceSkype as String
+        static let Facebook = kABPersonInstantMessageServiceFacebook as String
+        static let GaduGadu = kABPersonInstantMessageServiceGaduGadu as String
     }
 
     public var service: String?
@@ -28,11 +28,11 @@ public struct InstantMessageAddress: MultiValueRepresentable {
         var result = [String : String]()
 
         if let service = service {
-            result[String(kABPersonInstantMessageServiceKey)] = service
+            result[kABPersonInstantMessageServiceKey as String] = service
         }
 
         if let username = username {
-            result[String(kABPersonInstantMessageUsernameKey)] = username
+            result[kABPersonInstantMessageUsernameKey as String] = username
         }
 
         return result
@@ -42,9 +42,9 @@ public struct InstantMessageAddress: MultiValueRepresentable {
         if let dictionary = multiValueRepresentation as? [String : String] {
             for (key, value) in dictionary {
                 switch key {
-                case String(kABPersonInstantMessageUsernameKey):
+                case kABPersonInstantMessageUsernameKey as! String:
                     self.username = value
-                case String(kABPersonInstantMessageServiceKey):
+                case kABPersonInstantMessageServiceKey as! String:
                     self.service = value
                 default:
                     break

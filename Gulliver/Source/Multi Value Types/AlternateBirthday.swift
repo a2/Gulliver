@@ -30,23 +30,23 @@ public struct AlternateBirthday: MultiValueRepresentable {
 
     public var multiValueRepresentation: CFTypeRef {
         return [
-            String(kABPersonAlternateBirthdayCalendarIdentifierKey): calendarIdentifier,
-            String(kABPersonAlternateBirthdayDayKey): NSNumber(integer: day),
-            String(kABPersonAlternateBirthdayEraKey): NSNumber(integer: era),
-            String(kABPersonAlternateBirthdayIsLeapMonthKey): NSNumber(bool: isLeapMonth),
-            String(kABPersonAlternateBirthdayMonthKey): NSNumber(integer: month),
-            String(kABPersonAlternateBirthdayYearKey): NSNumber(integer: year)
+            kABPersonAlternateBirthdayCalendarIdentifierKey as String: calendarIdentifier,
+            kABPersonAlternateBirthdayDayKey as String: NSNumber(integer: day),
+            kABPersonAlternateBirthdayEraKey as String: NSNumber(integer: era),
+            kABPersonAlternateBirthdayIsLeapMonthKey as String: NSNumber(bool: isLeapMonth),
+            kABPersonAlternateBirthdayMonthKey as String: NSNumber(integer: month),
+            kABPersonAlternateBirthdayYearKey as String: NSNumber(integer: year)
         ]
     }
 
     public init?(multiValueRepresentation: CFTypeRef) {
         if let dictionary = multiValueRepresentation as? NSDictionary {
-            let calendarIdentifier = dictionary[String(kABPersonAlternateBirthdayCalendarIdentifierKey)] as! String
-            let day = dictionary[String(kABPersonAlternateBirthdayDayKey)] as! NSNumber
-            let era = dictionary[String(kABPersonAlternateBirthdayEraKey)] as! NSNumber
-            let isLeapMonth = dictionary[String(kABPersonAlternateBirthdayIsLeapMonthKey)] as? NSNumber ?? NSNumber(bool: false)
-            let month = dictionary[String(kABPersonAlternateBirthdayMonthKey)] as! NSNumber
-            let year = dictionary[String(kABPersonAlternateBirthdayYearKey)] as! NSNumber
+            let calendarIdentifier = dictionary[kABPersonAlternateBirthdayCalendarIdentifierKey as String] as! String
+            let day = dictionary[kABPersonAlternateBirthdayDayKey as String] as! NSNumber
+            let era = dictionary[kABPersonAlternateBirthdayEraKey as String] as! NSNumber
+            let isLeapMonth = dictionary[kABPersonAlternateBirthdayIsLeapMonthKey as String] as? NSNumber ?? NSNumber(bool: false)
+            let month = dictionary[kABPersonAlternateBirthdayMonthKey as String] as! NSNumber
+            let year = dictionary[kABPersonAlternateBirthdayYearKey as String] as! NSNumber
 
             self = AlternateBirthday(calendarIdentifier: calendarIdentifier, era: era.integerValue, year: year.integerValue, month: month.integerValue, day: day.integerValue, isLeapMonth: isLeapMonth.boolValue)
         } else {

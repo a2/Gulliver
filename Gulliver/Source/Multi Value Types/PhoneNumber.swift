@@ -2,13 +2,13 @@ import AddressBook
 
 public struct PhoneNumber: DebugPrintable, MultiValueRepresentable, Printable {
     public struct Labels {
-        public static let Mobile = String(kABPersonPhoneMobileLabel)
-        public static let IPhone = String(kABPersonPhoneIPhoneLabel)
-        public static let Main = String(kABPersonPhoneMainLabel)
-        public static let HomeFAX = String(kABPersonPhoneHomeFAXLabel)
-        public static let WorkFAX = String(kABPersonPhoneWorkFAXLabel)
-        public static let OtherFAX = String(kABPersonPhoneOtherFAXLabel)
-        public static let Pager = String(kABPersonPhonePagerLabel)
+        public static let Mobile = kABPersonPhoneMobileLabel as String
+        public static let IPhone = kABPersonPhoneIPhoneLabel as String
+        public static let Main = kABPersonPhoneMainLabel as String
+        public static let HomeFAX = kABPersonPhoneHomeFAXLabel as String
+        public static let WorkFAX = kABPersonPhoneWorkFAXLabel as String
+        public static let OtherFAX = kABPersonPhoneOtherFAXLabel as String
+        public static let Pager = kABPersonPhonePagerLabel as String
     }
 
     public var stringValue: String

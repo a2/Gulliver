@@ -2,7 +2,7 @@ import AddressBook
 
 public struct URL: DebugPrintable, MultiValueRepresentable, Printable {
     public struct Labels {
-        public static let HomePage = String(kABPersonHomePageLabel)
+        public static let HomePage = kABPersonHomePageLabel as String
     }
 
     public var stringValue: String

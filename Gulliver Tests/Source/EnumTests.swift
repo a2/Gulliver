@@ -25,8 +25,8 @@ class EnumTests: XCTestCase {
 
     func testCompositeNameFormatRawRepresentable() {
         let rawValues: [ABPersonCompositeNameFormat] = [
-            ABPersonCompositeNameFormat(kABPersonCompositeNameFormatFirstNameFirst),
-            ABPersonCompositeNameFormat(kABPersonCompositeNameFormatLastNameFirst),
+            numericCast(kABPersonCompositeNameFormatFirstNameFirst),
+            numericCast(kABPersonCompositeNameFormatLastNameFirst),
         ]
 
         for rawValue in rawValues {

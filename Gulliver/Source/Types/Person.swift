@@ -1,9 +1,9 @@
 import AddressBook
 import Lustre
 
-public let WorkLabel = String(kABWorkLabel)
-public let HomeLabel = String(kABHomeLabel)
-public let OtherLabel = String(kABOtherLabel)
+public let WorkLabel = kABWorkLabel as String
+public let HomeLabel = kABHomeLabel as String
+public let OtherLabel = kABOtherLabel as String
 
 public final class Person: Record, PersonType {
     public typealias GroupState = ABRecordRef

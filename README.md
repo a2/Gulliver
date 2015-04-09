@@ -95,4 +95,4 @@ Lustre is intended for Swift 1.2. Compatibility with future versions is not guar
 
 ## Gulliver?
 
-The name "Gulliver" comes from *Travels into Several Remote Nations of the World. In Four Parts. By Lemuel Gulliver, First a Surgeon, and then a Captain of Several Ships* (commonly known as *Gulliver's Travels*), a satirical novel by the Jonathan Swift, a Swift famous long before Taylor.
+The name "Gulliver" comes from the title of *Travels into Several Remote Nations of the World. In Four Parts. By Lemuel Gulliver, First a Surgeon, and then a Captain of Several Ships* (commonly known as *Gulliver's Travels*), a satirical novel by Jonathan Swift (a Swift famous long before Taylor).

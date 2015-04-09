@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "http://twitter.com/a2"
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/a2/Gulliver.git", :tag => "v#{s.version}" }
-  s.source_files = "Gulliver/*.swift"
+  s.source_files = "Gulliver/**/*"
   s.requires_arc = true
   s.dependency     "Lustre", "~> 0.6.1"
 end

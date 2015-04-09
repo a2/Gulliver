@@ -91,7 +91,7 @@ struct PersonViewModel<AB: AddressBookType> {
 
 ## Availability
 
-Lustre is intended for Swift 1.2. Compatibility with future versions is not guaranteed.
+Gulliver is intended for Swift 1.2. Compatibility with future versions is not guaranteed.
 
 ## Gulliver?
 

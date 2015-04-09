@@ -43,6 +43,14 @@ func readTransform<T: RawRepresentable>(value: CFTypeRef) -> T {
     return T(rawValue: value as! T.RawValue)!
 }
 
+func readTransform<T: MultiValueRepresentable>(value: CFTypeRef) -> MultiValue<T> {
+    return MultiValue<T>(multiValue: value as ABMultiValueRef)
+}
+
 func writeTransform<T: RawRepresentable>(value: T) -> CFTypeRef {
     return value.rawValue as! CFTypeRef
+}
+
+func writeTransform<T: MultiValueRepresentable>(value: MultiValue<T>) -> CFTypeRef {
+    return value.multiValueRef()
 }

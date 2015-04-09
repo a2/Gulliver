@@ -45,7 +45,6 @@
 		83E305E319CB725100213B1C /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305E219CB725100213B1C /* PhoneNumber.swift */; };
 		83E305E519CB72EE00213B1C /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305E419CB72EE00213B1C /* URL.swift */; };
 		83EB751A19BC891B007F98CC /* Gulliver.h in Headers */ = {isa = PBXBuildFile; fileRef = 83EB751919BC891B007F98CC /* Gulliver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		83F0E08719CA040200D1F900 /* LabeledValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F0E08619CA040200D1F900 /* LabeledValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +100,6 @@
 		83EB751819BC891B007F98CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83EB751919BC891B007F98CC /* Gulliver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gulliver.h; sourceTree = "<group>"; };
 		83EB753D19BC8974007F98CC /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AddressBook.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		83F0E08619CA040200D1F900 /* LabeledValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledValue.swift; sourceTree = "<group>"; };
 		9F0817C0C4161B6F59B7F39A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,7 +153,6 @@
 			children = (
 				83EB753D19BC8974007F98CC /* AddressBook.swift */,
 				837E3A0E19BE8E8F00821633 /* Group.swift */,
-				83F0E08619CA040200D1F900 /* LabeledValue.swift */,
 				8313F22119C0B59600FBF59F /* MultiValue.swift */,
 				837E3A0C19BE8E8400821633 /* Person.swift */,
 				83E048C51AD5F6B9003533C9 /* Property.swift */,
@@ -526,7 +523,6 @@
 				83B4DDD61AD305CE00D8A83E /* RecordType.swift in Sources */,
 				832F9F0A19C47EA500139D48 /* CompositeNameFormat.swift in Sources */,
 				832F9F0B19C47EA500139D48 /* ImageFormat.swift in Sources */,
-				83F0E08719CA040200D1F900 /* LabeledValue.swift in Sources */,
 				83CF12C11AD33B4500F411E0 /* PersonType.swift in Sources */,
 				83E305E319CB725100213B1C /* PhoneNumber.swift in Sources */,
 				83E048C61AD5F6B9003533C9 /* Property.swift in Sources */,

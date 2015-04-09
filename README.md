@@ -64,7 +64,7 @@ Before:
 ```swift
 struct PersonViewModel {
     private let addressBook: ABAddressBookRef
-    
+
     init() {
         // Create addressBook here
     }
@@ -76,7 +76,7 @@ After:
 ```swift
 struct PersonViewModel<AB: AddressBookType> {
     private let addressBook: AB
-    
+
     init(addressBook: AB) {
         // Assign addressBook here
     }
@@ -86,8 +86,7 @@ struct PersonViewModel<AB: AddressBookType> {
 ### Types
 
 * **AddressBook, Group, Person, Record, Source:** Concrete implementations of the respective `*Type` protocols that are backed by `ABAddressBook` and `ABRecordRef` values.
-* **MultiValue:** A parameterized value that represents a type-safe view on a `ABMultiValueRef`'s labeled values.
-* **LabeledValue:**: A parameterized label/value pair for use in `MultiValue`.
+* **MultiValue:** A parameterized value that represents a type-safe view on a `ABMultiValueRef`'s labeled contents.
 * **{,Readable,Writable}PropertyType, Property, MutableProperty:** Lenses on the values contained in `RecordType` values.
 
 ## Availability

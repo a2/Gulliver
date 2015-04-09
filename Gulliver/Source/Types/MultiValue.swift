@@ -4,18 +4,32 @@ public typealias MultiValueIdentifier = ABMultiValueIdentifier
 
 public let MultiValueIdentifierInvalid: MultiValueIdentifier = kABMultiValueInvalidIdentifier
 
-public class MultiValue<T: MultiValueRepresentable> {
+public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, MutableSliceable, RangeReplaceableCollectionType {
+    typealias Element = (String, T)
+
+    private var values = [Element]()
+
+    public var startIndex: Int {
+        return values.startIndex
+    }
+
+    public var endIndex: Int {
+        return values.endIndex
+    }
+
+    public var isEmpty: Bool {
+        return values.isEmpty
+    }
+
     public var count: Int {
         return values.count
     }
 
-    public private(set) var values: [LabeledValue<T>] = []
-
     public func multiValueRef() -> ABMutableMultiValueRef {
         var result: ABMutableMultiValueRef = ABMultiValueCreateMutable(T.multiValueType.rawValue)!.takeRetainedValue()
-        for value in values {
+        for (label, value) in values {
             var identifier: MultiValueIdentifier = MultiValueIdentifierInvalid
-            ABMultiValueAddValueAndLabel(result, value.value.multiValueRepresentation, value.label, &identifier)
+            ABMultiValueAddValueAndLabel(result, value.multiValueRepresentation, label, &identifier)
         }
         return result
     }
@@ -24,7 +38,7 @@ public class MultiValue<T: MultiValueRepresentable> {
         
     }
 
-    public convenience init(multiValue: ABMultiValueRef) {
+    public init(multiValue: ABMultiValueRef) {
         assert(ABMultiValueGetPropertyType(multiValue) == T.multiValueType.rawValue, "ABMultiValueRef argument has incompatible property type")
         self.init()
 
@@ -35,55 +49,81 @@ public class MultiValue<T: MultiValueRepresentable> {
             let dictionaryRepresenation: CFTypeRef = ABMultiValueCopyValueAtIndex(multiValue, i)!.takeRetainedValue()
             let value = T(multiValueRepresentation: dictionaryRepresenation)!
 
-            self.values.append(LabeledValue(label: label, value: value))
+            values.append((label, value))
         }
     }
 
-    public func add(label: String, value: T) {
-        values.append(LabeledValue(label: label, value: value))
+    // MARK: ArrayLiteralConvertible
+
+    public init(arrayLiteral elements: Element...) {
+        values.extend(elements)
     }
 
-    public func insert(index: Int, label: String, value: T) {
-        values.insert(LabeledValue(label: label, value: value), atIndex: index)
+    // MARK: SequenceType
+
+    public func generate() -> GeneratorOf<Element> {
+        return GeneratorOf(values.generate())
     }
 
-    public func remove(index: Int) {
-        values.removeAtIndex(index)
+    // MARK: Sliceable / MutableSliceable
+
+    public subscript (bounds: Range<Int>) -> ArraySlice<Element> {
+        get {
+            return values[bounds]
+        }
+        set {
+            values[bounds] = newValue
+        }
     }
 
-    public func replace(index: Int, label: String, value: T) {
-        values[index] = LabeledValue(label: label, value: value)
+    // MARK: CollectionType / MutableCollectionType
+
+    public subscript (position: Int) -> Element {
+        get {
+            return values[position]
+        }
+        set {
+            values[position] = newValue
+        }
     }
 
-    public func replace(index: Int, value: T) {
-        values[index].value = value
+    // MARK: ExtensibleCollectionType
+
+    public mutating func reserveCapacity(n: Int) {
+        values.reserveCapacity(n)
     }
 
-    public func replace(index: Int, label: String) {
-        values[index].label = label
+    public mutating func append(x: Element) {
+        values.append(x)
     }
 
-}
-
-public struct MultiValueGenerator<T: MultiValueRepresentable>: GeneratorType {
-
-    private typealias SubGeneratorType = IndexingGenerator<[LabeledValue<T>]>
-    private var generator: SubGeneratorType
-
-    private init(_ generator: SubGeneratorType) {
-        self.generator = generator
+    public mutating func extend<S: SequenceType where S.Generator.Element == Element>(newElements: S) {
+        values.extend(newElements)
     }
 
-    public mutating func next() -> LabeledValue<T>? {
-        return generator.next()
+    // MARK: RangeReplaceableCollectionType
+
+    public mutating func replaceRange<C: CollectionType where C.Generator.Element == Element>(subRange: Range<Int>, with newElements: C) {
+        values.replaceRange(subRange, with: newElements)
     }
 
-}
+    public mutating func insert(newElement: Element, atIndex i: Int) {
+        values.insert(newElement, atIndex: i)
+    }
 
-extension MultiValue: SequenceType {
+    public mutating func splice<S: CollectionType where S.Generator.Element == Element>(newElements: S, atIndex i: Int) {
+        values.splice(newElements, atIndex: i)
+    }
 
-    public func generate() -> MultiValueGenerator<T> {
-        return MultiValueGenerator<T>(values.generate())
-   }
+    public mutating func removeAtIndex(i: Int) -> Element {
+        return values.removeAtIndex(i)
+    }
 
+    public mutating func removeRange(subRange: Range<Int>) {
+        values.removeRange(subRange)
+    }
+
+    public mutating func removeAll(#keepCapacity: Bool) {
+        values.removeAll(keepCapacity: keepCapacity)
+    }
 }

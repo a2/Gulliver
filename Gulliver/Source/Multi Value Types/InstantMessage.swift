@@ -25,7 +25,7 @@ public struct InstantMessageAddress: MultiValueRepresentable {
     public static let multiValueType = PropertyKind.MultiDictionary
 
     public var multiValueRepresentation: CFTypeRef {
-        var result = [String : String]()
+        var result = [NSObject : AnyObject]()
 
         if let service = service {
             result[kABPersonInstantMessageServiceKey as String] = service

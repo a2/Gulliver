@@ -1,6 +1,6 @@
 import AddressBook
 
-public enum PropertyKind: RawRepresentable {
+public enum PropertyKind: Printable, RawRepresentable {
     case Invalid
     case String
     case Integer
@@ -80,6 +80,33 @@ public enum PropertyKind: RawRepresentable {
             self = .MultiDictionary
         default:
             return nil
+        }
+    }
+
+    public var description: Swift.String {
+        switch self {
+        case .Invalid:
+            return "Invalid"
+        case .String:
+            return "String"
+        case .Integer:
+            return "Integer"
+        case .Real:
+            return "Real"
+        case .DateTime:
+            return "DateTime"
+        case .Dictionary:
+            return "Dictionary"
+        case .MultiString:
+            return "MultiString"
+        case .MultiInteger:
+            return "MultiInteger"
+        case .MultiReal:
+            return "MultiReal"
+        case .MultiDateTime:
+            return "MultiDateTime"
+        case .MultiDictionary:
+            return "MultiDictionary"
         }
     }
 }

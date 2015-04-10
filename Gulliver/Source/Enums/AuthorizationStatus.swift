@@ -1,6 +1,6 @@
 import AddressBook
 
-public enum AuthorizationStatus: RawRepresentable {
+public enum AuthorizationStatus: Printable, RawRepresentable {
     case NotDetermined
     case Restricted
     case Denied
@@ -29,6 +29,19 @@ public enum AuthorizationStatus: RawRepresentable {
             self = .Denied
         case .Authorized:
             self = .Authorized
+        }
+    }
+
+    public var description: String {
+        switch self {
+        case .NotDetermined:
+            return "NotDetermined"
+        case .Restricted:
+            return "Restricted"
+        case .Denied:
+            return "Denied"
+        case .Authorized:
+            return "Authorized"
         }
     }
 }

@@ -1,6 +1,6 @@
 import AddressBook
 
-public enum RecordKind: RawRepresentable {
+public enum RecordKind: Printable, RawRepresentable {
     case Person
     case Group
     case Source
@@ -27,6 +27,17 @@ public enum RecordKind: RawRepresentable {
             self = .Source
         default:
             return nil
+        }
+    }
+
+    public var description: String {
+        switch self {
+        case .Person:
+            return "Person"
+        case .Group:
+            return "Group"
+        case .Source:
+            return "Source"
         }
     }
 }

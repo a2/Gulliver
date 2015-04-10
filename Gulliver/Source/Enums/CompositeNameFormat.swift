@@ -1,6 +1,6 @@
 import AddressBook
 
-public enum CompositeNameFormat: RawRepresentable {
+public enum CompositeNameFormat: Printable, RawRepresentable {
     case FirstNameFirst
     case LastNameFirst
 
@@ -21,6 +21,15 @@ public enum CompositeNameFormat: RawRepresentable {
             self = .LastNameFirst
         default:
             return nil
+        }
+    }
+
+    public var description: String {
+        switch self {
+        case .FirstNameFirst:
+            return "FirstNameFirst"
+        case .LastNameFirst:
+            return "LastNameFirst"
         }
     }
 }

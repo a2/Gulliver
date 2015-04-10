@@ -1,6 +1,6 @@
 import AddressBook
 
-public enum ImageFormat: RawRepresentable{
+public enum ImageFormat: Printable, RawRepresentable{
     case Thumbnail
     case OriginalSize
 
@@ -21,6 +21,15 @@ public enum ImageFormat: RawRepresentable{
             self = .OriginalSize
         default:
             return nil
+        }
+    }
+
+    public var description: String {
+        switch self {
+        case .Thumbnail:
+            return "Thumbnail"
+        case .OriginalSize:
+            return "OriginalSize"
         }
     }
 }

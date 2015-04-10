@@ -1,6 +1,6 @@
 import AddressBook
 
-public enum SortOrdering: RawRepresentable {
+public enum SortOrdering: Printable, RawRepresentable {
     case ByFirstName
     case ByLastName
 
@@ -22,6 +22,15 @@ public enum SortOrdering: RawRepresentable {
             self = .ByLastName
         default:
             return nil
+        }
+    }
+
+    public var description: String {
+        switch self {
+        case .ByFirstName:
+            return "ByFirstName"
+        case .ByLastName:
+            return "ByLastName"
         }
     }
 }

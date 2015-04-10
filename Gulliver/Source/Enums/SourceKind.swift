@@ -1,6 +1,6 @@
 import AddressBook
 
-public enum SourceKind: RawRepresentable {
+public enum SourceKind: Printable, RawRepresentable {
     case Local
     case Exchange
     case ExchangeGAL
@@ -51,6 +51,25 @@ public enum SourceKind: RawRepresentable {
             self = .CardDAVSearch
         default:
             return nil
+        }
+    }
+
+    public var description: String {
+        switch self {
+        case .Local:
+            return "Local"
+        case .Exchange:
+            return "Exchange"
+        case .ExchangeGAL:
+            return "ExchangeGAL"
+        case .MobileMe:
+            return "MobileMe"
+        case .LDAP:
+            return "LDAP"
+        case .CardDAV:
+            return "CardDAV"
+        case .CardDAVSearch:
+            return "CardDAVSearch"
         }
     }
 }

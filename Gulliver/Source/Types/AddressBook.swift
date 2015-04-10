@@ -61,7 +61,7 @@ public final class AddressBook: AddressBookType {
             } else if let error = error {
                 completionHandler(failure(error))
             } else {
-                completionHandler(failure("An unknown error occurred"))
+                completionHandler(failure("An unknown error occurred."))
             }
         }
     }

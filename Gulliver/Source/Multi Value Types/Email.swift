@@ -1,4 +1,4 @@
-public struct Email: DebugPrintable, MultiValueRepresentable, Printable {
+public struct Email: MultiValueRepresentable, Printable {
     public var stringValue: String
 
     public init(stringValue: String) {
@@ -20,10 +20,6 @@ public struct Email: DebugPrintable, MultiValueRepresentable, Printable {
     }
 
     public var description: String {
-        return stringValue
-    }
-
-    public var debugDescription: String {
         return stringValue
     }
 }

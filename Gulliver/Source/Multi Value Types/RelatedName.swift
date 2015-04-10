@@ -1,6 +1,6 @@
 import AddressBook
 
-public struct RelatedName: DebugPrintable, MultiValueRepresentable, Printable {
+public struct RelatedName: MultiValueRepresentable, Printable {
     public struct Labels {
         public static let Father = kABPersonFatherLabel as String
         public static let Mother = kABPersonMotherLabel as String
@@ -36,10 +36,6 @@ public struct RelatedName: DebugPrintable, MultiValueRepresentable, Printable {
     }
 
     public var description: String {
-        return stringValue
-    }
-
-    public var debugDescription: String {
         return stringValue
     }
 }

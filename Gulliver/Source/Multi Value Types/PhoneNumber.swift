@@ -1,6 +1,6 @@
 import AddressBook
 
-public struct PhoneNumber: DebugPrintable, MultiValueRepresentable, Printable {
+public struct PhoneNumber: MultiValueRepresentable, Printable {
     public struct Labels {
         public static let Mobile = kABPersonPhoneMobileLabel as String
         public static let IPhone = kABPersonPhoneIPhoneLabel as String
@@ -32,10 +32,6 @@ public struct PhoneNumber: DebugPrintable, MultiValueRepresentable, Printable {
     }
 
     public var description: String {
-        return stringValue
-    }
-
-    public var debugDescription: String {
         return stringValue
     }
 }

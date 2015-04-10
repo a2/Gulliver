@@ -1,4 +1,4 @@
-public struct Date: DebugPrintable, MultiValueRepresentable {
+public struct Date: Printable, MultiValueRepresentable {
     public struct Labels {
         public static let Anniversary = kABPersonAnniversaryLabel as String
     }
@@ -23,7 +23,7 @@ public struct Date: DebugPrintable, MultiValueRepresentable {
         }
     }
 
-    public var debugDescription: String {
-        return "\(dateValue)"
+    public var description: String {
+        return dateValue.description
     }
 }

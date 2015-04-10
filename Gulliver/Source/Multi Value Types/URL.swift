@@ -1,6 +1,6 @@
 import AddressBook
 
-public struct URL: DebugPrintable, MultiValueRepresentable, Printable {
+public struct URL: MultiValueRepresentable, Printable {
     public struct Labels {
         public static let HomePage = kABPersonHomePageLabel as String
     }
@@ -26,10 +26,6 @@ public struct URL: DebugPrintable, MultiValueRepresentable, Printable {
     }
 
     public var description: String {
-        return stringValue
-    }
-
-    public var debugDescription: String {
         return stringValue
     }
 }

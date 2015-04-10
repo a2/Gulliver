@@ -35,7 +35,7 @@ public final class AddressBook: AddressBookType {
         }
 
         deinit {
-            assert(handler == nil, "AddressBook observer was not unregistered")
+            assert(handler == nil, "AddressBook observer was not unregistered before deinitialization")
         }
 
         func stopObserving() {
@@ -61,7 +61,7 @@ public final class AddressBook: AddressBookType {
             } else if let error = error {
                 completionHandler(failure(error))
             } else {
-                completionHandler(failure("An unknown error occu"))
+                completionHandler(failure("An unknown error occurred"))
             }
         }
     }

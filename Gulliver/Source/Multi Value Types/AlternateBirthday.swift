@@ -1,14 +1,14 @@
 import AddressBook
 
 public struct AlternateBirthday: MultiValueRepresentable {
-    var calendarIdentifier: String
-    var era: Int
-    var year: Int
-    var month: Int
-    var day: Int
-    var isLeapMonth: Bool
+    public var calendarIdentifier: String
+    public var era: Int
+    public var year: Int
+    public var month: Int
+    public var day: Int
+    public var isLeapMonth: Bool
 
-    var calendar: NSCalendar {
+    public var calendar: NSCalendar {
         get {
             return NSCalendar(calendarIdentifier: self.calendarIdentifier)!
         }

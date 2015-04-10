@@ -83,8 +83,8 @@ public final class AddressBook: AddressBookType {
 
     public func observeExternalChanges(var callback: ExternalChangeHandler) -> ExternalChangeObserver {
         ABAddressBookRegisterExternalChangeCallback(state, GLVExternalChangeCallback, &callback)
-        return Observer { [weak state = state] in
-            if let state: ABAddressBookRef = state {
+        return Observer { [weak self] in
+            if let state: ABAddressBookRef = self?.state {
                 ABAddressBookUnregisterExternalChangeCallback(state, GLVExternalChangeCallback, &callback)
             }
         }

@@ -1,8 +1,6 @@
 import Lustre
 
-public protocol _RecordType: StateRepresentable {
-
-}
+public protocol _RecordType: StateRepresentable {}
 
 public protocol RecordType: _RecordType {
     var recordID: RecordID { get }

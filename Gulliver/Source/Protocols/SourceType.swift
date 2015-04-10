@@ -1,5 +1,3 @@
-import Lustre
-
 public protocol _SourceType: RecordType {
     typealias PersonState
     typealias GroupState

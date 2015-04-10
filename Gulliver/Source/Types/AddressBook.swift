@@ -2,9 +2,6 @@ import AddressBook
 import Foundation
 import Lustre
 
-public typealias ExternalChangeHandler = GLVExternalChangeHandler
-public typealias ExternalChangeToken = GLVExternalChangeToken
-
 public func localizedLabel(label: String) -> String? {
     return ABAddressBookCopyLocalizedLabel(label).takeRetainedValue() as String
 }
@@ -25,6 +22,23 @@ public final class AddressBook: AddressBookType {
     public typealias PersonState = ABRecordRef
     public typealias GroupState = ABRecordRef
     public typealias SourceState = ABRecordRef
+
+    private class Observer: ExternalChangeObserver {
+        var handler: (Void -> Void)?
+
+        init(handler: Void -> Void) {
+            self.handler = handler
+        }
+
+        deinit {
+            assert(handler == nil, "AddressBook observer was not unregistered")
+        }
+
+        func stopObserving() {
+            handler?()
+            handler = nil
+        }
+    }
 
     public let state: ABAddressBookRef
 
@@ -63,12 +77,13 @@ public final class AddressBook: AddressBookType {
         }
     }
 
-    public func registerForExternalChanges(f: ExternalChangeHandler) -> ExternalChangeToken {
-        return GLVAddressBookRegisterExternalChangeHandler(state, f)
-    }
-
-    public func unregisterForExternalChanges(token: ExternalChangeToken) {
-        GLVAddressBookUnregisterExternalChangeHandler(state, token)
+    public func observeExternalChanges(var callback: ExternalChangeHandler) -> ExternalChangeObserver {
+        ABAddressBookRegisterExternalChangeCallback(state, GLVExternalChangeCallback, &callback)
+        return Observer { [weak state = state] in
+            if let state: ABAddressBookRef = state {
+                ABAddressBookUnregisterExternalChangeCallback(state, GLVExternalChangeCallback, &callback)
+            }
+        }
     }
 
     public func addRecord<R: _RecordType where R.State == RecordState>(record: R) -> VoidResult {

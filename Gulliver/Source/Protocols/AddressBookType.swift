@@ -3,10 +3,13 @@ import Lustre
 
 public protocol StateRepresentable {
     typealias State
-
     init(state: State)
-
     var state: State { get }
+}
+
+public typealias ExternalChangeHandler = GLVExternalChangeHandler
+public protocol ExternalChangeObserver {
+    mutating func stopObserving()
 }
 
 public protocol AddressBookType: StateRepresentable {
@@ -23,9 +26,7 @@ public protocol AddressBookType: StateRepresentable {
 
     func save() -> VoidResult
 
-    func registerForExternalChanges(f: ExternalChangeHandler) -> ExternalChangeToken
-
-    func unregisterForExternalChanges(token: ExternalChangeToken)
+    func observeExternalChanges(callback: ExternalChangeHandler) -> ExternalChangeObserver
 
     func addRecord<R: _RecordType where R.State == RecordState>(record: R) -> VoidResult
 

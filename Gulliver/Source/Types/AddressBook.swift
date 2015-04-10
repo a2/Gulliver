@@ -3,7 +3,11 @@ import Foundation
 import Lustre
 
 public func localizedLabel(label: String) -> String? {
-    return ABAddressBookCopyLocalizedLabel(label).takeRetainedValue() as String
+    if let value = ABAddressBookCopyLocalizedLabel(label) {
+        return value.takeRetainedValue() as String
+    } else {
+        return nil
+    }
 }
 
 public func systemAddressBook() -> ObjectResult<AddressBook> {

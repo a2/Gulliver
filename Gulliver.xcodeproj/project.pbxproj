@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2679793EA2E704CA729E87DE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0817C0C4161B6F59B7F39A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6EA4FD9F0FA18D5A46319209 /* Pods_Gulliver_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D455352F84B3942548C4DC5 /* Pods_Gulliver_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		83016B5C1AD6661F00468602 /* Gulliver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB751419BC891B007F98CC /* Gulliver.framework */; };
 		83050EE01AD70DF30045198D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83050EDF1AD70DF30045198D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		832F9F0919C47EA500139D48 /* AuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D50FEF19BE7835000C37D6 /* AuthorizationStatus.swift */; };
@@ -28,16 +29,25 @@
 		832F9F1F19C4823500139D48 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0C19BE8E8400821633 /* Person.swift */; };
 		832F9F2019C4823500139D48 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0A19BE8E7900821633 /* Record.swift */; };
 		832F9F2119C4823500139D48 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A1019BE8E9500821633 /* Source.swift */; };
+		833995F21AD7A30600AAB9AC /* AuthorizationStatusSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833995F11AD7A30600AAB9AC /* AuthorizationStatusSpec.swift */; };
+		833995F61AD7A4E300AAB9AC /* AddressBookLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 833995F51AD7A4E300AAB9AC /* AddressBookLoader.m */; };
+		833995F81AD7A5D700AAB9AC /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833995F71AD7A5D700AAB9AC /* Helpers.swift */; };
+		833995FA1AD7A66800AAB9AC /* CompositeNameFormatSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833995F91AD7A66800AAB9AC /* CompositeNameFormatSpec.swift */; };
+		833995FC1AD7A78800AAB9AC /* ImageFormatSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833995FB1AD7A78800AAB9AC /* ImageFormatSpec.swift */; };
+		833995FE1AD7A83A00AAB9AC /* PersonKindSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833995FD1AD7A83A00AAB9AC /* PersonKindSpec.swift */; };
+		833996001AD7AA7100AAB9AC /* PropertyKindSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833995FF1AD7AA7100AAB9AC /* PropertyKindSpec.swift */; };
 		837528C119BE7E710055C271 /* GLVExternalChangeCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 837528BF19BE7E710055C271 /* GLVExternalChangeCallbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83B4DDCD1AD2F18600D8A83E /* Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCC1AD2F18600D8A83E /* Failure.swift */; };
 		83B4DDD01AD2F32800D8A83E /* AddressBookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */; };
 		83B4DDD61AD305CE00D8A83E /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDD51AD305CE00D8A83E /* RecordType.swift */; };
 		83B6DB1119C4A8E800EA6B64 /* AlternateBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */; };
-		83C555A419CB7A3600DE8506 /* EnumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C555A319CB7A3600DE8506 /* EnumTests.swift */; };
 		83CF12BF1AD3380000F411E0 /* RecordKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF12BE1AD3380000F411E0 /* RecordKind.swift */; };
 		83CF12C11AD33B4500F411E0 /* PersonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF12C01AD33B4500F411E0 /* PersonType.swift */; };
 		83CF12C41AD33B6300F411E0 /* GroupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF12C21AD33B6300F411E0 /* GroupType.swift */; };
 		83CF12C51AD33B6300F411E0 /* SourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF12C31AD33B6300F411E0 /* SourceType.swift */; };
+		83CF9FD11AD84B01009ADD13 /* SortOrderingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF9FD01AD84B01009ADD13 /* SortOrderingSpec.swift */; };
+		83CF9FD31AD84C34009ADD13 /* SourceKindSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF9FD21AD84C34009ADD13 /* SourceKindSpec.swift */; };
+		83CF9FD51AD84C39009ADD13 /* RecordKindSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */; };
 		83E048C61AD5F6B9003533C9 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E048C51AD5F6B9003533C9 /* Property.swift */; };
 		83E305DD19CB6E7300213B1C /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305DC19CB6E7300213B1C /* Email.swift */; };
 		83E305DF19CB6F6100213B1C /* RelatedName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305DE19CB6F6100213B1C /* RelatedName.swift */; };
@@ -58,11 +68,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D455352F84B3942548C4DC5 /* Pods_Gulliver_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gulliver_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83050EDB1AD70D960045198D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		83050EDC1AD70D960045198D /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		83050EDF1AD70DF30045198D /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		830DF8B519C240EC0053A01F /* PropertyKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PropertyKind.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8313F22119C0B59600FBF59F /* MultiValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiValue.swift; sourceTree = "<group>"; };
+		833995EF1AD7A24600AAB9AC /* Pods-Gulliver Tests.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Gulliver Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gulliver Tests/Pods-Gulliver Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		833995F01AD7A24600AAB9AC /* Pods-Gulliver Tests.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Gulliver Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gulliver Tests/Pods-Gulliver Tests.release.xcconfig"; sourceTree = "<group>"; };
+		833995F11AD7A30600AAB9AC /* AuthorizationStatusSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationStatusSpec.swift; sourceTree = "<group>"; };
+		833995F51AD7A4E300AAB9AC /* AddressBookLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookLoader.m; sourceTree = "<group>"; };
+		833995F71AD7A5D700AAB9AC /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		833995F91AD7A66800AAB9AC /* CompositeNameFormatSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeNameFormatSpec.swift; sourceTree = "<group>"; };
+		833995FB1AD7A78800AAB9AC /* ImageFormatSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFormatSpec.swift; sourceTree = "<group>"; };
+		833995FD1AD7A83A00AAB9AC /* PersonKindSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonKindSpec.swift; sourceTree = "<group>"; };
+		833995FF1AD7AA7100AAB9AC /* PropertyKindSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyKindSpec.swift; sourceTree = "<group>"; };
 		83503BCB19C25733003F2740 /* InstantMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InstantMessage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83503BCD19C25748003F2740 /* PostalAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostalAddress.swift; sourceTree = "<group>"; };
 		83503BD319C258C3003F2740 /* SocialProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialProfile.swift; sourceTree = "<group>"; };
@@ -80,11 +100,13 @@
 		83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AlternateBirthday.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83C5559219CB78E200DE8506 /* Gulliver Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gulliver Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C5559519CB78E200DE8506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83C555A319CB7A3600DE8506 /* EnumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTests.swift; sourceTree = "<group>"; };
 		83CF12BE1AD3380000F411E0 /* RecordKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordKind.swift; sourceTree = "<group>"; };
 		83CF12C01AD33B4500F411E0 /* PersonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonType.swift; sourceTree = "<group>"; };
 		83CF12C21AD33B6300F411E0 /* GroupType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupType.swift; sourceTree = "<group>"; };
 		83CF12C31AD33B6300F411E0 /* SourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceType.swift; sourceTree = "<group>"; };
+		83CF9FD01AD84B01009ADD13 /* SortOrderingSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortOrderingSpec.swift; sourceTree = "<group>"; };
+		83CF9FD21AD84C34009ADD13 /* SourceKindSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceKindSpec.swift; sourceTree = "<group>"; };
+		83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordKindSpec.swift; sourceTree = "<group>"; };
 		83D0478E19C106ED006C1F93 /* SourceKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SourceKind.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83D0A70919BE82160040B7AB /* GLVExternalChangeCallbacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVExternalChangeCallbacks.m; sourceTree = "<group>"; };
 		83D50FEF19BE7835000C37D6 /* AuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationStatus.swift; sourceTree = "<group>"; };
@@ -110,6 +132,7 @@
 			files = (
 				83016B5C1AD6661F00468602 /* Gulliver.framework in Frameworks */,
 				2679793EA2E704CA729E87DE /* Pods.framework in Frameworks */,
+				6EA4FD9F0FA18D5A46319209 /* Pods_Gulliver_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +152,8 @@
 			children = (
 				83050EDB1AD70D960045198D /* Pods.debug.xcconfig */,
 				83050EDC1AD70D960045198D /* Pods.release.xcconfig */,
+				833995EF1AD7A24600AAB9AC /* Pods-Gulliver Tests.debug.xcconfig */,
+				833995F01AD7A24600AAB9AC /* Pods-Gulliver Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -141,9 +166,9 @@
 				8380931219BF7EF90023B664 /* ImageFormat.swift */,
 				83E6264E19C2435F00A35F37 /* PersonKind.swift */,
 				830DF8B519C240EC0053A01F /* PropertyKind.swift */,
+				83CF12BE1AD3380000F411E0 /* RecordKind.swift */,
 				8380931019BF792B0023B664 /* SortOrdering.swift */,
 				83D0478E19C106ED006C1F93 /* SourceKind.swift */,
-				83CF12BE1AD3380000F411E0 /* RecordKind.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -221,7 +246,16 @@
 		83C5559E19CB78E800DE8506 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				83C555A319CB7A3600DE8506 /* EnumTests.swift */,
+				833995F51AD7A4E300AAB9AC /* AddressBookLoader.m */,
+				833995F11AD7A30600AAB9AC /* AuthorizationStatusSpec.swift */,
+				833995F91AD7A66800AAB9AC /* CompositeNameFormatSpec.swift */,
+				833995F71AD7A5D700AAB9AC /* Helpers.swift */,
+				833995FB1AD7A78800AAB9AC /* ImageFormatSpec.swift */,
+				833995FD1AD7A83A00AAB9AC /* PersonKindSpec.swift */,
+				833995FF1AD7AA7100AAB9AC /* PropertyKindSpec.swift */,
+				83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */,
+				83CF9FD01AD84B01009ADD13 /* SortOrderingSpec.swift */,
+				83CF9FD21AD84C34009ADD13 /* SourceKindSpec.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -283,6 +317,7 @@
 			children = (
 				83050EDF1AD70DF30045198D /* Pods.framework */,
 				9F0817C0C4161B6F59B7F39A /* Pods.framework */,
+				5D455352F84B3942548C4DC5 /* Pods_Gulliver_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -424,7 +459,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gulliver Tests/Pods-Gulliver Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		972B0FD51D5CAE11E84C5B7C /* Embed Pods Frameworks */ = {
@@ -454,7 +489,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gulliver Tests/Pods-Gulliver Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C474CFC1052A182955E548AC /* Copy Pods Resources */ = {
@@ -494,7 +529,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83C555A419CB7A3600DE8506 /* EnumTests.swift in Sources */,
+				833995FA1AD7A66800AAB9AC /* CompositeNameFormatSpec.swift in Sources */,
+				83CF9FD51AD84C39009ADD13 /* RecordKindSpec.swift in Sources */,
+				833995FE1AD7A83A00AAB9AC /* PersonKindSpec.swift in Sources */,
+				833995F21AD7A30600AAB9AC /* AuthorizationStatusSpec.swift in Sources */,
+				833995FC1AD7A78800AAB9AC /* ImageFormatSpec.swift in Sources */,
+				833996001AD7AA7100AAB9AC /* PropertyKindSpec.swift in Sources */,
+				83CF9FD11AD84B01009ADD13 /* SortOrderingSpec.swift in Sources */,
+				833995F61AD7A4E300AAB9AC /* AddressBookLoader.m in Sources */,
+				83CF9FD31AD84C34009ADD13 /* SourceKindSpec.swift in Sources */,
+				833995F81AD7A5D700AAB9AC /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +594,7 @@
 /* Begin XCBuildConfiguration section */
 		83C5559B19CB78E200DE8506 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83050EDB1AD70D960045198D /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 833995EF1AD7A24600AAB9AC /* Pods-Gulliver Tests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -570,7 +614,7 @@
 		};
 		83C5559C19CB78E200DE8506 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83050EDC1AD70D960045198D /* Pods.release.xcconfig */;
+			baseConfigurationReference = 833995F01AD7A24600AAB9AC /* Pods-Gulliver Tests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -672,7 +716,6 @@
 		};
 		83EB752819BC891B007F98CC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83050EDB1AD70D960045198D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -692,7 +735,6 @@
 		};
 		83EB752919BC891B007F98CC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83050EDC1AD70D960045198D /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;

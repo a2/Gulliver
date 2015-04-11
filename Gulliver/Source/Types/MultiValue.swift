@@ -12,7 +12,7 @@ public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, M
     public var array: [Element] {
         return values
     }
-    
+
     public var startIndex: Int {
         return values.startIndex
     }

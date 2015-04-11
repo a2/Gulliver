@@ -246,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				833995F51AD7A4E300AAB9AC /* AddressBookLoader.m */,
+				83D656211AD97C4B00F289BC /* AlternateBirthdaySpec.swift */,
 				833995F11AD7A30600AAB9AC /* AuthorizationStatusSpec.swift */,
 				833995F91AD7A66800AAB9AC /* CompositeNameFormatSpec.swift */,
 				833995F71AD7A5D700AAB9AC /* Helpers.swift */,
@@ -255,7 +256,6 @@
 				83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */,
 				83CF9FD01AD84B01009ADD13 /* SortOrderingSpec.swift */,
 				83CF9FD21AD84C34009ADD13 /* SourceKindSpec.swift */,
-				83D656211AD97C4B00F289BC /* AlternateBirthdaySpec.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";

@@ -9,6 +9,10 @@ public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, M
 
     private var values = [Element]()
 
+    public var array: [Element] {
+        return values
+    }
+    
     public var startIndex: Int {
         return values.startIndex
     }

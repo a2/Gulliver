@@ -39,20 +39,13 @@ public struct InstantMessageAddress: MultiValueRepresentable {
     }
 
     public init?(multiValueRepresentation: CFTypeRef) {
-        if let dictionary = multiValueRepresentation as? [String : String] {
-            for (key, value) in dictionary {
-                switch key {
-                case kABPersonInstantMessageUsernameKey as! String:
-                    self.username = value
-                case kABPersonInstantMessageServiceKey as! String:
-                    self.service = value
-                default:
-                    break
-                }
-            }
-        } else {
-            return nil
+        if let dictionary = multiValueRepresentation as? [NSObject : AnyObject],
+            username = dictionary[kABPersonInstantMessageUsernameKey as String] as? String,
+            service = dictionary[kABPersonInstantMessageUsernameKey as String] as? String {
+                self.init(service: service, username: username)
         }
+
+        return nil
     }
 }
 

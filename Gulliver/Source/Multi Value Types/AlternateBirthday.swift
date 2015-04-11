@@ -1,6 +1,6 @@
 import AddressBook
 
-public struct AlternateBirthday: MultiValueRepresentable {
+public struct AlternateBirthday: RawRepresentable {
     public var calendarIdentifier: String
     public var era: Int
     public var year: Int
@@ -17,7 +17,18 @@ public struct AlternateBirthday: MultiValueRepresentable {
         }
     }
 
-    public init(calendarIdentifier: String = NSCalendarIdentifierGregorian, era: Int, year: Int, month: Int, day: Int, isLeapMonth: Bool = false) {
+    public var dateComponents: NSDateComponents {
+        let dateComponents = NSDateComponents()
+        dateComponents.calendar = NSCalendar(calendarIdentifier: calendarIdentifier)
+        dateComponents.era = era
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.leapMonth = isLeapMonth
+        return dateComponents
+    }
+
+    public init(calendarIdentifier: String, era: Int, year: Int, month: Int, day: Int, isLeapMonth: Bool) {
         self.calendarIdentifier = calendarIdentifier
         self.era = era
         self.year = year
@@ -26,9 +37,25 @@ public struct AlternateBirthday: MultiValueRepresentable {
         self.isLeapMonth = isLeapMonth
     }
 
-    public static let multiValueType = PropertyKind.MultiDictionary
+    public init?(dateComponents: NSDateComponents) {
+        if let calendarIdentifier = dateComponents.calendar?.calendarIdentifier {
+            let day = dateComponents.day
+            let era = dateComponents.era
+            let month = dateComponents.month
+            let year = dateComponents.year
 
-    public var multiValueRepresentation: CFTypeRef {
+            let undefined: Int = numericCast(NSDateComponentUndefined)
+            if day == undefined || era == undefined || month == undefined || year == undefined {
+                return nil
+            } else {
+                self.init(calendarIdentifier: calendarIdentifier, era: era, year: year, month: month, day: day, isLeapMonth: dateComponents.leapMonth)
+            }
+        } else {
+            return nil
+        }
+    }
+
+    public var rawValue: [NSObject : AnyObject] {
         return [
             kABPersonAlternateBirthdayCalendarIdentifierKey as String: calendarIdentifier,
             kABPersonAlternateBirthdayDayKey as String: day,
@@ -39,14 +66,14 @@ public struct AlternateBirthday: MultiValueRepresentable {
         ]
     }
 
-    public init?(multiValueRepresentation: CFTypeRef) {
-        if let dictionary = multiValueRepresentation as? [NSObject : AnyObject] {
-            self.calendarIdentifier = dictionary[kABPersonAlternateBirthdayCalendarIdentifierKey as String] as! String
-            self.day = dictionary[kABPersonAlternateBirthdayDayKey as String] as! Int
-            self.era = dictionary[kABPersonAlternateBirthdayEraKey as String] as! Int
-            self.isLeapMonth = dictionary[kABPersonAlternateBirthdayIsLeapMonthKey as String] as? Bool ?? false
-            self.month = dictionary[kABPersonAlternateBirthdayMonthKey as String] as! Int
-            self.year = dictionary[kABPersonAlternateBirthdayYearKey as String] as! Int
+    public init?(rawValue: [NSObject : AnyObject]) {
+        if let calendarIdentifier = rawValue[kABPersonAlternateBirthdayCalendarIdentifierKey as String] as? String,
+            day = rawValue[kABPersonAlternateBirthdayDayKey as String] as? Int,
+            era = rawValue[kABPersonAlternateBirthdayEraKey as String] as? Int,
+            isLeapMonth = rawValue[kABPersonAlternateBirthdayIsLeapMonthKey as String] as? Bool,
+            month = rawValue[kABPersonAlternateBirthdayMonthKey as String] as? Int,
+            year = rawValue[kABPersonAlternateBirthdayYearKey as String] as? Int {
+                self.init(calendarIdentifier: calendarIdentifier, era: era, year: year, month: month, day: day, isLeapMonth: isLeapMonth)
         } else {
             return nil
         }

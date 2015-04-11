@@ -48,6 +48,8 @@
 		83CF9FD11AD84B01009ADD13 /* SortOrderingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF9FD01AD84B01009ADD13 /* SortOrderingSpec.swift */; };
 		83CF9FD31AD84C34009ADD13 /* SourceKindSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF9FD21AD84C34009ADD13 /* SourceKindSpec.swift */; };
 		83CF9FD51AD84C39009ADD13 /* RecordKindSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */; };
+		83D656221AD97C4B00F289BC /* AlternateBirthdaySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D656211AD97C4B00F289BC /* AlternateBirthdaySpec.swift */; };
+		83D656261AD9989600F289BC /* Johnny B. Goode.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 83D656251AD9989600F289BC /* Johnny B. Goode.vcf */; };
 		83E048C61AD5F6B9003533C9 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E048C51AD5F6B9003533C9 /* Property.swift */; };
 		83E305DD19CB6E7300213B1C /* MultiString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305DC19CB6E7300213B1C /* MultiString.swift */; };
 		83E305DF19CB6F6100213B1C /* RelatedName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305DE19CB6F6100213B1C /* RelatedName.swift */; };
@@ -108,6 +110,8 @@
 		83D0478E19C106ED006C1F93 /* SourceKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SourceKind.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83D0A70919BE82160040B7AB /* GLVExternalChangeCallbacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVExternalChangeCallbacks.m; sourceTree = "<group>"; };
 		83D50FEF19BE7835000C37D6 /* AuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationStatus.swift; sourceTree = "<group>"; };
+		83D656211AD97C4B00F289BC /* AlternateBirthdaySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternateBirthdaySpec.swift; sourceTree = "<group>"; };
+		83D656251AD9989600F289BC /* Johnny B. Goode.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Johnny B. Goode.vcf"; sourceTree = "<group>"; };
 		83E048C51AD5F6B9003533C9 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		83E305DC19CB6E7300213B1C /* MultiString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiString.swift; sourceTree = "<group>"; };
 		83E305DE19CB6F6100213B1C /* RelatedName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedName.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 		83C5559419CB78E200DE8506 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				83D656251AD9989600F289BC /* Johnny B. Goode.vcf */,
 				83C5559519CB78E200DE8506 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -250,6 +255,7 @@
 				83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */,
 				83CF9FD01AD84B01009ADD13 /* SortOrderingSpec.swift */,
 				83CF9FD21AD84C34009ADD13 /* SourceKindSpec.swift */,
+				83D656211AD97C4B00F289BC /* AlternateBirthdaySpec.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D656261AD9989600F289BC /* Johnny B. Goode.vcf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +532,7 @@
 			files = (
 				833995FA1AD7A66800AAB9AC /* CompositeNameFormatSpec.swift in Sources */,
 				83CF9FD51AD84C39009ADD13 /* RecordKindSpec.swift in Sources */,
+				83D656221AD97C4B00F289BC /* AlternateBirthdaySpec.swift in Sources */,
 				833995FE1AD7A83A00AAB9AC /* PersonKindSpec.swift in Sources */,
 				833995F21AD7A30600AAB9AC /* AuthorizationStatusSpec.swift in Sources */,
 				833995FC1AD7A78800AAB9AC /* ImageFormatSpec.swift in Sources */,

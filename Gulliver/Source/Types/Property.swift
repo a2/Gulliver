@@ -19,7 +19,7 @@ public struct Property<T>: ReadablePropertyType {
     public let propertyID: ABPropertyID
     public let readTransform: (CFTypeRef -> T)?
 
-    init(propertyID: ABPropertyID, readTransform: (CFTypeRef -> T)? = nil) {
+    public init(propertyID: ABPropertyID, readTransform: (CFTypeRef -> T)? = nil) {
         self.propertyID = propertyID
         self.readTransform = readTransform
     }
@@ -32,7 +32,7 @@ public struct MutableProperty<T>: ReadablePropertyType, WritablePropertyType {
     public let readTransform: (CFTypeRef -> T)?
     public let writeTransform: (T -> CFTypeRef)?
 
-    init(propertyID: ABPropertyID, readTransform: (CFTypeRef -> T)? = nil, writeTransform: (T -> CFTypeRef)? = nil) {
+    public init(propertyID: ABPropertyID, readTransform: (CFTypeRef -> T)? = nil, writeTransform: (T -> CFTypeRef)? = nil) {
         self.propertyID = propertyID
         self.readTransform = readTransform
         self.writeTransform = writeTransform

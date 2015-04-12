@@ -39,6 +39,7 @@
 		837528C119BE7E710055C271 /* GLVExternalChangeCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 837528BF19BE7E710055C271 /* GLVExternalChangeCallbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		839E095D1ADA636400BB64B7 /* InstantMessageAddressSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E095C1ADA636400BB64B7 /* InstantMessageAddressSpec.swift */; };
 		839E095F1ADA7E3B00BB64B7 /* MultiDateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E095E1ADA7E3B00BB64B7 /* MultiDateSpec.swift */; };
+		839E098A1ADA833D00BB64B7 /* MultiStringSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E09891ADA833D00BB64B7 /* MultiStringSpec.swift */; };
 		83B4DDCD1AD2F18600D8A83E /* Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCC1AD2F18600D8A83E /* Failure.swift */; };
 		83B4DDD01AD2F32800D8A83E /* AddressBookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */; };
 		83B4DDD61AD305CE00D8A83E /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDD51AD305CE00D8A83E /* RecordType.swift */; };
@@ -97,6 +98,7 @@
 		8380931419BF81540023B664 /* CompositeNameFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CompositeNameFormat.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		839E095C1ADA636400BB64B7 /* InstantMessageAddressSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantMessageAddressSpec.swift; sourceTree = "<group>"; };
 		839E095E1ADA7E3B00BB64B7 /* MultiDateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiDateSpec.swift; sourceTree = "<group>"; };
+		839E09891ADA833D00BB64B7 /* MultiStringSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiStringSpec.swift; sourceTree = "<group>"; };
 		83B4DDCC1AD2F18600D8A83E /* Failure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
 		83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookType.swift; sourceTree = "<group>"; };
 		83B4DDD51AD305CE00D8A83E /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				833995FB1AD7A78800AAB9AC /* ImageFormatSpec.swift */,
 				839E095C1ADA636400BB64B7 /* InstantMessageAddressSpec.swift */,
 				839E095E1ADA7E3B00BB64B7 /* MultiDateSpec.swift */,
+				839E09891ADA833D00BB64B7 /* MultiStringSpec.swift */,
 				833995FD1AD7A83A00AAB9AC /* PersonKindSpec.swift */,
 				833995FF1AD7AA7100AAB9AC /* PropertyKindSpec.swift */,
 				83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */,
@@ -534,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				833995FA1AD7A66800AAB9AC /* CompositeNameFormatSpec.swift in Sources */,
+				839E098A1ADA833D00BB64B7 /* MultiStringSpec.swift in Sources */,
 				83CF9FD51AD84C39009ADD13 /* RecordKindSpec.swift in Sources */,
 				83D656221AD97C4B00F289BC /* AlternateBirthdaySpec.swift in Sources */,
 				833995FE1AD7A83A00AAB9AC /* PersonKindSpec.swift in Sources */,

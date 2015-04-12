@@ -246,11 +246,11 @@
 			children = (
 				833995F51AD7A4E300AAB9AC /* AddressBookLoader.m */,
 				83D656211AD97C4B00F289BC /* AlternateBirthdaySpec.swift */,
-				839E095C1ADA636400BB64B7 /* InstantMessageAddressSpec.swift */,
 				833995F11AD7A30600AAB9AC /* AuthorizationStatusSpec.swift */,
 				833995F91AD7A66800AAB9AC /* CompositeNameFormatSpec.swift */,
 				833995F71AD7A5D700AAB9AC /* Helpers.swift */,
 				833995FB1AD7A78800AAB9AC /* ImageFormatSpec.swift */,
+				839E095C1ADA636400BB64B7 /* InstantMessageAddressSpec.swift */,
 				833995FD1AD7A83A00AAB9AC /* PersonKindSpec.swift */,
 				833995FF1AD7AA7100AAB9AC /* PropertyKindSpec.swift */,
 				83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */,

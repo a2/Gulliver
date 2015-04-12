@@ -17,9 +17,7 @@ class InstantMessageAddressSpec: QuickSpec {
                 let address = InstantMessageAddress(service: InstantMessageAddress.Services.Facebook, username: "a2")
 
                 let multiValue: ABMutableMultiValueRef = ABMultiValueCreateMutable(numericCast(kABDictionaryPropertyType)).takeRetainedValue()
-
-                var identifier = MultiValueIdentifierInvalid
-                if !ABMultiValueAddValueAndLabel(multiValue, address.multiValueRepresentation, "facebook", &identifier) {
+                if !ABMultiValueAddValueAndLabel(multiValue, address.multiValueRepresentation, "facebook", nil) {
                     fail("Could not add address to multi value")
                 }
 
@@ -49,13 +47,13 @@ class InstantMessageAddressSpec: QuickSpec {
                 let fileURL = NSBundle(forClass: AlternateBirthdaySpec.self).URLForResource("Johnny B. Goode", withExtension: "vcf")!
                 let data = NSData(contentsOfURL: fileURL)!
                 let records = ABPersonCreatePeopleInSourceWithVCardRepresentation(nil, data as CFDataRef).takeRetainedValue() as [ABRecordRef]
-                let abMultiValue: ABMultiValueRef = ABRecordCopyValue(records[0], kABPersonInstantMessageProperty).takeRetainedValue()
+                let multiValue: ABMultiValueRef = ABRecordCopyValue(records[0], kABPersonInstantMessageProperty).takeRetainedValue()
 
-                let multiValue = MultiValue<InstantMessageAddress>(multiValue: abMultiValue)
-                expect(multiValue[0].0) == "facebook"
-                expect(multiValue[0].1) == InstantMessageAddress(service: InstantMessageAddress.Services.Facebook, username: "a2")
-                expect(multiValue[1].0) == "skype"
-                expect(multiValue[1].1) == InstantMessageAddress(service: InstantMessageAddress.Services.Skype, username: "pandamonia289")
+                let values = LabeledValue<InstantMessageAddress>.read(multiValue)
+                expect(values[0].label) == "facebook"
+                expect(values[0].value) == InstantMessageAddress(service: InstantMessageAddress.Services.Facebook, username: "a2")
+                expect(values[1].label) == "skype"
+                expect(values[1].value) == InstantMessageAddress(service: InstantMessageAddress.Services.Skype, username: "pandamonia289")
             }
         }
     }

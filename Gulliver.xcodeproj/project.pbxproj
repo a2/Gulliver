@@ -25,7 +25,6 @@
 		832F9F1B19C4823500139D48 /* SocialProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83503BD319C258C3003F2740 /* SocialProfile.swift */; };
 		832F9F1C19C4823500139D48 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB753D19BC8974007F98CC /* AddressBook.swift */; };
 		832F9F1D19C4823500139D48 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0E19BE8E8F00821633 /* Group.swift */; };
-		832F9F1E19C4823500139D48 /* MultiValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313F22119C0B59600FBF59F /* MultiValue.swift */; };
 		832F9F1F19C4823500139D48 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0C19BE8E8400821633 /* Person.swift */; };
 		832F9F2019C4823500139D48 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0A19BE8E7900821633 /* Record.swift */; };
 		832F9F2119C4823500139D48 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A1019BE8E9500821633 /* Source.swift */; };
@@ -42,6 +41,7 @@
 		839E098A1ADA833D00BB64B7 /* MultiStringSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E09891ADA833D00BB64B7 /* MultiStringSpec.swift */; };
 		839E098C1ADA83DA00BB64B7 /* PostalAddressSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E098B1ADA83DA00BB64B7 /* PostalAddressSpec.swift */; };
 		839E098E1ADA847900BB64B7 /* Apple Inc..vcf in Resources */ = {isa = PBXBuildFile; fileRef = 839E098D1ADA847900BB64B7 /* Apple Inc..vcf */; };
+		839E09901ADA9DF900BB64B7 /* LabeledValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E098F1ADA9DF900BB64B7 /* LabeledValue.swift */; };
 		83B4DDCD1AD2F18600D8A83E /* Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCC1AD2F18600D8A83E /* Failure.swift */; };
 		83B4DDD01AD2F32800D8A83E /* AddressBookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */; };
 		83B4DDD61AD305CE00D8A83E /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDD51AD305CE00D8A83E /* RecordType.swift */; };
@@ -77,7 +77,6 @@
 		83050EDC1AD70D960045198D /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		83050EDF1AD70DF30045198D /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		830DF8B519C240EC0053A01F /* PropertyKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PropertyKind.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		8313F22119C0B59600FBF59F /* MultiValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiValue.swift; sourceTree = "<group>"; };
 		833995EF1AD7A24600AAB9AC /* Pods-Gulliver Tests.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Gulliver Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gulliver Tests/Pods-Gulliver Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		833995F01AD7A24600AAB9AC /* Pods-Gulliver Tests.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Gulliver Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gulliver Tests/Pods-Gulliver Tests.release.xcconfig"; sourceTree = "<group>"; };
 		833995F11AD7A30600AAB9AC /* AuthorizationStatusSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationStatusSpec.swift; sourceTree = "<group>"; };
@@ -103,6 +102,7 @@
 		839E09891ADA833D00BB64B7 /* MultiStringSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiStringSpec.swift; sourceTree = "<group>"; };
 		839E098B1ADA83DA00BB64B7 /* PostalAddressSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostalAddressSpec.swift; sourceTree = "<group>"; };
 		839E098D1ADA847900BB64B7 /* Apple Inc..vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apple Inc..vcf"; sourceTree = "<group>"; };
+		839E098F1ADA9DF900BB64B7 /* LabeledValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledValue.swift; sourceTree = "<group>"; };
 		83B4DDCC1AD2F18600D8A83E /* Failure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
 		83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookType.swift; sourceTree = "<group>"; };
 		83B4DDD51AD305CE00D8A83E /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 				83EB753D19BC8974007F98CC /* AddressBook.swift */,
 				83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */,
 				837E3A0E19BE8E8F00821633 /* Group.swift */,
-				8313F22119C0B59600FBF59F /* MultiValue.swift */,
+				839E098F1ADA9DF900BB64B7 /* LabeledValue.swift */,
 				837E3A0C19BE8E8400821633 /* Person.swift */,
 				83E048C51AD5F6B9003533C9 /* Property.swift */,
 				837E3A0A19BE8E7900821633 /* Record.swift */,
@@ -570,9 +570,9 @@
 				832F9F1919C4823500139D48 /* PostalAddress.swift in Sources */,
 				832F9F1A19C4823500139D48 /* InstantMessageAddress.swift in Sources */,
 				832F9F1B19C4823500139D48 /* SocialProfile.swift in Sources */,
+				839E09901ADA9DF900BB64B7 /* LabeledValue.swift in Sources */,
 				832F9F1C19C4823500139D48 /* AddressBook.swift in Sources */,
 				832F9F1D19C4823500139D48 /* Group.swift in Sources */,
-				832F9F1E19C4823500139D48 /* MultiValue.swift in Sources */,
 				832F9F1F19C4823500139D48 /* Person.swift in Sources */,
 				83B6DB1119C4A8E800EA6B64 /* AlternateBirthday.swift in Sources */,
 				832F9F2019C4823500139D48 /* Record.swift in Sources */,

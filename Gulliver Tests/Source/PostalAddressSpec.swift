@@ -20,9 +20,7 @@ class PostalAddressSpec: QuickSpec {
                 let address = PostalAddress(street: "1 Infinite Loop", city: "Cupertino", state: "CA", postalCode: "95014", country: "United States", ISOCountryCode: "US")
 
                 let multiValue: ABMutableMultiValueRef = ABMultiValueCreateMutable(numericCast(kABDictionaryPropertyType)).takeRetainedValue()
-
-                var identifier = MultiValueIdentifierInvalid
-                if !ABMultiValueAddValueAndLabel(multiValue, address.multiValueRepresentation, kABWorkLabel, &identifier) {
+                if !ABMultiValueAddValueAndLabel(multiValue, address.multiValueRepresentation, kABWorkLabel, nil) {
                     fail("Could not add address to multi value")
                 }
 
@@ -60,11 +58,11 @@ class PostalAddressSpec: QuickSpec {
                 let fileURL = NSBundle(forClass: PostalAddressSpec.self).URLForResource("Apple Inc.", withExtension: "vcf")!
                 let data = NSData(contentsOfURL: fileURL)!
                 let records = ABPersonCreatePeopleInSourceWithVCardRepresentation(nil, data as CFDataRef).takeRetainedValue() as [ABRecordRef]
-                let abMultiValue: ABMultiValueRef = ABRecordCopyValue(records[0], kABPersonAddressProperty).takeRetainedValue()
+                let multiValue: ABMultiValueRef = ABRecordCopyValue(records[0], kABPersonAddressProperty).takeRetainedValue()
 
-                let multiValue = MultiValue<PostalAddress>(multiValue: abMultiValue)
-                expect(multiValue[0].0) == kABWorkLabel as String
-                expect(multiValue[0].1) == PostalAddress(street: "1 Infinite Loop", city: "Cupertino", state: "CA", postalCode: "95014", country: "United States", ISOCountryCode: "US")
+                let values = LabeledValue<PostalAddress>.read(multiValue)
+                expect(values[0].label) == kABWorkLabel as String
+                expect(values[0].value) == PostalAddress(street: "1 Infinite Loop", city: "Cupertino", state: "CA", postalCode: "95014", country: "United States", ISOCountryCode: "US")
             }
         }
     }

@@ -22,7 +22,7 @@ public struct InstantMessageAddress: Equatable, MultiValueRepresentable {
         self.username = username
     }
 
-    public static let multiValueType = PropertyKind.MultiDictionary
+    public static let multiValueType = PropertyKind.Dictionary
 
     public var multiValueRepresentation: CFTypeRef {
         var result = [NSObject : AnyObject]()

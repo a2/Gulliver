@@ -20,7 +20,7 @@ public struct PostalAddress: DebugPrintable, Equatable, MultiValueRepresentable,
         self.otherFields = otherFields
     }
 
-    public static let multiValueType = PropertyKind.MultiDictionary
+    public static let multiValueType = PropertyKind.Dictionary
 
     public var multiValueRepresentation: CFTypeRef {
         var result = otherFields

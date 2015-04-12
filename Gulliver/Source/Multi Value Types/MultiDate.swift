@@ -8,7 +8,7 @@ public struct MultiDate: Comparable, Equatable, Printable, MultiValueRepresentab
         self.value = value
     }
 
-    public static let multiValueType = PropertyKind.MultiDateTime
+    public static let multiValueType = PropertyKind.DateTime
 
     public var multiValueRepresentation: CFTypeRef {
         return value

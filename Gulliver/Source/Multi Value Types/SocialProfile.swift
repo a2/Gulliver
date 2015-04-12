@@ -23,7 +23,7 @@ public struct SocialProfile: Equatable, MultiValueRepresentable {
         self.userIdentifier = userIdentifier
     }
 
-    public static let multiValueType = PropertyKind.MultiDictionary
+    public static let multiValueType = PropertyKind.Dictionary
 
     public var multiValueRepresentation: CFTypeRef {
         var result = [NSObject : AnyObject]()

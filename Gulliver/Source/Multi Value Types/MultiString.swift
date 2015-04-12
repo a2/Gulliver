@@ -7,7 +7,7 @@ public struct MultiString: Equatable, MultiValueRepresentable, Printable, String
         self.value = value
     }
 
-    public static let multiValueType = PropertyKind.MultiString
+    public static let multiValueType = PropertyKind.String
 
     public var multiValueRepresentation: CFTypeRef {
         return value

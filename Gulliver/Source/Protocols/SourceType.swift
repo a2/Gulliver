@@ -6,7 +6,7 @@ public protocol _SourceType: RecordType {
 public protocol SourceType: _SourceType {
     var sourceKind: SourceKind { get }
 
-    func newPerson<P: PersonType where P.State == PersonState>() -> P
+    func newPerson<P: _PersonType where P.State == PersonState>() -> P
     
-    func newGroup<G: GroupType where G.State == GroupState>() -> G
+    func newGroup<G: _GroupType where G.State == GroupState>() -> G
 }

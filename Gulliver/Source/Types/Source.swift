@@ -16,12 +16,12 @@ public final class Source: Record, SourceType {
         return value(forProperty: Source.sourceKindProperty)!
     }
 
-    public func newPerson<P: PersonType where P.State == PersonState>() -> P {
+    public func newPerson<P: _PersonType where P.State == PersonState>() -> P {
         let personState: ABRecordRef = ABPersonCreateInSource(state).takeRetainedValue()
         return P(state: personState)
     }
 
-    public func newGroup<G: GroupType where G.State == GroupState>() -> G {
+    public func newGroup<G: _GroupType where G.State == GroupState>() -> G {
         let groupState: ABRecordRef = ABGroupCreateInSource(state).takeRetainedValue()
         return G(state: groupState)
     }

@@ -1,6 +1,6 @@
 import AddressBook
 
-public struct InstantMessageAddress: Equatable, MultiValueRepresentable {
+public struct InstantMessageAddress: Equatable, MultiValueRepresentable, Printable {
     public struct Services {
         public static let Yahoo = kABPersonInstantMessageServiceYahoo as String
         public static let Jabber = kABPersonInstantMessageServiceJabber as String
@@ -41,11 +41,18 @@ public struct InstantMessageAddress: Equatable, MultiValueRepresentable {
     public init?(multiValueRepresentation: CFTypeRef) {
         if let dictionary = multiValueRepresentation as? [NSObject : AnyObject],
             username = dictionary[kABPersonInstantMessageUsernameKey as String] as? String?,
-            service = dictionary[kABPersonInstantMessageUsernameKey as String] as? String? {
+            service = dictionary[kABPersonInstantMessageServiceKey as String] as? String? {
                 self.init(service: service, username: username)
         } else {
             return nil
         }
+    }
+
+    public var description: String {
+        let transform: String -> String = { "\"\($0)\"" }
+        let serviceOrNil = service.map(transform) ?? "nil"
+        let usernameOrNil = username.map(transform) ?? "nil"
+        return "Service: \(serviceOrNil), Username: \(usernameOrNil)"
     }
 }
 

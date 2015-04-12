@@ -5,6 +5,10 @@ N:Goode;Johnny;B.;;
 FN:Johnny B. Goode
 BDAY:2015-03-15
 X-ALTBDAY;CALSCALE=hebrew:000057750724
+item1.IMPP;X-SERVICE-TYPE=Facebook;type=pref:xmpp:a2
+item1.X-ABLabel:facebook
+item2.IMPP;X-SERVICE-TYPE=Skype:skype:pandamonia289
+item2.X-ABLabel:skype
 UID:50f364f9-24a1-457d-b735-709de0d4ecd1
 X-ABUID:50F364F9-24A1-457D-B735-709DE0D4ECD1:ABPerson
 END:VCARD

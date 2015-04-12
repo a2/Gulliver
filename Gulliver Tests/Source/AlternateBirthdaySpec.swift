@@ -6,18 +6,18 @@ class AlternateBirthdaySpec: QuickSpec {
     override func spec() {
         describe("rawValue") {
             it("should contain the correct data") {
-                let birthday = AlternateBirthday(calendarIdentifier: NSCalendarIdentifierHebrew, era: 0, year: 5775, month: 7, day: 24, isLeapMonth: false)
+                let birthday = AlternateBirthday(calendarIdentifier: NSCalendarIdentifierHebrew, era: 0, year: 5718, month: 4, day: 14, isLeapMonth: false)
                 let rawValue = birthday.rawValue
                 expect((rawValue[kABPersonAlternateBirthdayCalendarIdentifierKey as String] as! String)) == NSCalendarIdentifierHebrew
-                expect((rawValue[kABPersonAlternateBirthdayDayKey as String] as! Int)) == 24
+                expect((rawValue[kABPersonAlternateBirthdayDayKey as String] as! Int)) == 14
                 expect((rawValue[kABPersonAlternateBirthdayEraKey as String] as! Int)) == 0
                 expect((rawValue[kABPersonAlternateBirthdayIsLeapMonthKey as String] as! Bool)) == false
-                expect((rawValue[kABPersonAlternateBirthdayMonthKey as String] as! Int)) == 7
-                expect((rawValue[kABPersonAlternateBirthdayYearKey as String] as! Int)) == 5775
+                expect((rawValue[kABPersonAlternateBirthdayMonthKey as String] as! Int)) == 4
+                expect((rawValue[kABPersonAlternateBirthdayYearKey as String] as! Int)) == 5718
             }
 
             it("is a valid representation") {
-                let birthday = AlternateBirthday(calendarIdentifier: NSCalendarIdentifierHebrew, era: 0, year: 5775, month: 7, day: 24, isLeapMonth: false)
+                let birthday = AlternateBirthday(calendarIdentifier: NSCalendarIdentifierHebrew, era: 0, year: 5718, month: 4, day: 14, isLeapMonth: false)
 
                 let record: ABRecordRef = ABPersonCreate().takeRetainedValue()
                 var error: Unmanaged<CFErrorRef>? = nil
@@ -32,31 +32,31 @@ class AlternateBirthdaySpec: QuickSpec {
             it("creates a valid AlternateBirthday") {
                 let rawValue: [NSObject : AnyObject] = [
                     kABPersonAlternateBirthdayCalendarIdentifierKey as String: NSCalendarIdentifierHebrew,
-                    kABPersonAlternateBirthdayDayKey as String: 24,
+                    kABPersonAlternateBirthdayDayKey as String: 14,
                     kABPersonAlternateBirthdayEraKey as String: 0,
                     kABPersonAlternateBirthdayIsLeapMonthKey as String: false,
-                    kABPersonAlternateBirthdayMonthKey as String: 7,
-                    kABPersonAlternateBirthdayYearKey as String: 5775,
+                    kABPersonAlternateBirthdayMonthKey as String: 4,
+                    kABPersonAlternateBirthdayYearKey as String: 5718,
                 ]
 
                 let birthday = AlternateBirthday(rawValue: rawValue)
                 expect(birthday).notTo(beNil())
                 expect(birthday!.calendarIdentifier) == NSCalendarIdentifierHebrew
-                expect(birthday!.day) == 24
+                expect(birthday!.day) == 14
                 expect(birthday!.era) == 0
                 expect(birthday!.isLeapMonth) == false
-                expect(birthday!.month) == 7
-                expect(birthday!.year) == 5775
+                expect(birthday!.month) == 4
+                expect(birthday!.year) == 5718
             }
 
             it("fails if a required key is not present") {
                 let correctRawValue: [NSObject : AnyObject] = [
                     kABPersonAlternateBirthdayCalendarIdentifierKey as String: NSCalendarIdentifierHebrew,
-                    kABPersonAlternateBirthdayDayKey as String: 24,
+                    kABPersonAlternateBirthdayDayKey as String: 14,
                     kABPersonAlternateBirthdayEraKey as String: 0,
                     kABPersonAlternateBirthdayIsLeapMonthKey as String: false,
-                    kABPersonAlternateBirthdayMonthKey as String: 7,
-                    kABPersonAlternateBirthdayYearKey as String: 5775,
+                    kABPersonAlternateBirthdayMonthKey as String: 4,
+                    kABPersonAlternateBirthdayYearKey as String: 5718,
                 ]
 
                 for index in indices(correctRawValue) {
@@ -77,24 +77,24 @@ class AlternateBirthdaySpec: QuickSpec {
                 let birthday = AlternateBirthday(rawValue: rawValue)
                 expect(birthday).notTo(beNil())
                 expect(birthday!.calendarIdentifier) == NSCalendarIdentifierHebrew
-                expect(birthday!.day) == 24
+                expect(birthday!.day) == 14
                 expect(birthday!.era) == 0
                 expect(birthday!.isLeapMonth) == false
-                expect(birthday!.month) == 7
-                expect(birthday!.year) == 5775
+                expect(birthday!.month) == 4
+                expect(birthday!.year) == 5718
             }
         }
 
         describe("dateComponents") {
             it("should contain the correct data") {
-                let birthday = AlternateBirthday(calendarIdentifier: NSCalendarIdentifierHebrew, era: 0, year: 5775, month: 7, day: 24, isLeapMonth: false)
+                let birthday = AlternateBirthday(calendarIdentifier: NSCalendarIdentifierHebrew, era: 0, year: 5718, month: 4, day: 14, isLeapMonth: false)
                 let components = birthday.dateComponents
                 expect(components.calendar?.calendarIdentifier) == NSCalendarIdentifierHebrew
-                expect(components.day) == 24
+                expect(components.day) == 14
                 expect(components.era) == 0
                 expect(components.leapMonth) == false
-                expect(components.month) == 7
-                expect(components.year) == 5775
+                expect(components.month) == 4
+                expect(components.year) == 5718
             }
         }
 
@@ -102,29 +102,29 @@ class AlternateBirthdaySpec: QuickSpec {
             it("creates a valid AlternateBirthday") {
                 let dateComponents = NSDateComponents()
                 dateComponents.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierHebrew)
-                dateComponents.day = 24
+                dateComponents.day = 14
                 dateComponents.era = 0
                 dateComponents.leapMonth = false
-                dateComponents.month = 7
-                dateComponents.year = 5775
+                dateComponents.month = 4
+                dateComponents.year = 5718
 
                 let birthday = AlternateBirthday(dateComponents: dateComponents)
                 expect(birthday).notTo(beNil())
                 expect(birthday!.calendarIdentifier) == NSCalendarIdentifierHebrew
-                expect(birthday!.day) == 24
+                expect(birthday!.day) == 14
                 expect(birthday!.era) == 0
                 expect(birthday!.isLeapMonth) == false
-                expect(birthday!.month) == 7
-                expect(birthday!.year) == 5775
+                expect(birthday!.month) == 4
+                expect(birthday!.year) == 5718
             }
 
             it("fails if a required value is not present") {
                 let allConfigurationBlocks: [NSDateComponents -> Void] = [
                     { $0.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierHebrew) },
-                    { $0.day = 24 },
+                    { $0.day = 14 },
                     { $0.era = 0 },
-                    { $0.month = 7 },
-                    { $0.year = 5775 },
+                    { $0.month = 4 },
+                    { $0.year = 5718 },
                 ]
 
                 for index in indices(allConfigurationBlocks) {

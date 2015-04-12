@@ -1,7 +1,7 @@
 import AddressBook
 
-public struct SocialProfile: Equatable, MultiValueRepresentable {
-    public struct Labels {
+public struct SocialProfile: Equatable, MultiValueRepresentable, Printable {
+    public struct Services {
         public static let Twitter = kABPersonSocialProfileServiceTwitter as String
         public static let SinaWeibo = kABPersonSocialProfileServiceSinaWeibo as String
         public static let GameCenter = kABPersonSocialProfileServiceGameCenter as String
@@ -45,28 +45,23 @@ public struct SocialProfile: Equatable, MultiValueRepresentable {
     }
 
     public init?(multiValueRepresentation: CFTypeRef) {
-        if let dictionary = multiValueRepresentation as? [String : String] {
-            if let URL = dictionary[kABPersonSocialProfileURLKey as String] {
+        if let dictionary = multiValueRepresentation as? [NSObject : AnyObject],
+            URL = dictionary[kABPersonSocialProfileURLKey as String] as? String {
                 self.URL = URL
-            } else {
-                return nil
-            }
-
-            for (key, value) in dictionary {
-                switch key {
-                case kABPersonSocialProfileServiceKey as! String:
-                    self.service = value
-                case kABPersonSocialProfileUsernameKey as! String:
-                    self.username = value
-                case kABPersonSocialProfileUserIdentifierKey as! String:
-                    self.userIdentifier = value
-                default:
-                    break
-                }
-            }
+                self.service = dictionary[kABPersonSocialProfileServiceKey as String] as? String
+                self.username = dictionary[kABPersonSocialProfileUsernameKey as String] as? String
+                self.userIdentifier = dictionary[kABPersonSocialProfileUserIdentifierKey as String] as? String
         } else {
             return nil
         }
+    }
+
+    public var description: String {
+        let transform: String -> String = { "\"\($0)\"" }
+        let serviceOrNil = service.map(transform) ?? "nil"
+        let usernameOrNil = username.map(transform) ?? "nil"
+        let userIdentifierOrNil = userIdentifier.map(transform) ?? "nil"
+        return "URL: \"\(URL)\", Service: \(serviceOrNil), Username: \(usernameOrNil), User Identifier: \(userIdentifierOrNil)"
     }
 }
 

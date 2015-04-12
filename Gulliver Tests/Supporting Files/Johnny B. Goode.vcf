@@ -3,11 +3,14 @@ VERSION:3.0
 PRODID:-//Apple Inc.//Mac OS X 10.10.3//EN
 N:Goode;Johnny;B.;;
 FN:Johnny B. Goode
-BDAY:2015-03-15
-X-ALTBDAY;CALSCALE=hebrew:000057750724
-item1.IMPP;X-SERVICE-TYPE=Facebook;type=pref:xmpp:a2
+ADR;type=WORK;type=pref:;;1 Infinite Loop;Cupertino;CA;95014;United States
+X-SOCIALPROFILE;type=twitter:http://twitter.com/jbgoode
+X-SOCIALPROFILE;type=facebook:http://facebook.com/johnny.b.goode
+BDAY:1958-01-06
+X-ALTBDAY;CALSCALE=hebrew:000057180414
+item1.IMPP;X-SERVICE-TYPE=Facebook;type=pref:xmpp:johnny.b.goode
 item1.X-ABLabel:facebook
-item2.IMPP;X-SERVICE-TYPE=Skype:skype:pandamonia289
+item2.IMPP;X-SERVICE-TYPE=Skype:skype:jbgoode
 item2.X-ABLabel:skype
 UID:50f364f9-24a1-457d-b735-709de0d4ecd1
 X-ABUID:50F364F9-24A1-457D-B735-709DE0D4ECD1:ABPerson

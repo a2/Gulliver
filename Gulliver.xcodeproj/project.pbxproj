@@ -236,8 +236,8 @@
 		83C5559419CB78E200DE8506 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				83D656251AD9989600F289BC /* Johnny B. Goode.vcf */,
 				83C5559519CB78E200DE8506 /* Info.plist */,
+				83D656251AD9989600F289BC /* Johnny B. Goode.vcf */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";

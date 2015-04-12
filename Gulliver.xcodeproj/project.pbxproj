@@ -40,6 +40,8 @@
 		839E095D1ADA636400BB64B7 /* InstantMessageAddressSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E095C1ADA636400BB64B7 /* InstantMessageAddressSpec.swift */; };
 		839E095F1ADA7E3B00BB64B7 /* MultiDateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E095E1ADA7E3B00BB64B7 /* MultiDateSpec.swift */; };
 		839E098A1ADA833D00BB64B7 /* MultiStringSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E09891ADA833D00BB64B7 /* MultiStringSpec.swift */; };
+		839E098C1ADA83DA00BB64B7 /* PostalAddressSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E098B1ADA83DA00BB64B7 /* PostalAddressSpec.swift */; };
+		839E098E1ADA847900BB64B7 /* Apple Inc..vcf in Resources */ = {isa = PBXBuildFile; fileRef = 839E098D1ADA847900BB64B7 /* Apple Inc..vcf */; };
 		83B4DDCD1AD2F18600D8A83E /* Failure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCC1AD2F18600D8A83E /* Failure.swift */; };
 		83B4DDD01AD2F32800D8A83E /* AddressBookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */; };
 		83B4DDD61AD305CE00D8A83E /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4DDD51AD305CE00D8A83E /* RecordType.swift */; };
@@ -99,6 +101,8 @@
 		839E095C1ADA636400BB64B7 /* InstantMessageAddressSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantMessageAddressSpec.swift; sourceTree = "<group>"; };
 		839E095E1ADA7E3B00BB64B7 /* MultiDateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiDateSpec.swift; sourceTree = "<group>"; };
 		839E09891ADA833D00BB64B7 /* MultiStringSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiStringSpec.swift; sourceTree = "<group>"; };
+		839E098B1ADA83DA00BB64B7 /* PostalAddressSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostalAddressSpec.swift; sourceTree = "<group>"; };
+		839E098D1ADA847900BB64B7 /* Apple Inc..vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apple Inc..vcf"; sourceTree = "<group>"; };
 		83B4DDCC1AD2F18600D8A83E /* Failure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
 		83B4DDCF1AD2F32800D8A83E /* AddressBookType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookType.swift; sourceTree = "<group>"; };
 		83B4DDD51AD305CE00D8A83E /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 		83C5559419CB78E200DE8506 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				839E098D1ADA847900BB64B7 /* Apple Inc..vcf */,
 				83C5559519CB78E200DE8506 /* Info.plist */,
 				83D656251AD9989600F289BC /* Johnny B. Goode.vcf */,
 			);
@@ -258,6 +263,7 @@
 				839E095E1ADA7E3B00BB64B7 /* MultiDateSpec.swift */,
 				839E09891ADA833D00BB64B7 /* MultiStringSpec.swift */,
 				833995FD1AD7A83A00AAB9AC /* PersonKindSpec.swift */,
+				839E098B1ADA83DA00BB64B7 /* PostalAddressSpec.swift */,
 				833995FF1AD7AA7100AAB9AC /* PropertyKindSpec.swift */,
 				83CF9FD41AD84C39009ADD13 /* RecordKindSpec.swift */,
 				83CF9FD01AD84B01009ADD13 /* SortOrderingSpec.swift */,
@@ -426,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D656261AD9989600F289BC /* Johnny B. Goode.vcf in Resources */,
+				839E098E1ADA847900BB64B7 /* Apple Inc..vcf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839E098C1ADA83DA00BB64B7 /* PostalAddressSpec.swift in Sources */,
 				833995FA1AD7A66800AAB9AC /* CompositeNameFormatSpec.swift in Sources */,
 				839E098A1ADA833D00BB64B7 /* MultiStringSpec.swift in Sources */,
 				83CF9FD51AD84C39009ADD13 /* RecordKindSpec.swift in Sources */,

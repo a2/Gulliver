@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//Mac OS X 10.10.3//EN
+N:;;;;
+FN:Apple Inc.
+ORG:Apple Inc.;
+TEL;type=MAIN;type=pref:+14089961010
+item1.ADR;type=WORK;type=pref:;;1 Infinite Loop;Cupertino;CA;95014;United States
+item1.X-ABADR:US
+X-SOCIALPROFILE;type=Yelp;x-displayname=Apple Inc.:http://yelp.com/biz/Ag8FLH2V0sjUS_TUOh4Wiw
+item2.URL;type=pref:http://www.apple.com
+item2.X-ABLabel:_$!<HomePage>!$_
+X-ABShowAs:COMPANY
+UID:c9834101-d9d7-4b0a-ac47-428c02dfe808
+X-ABUID:C9834101-D9D7-4B0A-AC47-428C02DFE808:ABPerson
+END:VCARD

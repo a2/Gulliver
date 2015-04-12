@@ -7,7 +7,7 @@ public let MultiValueIdentifierInvalid: MultiValueIdentifier = kABMultiValueInva
 public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, MutableSliceable, RangeReplaceableCollectionType {
     typealias Element = (String, T)
 
-    private var values = [Element]()
+    private var values: [Element]
 
     public var array: [Element] {
         return values
@@ -39,12 +39,13 @@ public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, M
     }
 
     public init() {
-        
+        self.values = [Element]()
     }
 
     public init(multiValue: ABMultiValueRef) {
         assert(ABMultiValueGetPropertyType(multiValue) == T.multiValueType.rawValue, "ABMultiValueRef argument has incompatible property type")
 
+        var values = [Element]()
         let count: Int = ABMultiValueGetCount(multiValue)
         for i in 0..<count {
             let label = ABMultiValueCopyLabelAtIndex(multiValue, i).takeRetainedValue() as String
@@ -54,12 +55,14 @@ public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, M
 
             values.append((label, value))
         }
+
+        self.values = values
     }
 
     // MARK: ArrayLiteralConvertible
 
     public init(arrayLiteral elements: Element...) {
-        values.extend(elements)
+        self.values = elements
     }
 
     // MARK: SequenceType

@@ -2,16 +2,16 @@ import AddressBook
 
 public struct InstantMessageAddress: MultiValueRepresentable {
     public struct Services {
-        static let Yahoo = kABPersonInstantMessageServiceYahoo as String
-        static let Jabber = kABPersonInstantMessageServiceJabber as String
-        static let MSN = kABPersonInstantMessageServiceMSN as String
-        static let ICQ = kABPersonInstantMessageServiceICQ as String
-        static let AIM = kABPersonInstantMessageServiceAIM as String
-        static let QQ = kABPersonInstantMessageServiceQQ as String
-        static let GoogleTalk = kABPersonInstantMessageServiceGoogleTalk as String
-        static let Skype = kABPersonInstantMessageServiceSkype as String
-        static let Facebook = kABPersonInstantMessageServiceFacebook as String
-        static let GaduGadu = kABPersonInstantMessageServiceGaduGadu as String
+        public static let Yahoo = kABPersonInstantMessageServiceYahoo as String
+        public static let Jabber = kABPersonInstantMessageServiceJabber as String
+        public static let MSN = kABPersonInstantMessageServiceMSN as String
+        public static let ICQ = kABPersonInstantMessageServiceICQ as String
+        public static let AIM = kABPersonInstantMessageServiceAIM as String
+        public static let QQ = kABPersonInstantMessageServiceQQ as String
+        public static let GoogleTalk = kABPersonInstantMessageServiceGoogleTalk as String
+        public static let Skype = kABPersonInstantMessageServiceSkype as String
+        public static let Facebook = kABPersonInstantMessageServiceFacebook as String
+        public static let GaduGadu = kABPersonInstantMessageServiceGaduGadu as String
     }
 
     public var service: String?

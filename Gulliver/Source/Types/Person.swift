@@ -131,7 +131,7 @@ public struct PersonProperty {
     public static let Phones = MutableProperty<MultiValue<MultiString>>(propertyID: kABPersonPhoneProperty, readTransform: readTransform, writeTransform: writeTransform)
     public static let InstantMessages = MutableProperty<MultiValue<InstantMessageAddress>>(propertyID: kABPersonInstantMessageProperty, readTransform: readTransform, writeTransform: writeTransform)
     public static let URLs = MutableProperty<MultiValue<MultiString>>(propertyID: kABPersonURLProperty, readTransform: readTransform, writeTransform: writeTransform)
-    public static let RelatedNames = MutableProperty<MultiValue<RelatedName>>(propertyID: kABPersonRelatedNamesProperty, readTransform: readTransform, writeTransform: writeTransform)
+    public static let RelatedNames = MutableProperty<MultiValue<MultiString>>(propertyID: kABPersonRelatedNamesProperty, readTransform: readTransform, writeTransform: writeTransform)
     public static let SocialProfiles = MutableProperty<MultiValue<SocialProfile>>(propertyID: kABPersonSocialProfileProperty, readTransform: readTransform, writeTransform: writeTransform)
     public static let AlternateBirthday = MutableProperty<Gulliver.AlternateBirthday>(propertyID: kABPersonAlternateBirthdayProperty, readTransform: readTransform, writeTransform: writeTransform)
 }

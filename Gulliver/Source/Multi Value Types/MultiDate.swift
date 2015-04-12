@@ -1,7 +1,7 @@
 import AddressBook
 import Foundation
 
-public struct MultiDate: Printable, MultiValueRepresentable {
+public struct MultiDate: Comparable, Equatable, Printable, MultiValueRepresentable {
     public var value: NSDate
 
     public init(_ value: NSDate) {
@@ -25,6 +25,14 @@ public struct MultiDate: Printable, MultiValueRepresentable {
     public var description: String {
         return value.description
     }
+}
+
+public func ==(lhs: MultiDate, rhs: MultiDate) -> Bool {
+    return lhs.value == rhs.value
+}
+
+public func <(lhs: MultiDate, rhs: MultiDate) -> Bool {
+    return lhs.value.compare(rhs.value) == .OrderedAscending
 }
 
 public struct Date {

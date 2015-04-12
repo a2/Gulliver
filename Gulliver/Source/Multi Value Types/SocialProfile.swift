@@ -1,6 +1,6 @@
 import AddressBook
 
-public struct SocialProfile: MultiValueRepresentable {
+public struct SocialProfile: Equatable, MultiValueRepresentable {
     public struct Labels {
         public static let Twitter = kABPersonSocialProfileServiceTwitter as String
         public static let SinaWeibo = kABPersonSocialProfileServiceSinaWeibo as String
@@ -26,7 +26,7 @@ public struct SocialProfile: MultiValueRepresentable {
     public static let multiValueType = PropertyKind.MultiDictionary
 
     public var multiValueRepresentation: CFTypeRef {
-        var result = [String : String]()
+        var result = [NSObject : AnyObject]()
         result[kABPersonSocialProfileURLKey as String] = URL
 
         if let service = service {
@@ -68,4 +68,8 @@ public struct SocialProfile: MultiValueRepresentable {
             return nil
         }
     }
+}
+
+public func ==(lhs: SocialProfile, rhs: SocialProfile) -> Bool {
+    return lhs.URL == rhs.URL && lhs.service == rhs.service && lhs.username == rhs.username && lhs.userIdentifier == rhs.userIdentifier
 }

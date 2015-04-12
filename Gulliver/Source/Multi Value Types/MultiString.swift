@@ -1,6 +1,6 @@
 import AddressBook
 
-public struct MultiString: MultiValueRepresentable, Printable, StringLiteralConvertible {
+public struct MultiString: Equatable, MultiValueRepresentable, Printable, StringLiteralConvertible {
     public var value: String
 
     public init(_ value: String) {
@@ -38,6 +38,10 @@ public struct MultiString: MultiValueRepresentable, Printable, StringLiteralConv
     }
 }
 
+public func ==(lhs: MultiString, rhs: MultiString) -> Bool {
+    return lhs.value == rhs.value
+}
+
 public struct PhoneNumber {
     public struct Labels {
         public static let Mobile = kABPersonPhoneMobileLabel as String
@@ -47,6 +51,22 @@ public struct PhoneNumber {
         public static let WorkFAX = kABPersonPhoneWorkFAXLabel as String
         public static let OtherFAX = kABPersonPhoneOtherFAXLabel as String
         public static let Pager = kABPersonPhonePagerLabel as String
+    }
+}
+
+public struct RelatedName {
+    public struct Labels {
+        public static let Father = kABPersonFatherLabel as String
+        public static let Mother = kABPersonMotherLabel as String
+        public static let Parent = kABPersonParentLabel as String
+        public static let Brother = kABPersonBrotherLabel as String
+        public static let Sister = kABPersonSisterLabel as String
+        public static let Child = kABPersonChildLabel as String
+        public static let Friend = kABPersonFriendLabel as String
+        public static let Spouse = kABPersonSpouseLabel as String
+        public static let Partner = kABPersonPartnerLabel as String
+        public static let Assistant = kABPersonAssistantLabel as String
+        public static let Manager = kABPersonManagerLabel as String
     }
 }
 

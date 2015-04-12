@@ -21,7 +21,7 @@
 		832F9F1619C4823500139D48 /* PersonKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E6264E19C2435F00A35F37 /* PersonKind.swift */; };
 		832F9F1819C4823500139D48 /* GLVExternalChangeCallbacks.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0A70919BE82160040B7AB /* GLVExternalChangeCallbacks.m */; };
 		832F9F1919C4823500139D48 /* PostalAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83503BCD19C25748003F2740 /* PostalAddress.swift */; };
-		832F9F1A19C4823500139D48 /* InstantMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83503BCB19C25733003F2740 /* InstantMessage.swift */; };
+		832F9F1A19C4823500139D48 /* InstantMessageAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83503BCB19C25733003F2740 /* InstantMessageAddress.swift */; };
 		832F9F1B19C4823500139D48 /* SocialProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83503BD319C258C3003F2740 /* SocialProfile.swift */; };
 		832F9F1C19C4823500139D48 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB753D19BC8974007F98CC /* AddressBook.swift */; };
 		832F9F1D19C4823500139D48 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837E3A0E19BE8E8F00821633 /* Group.swift */; };
@@ -52,7 +52,6 @@
 		83D656261AD9989600F289BC /* Johnny B. Goode.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 83D656251AD9989600F289BC /* Johnny B. Goode.vcf */; };
 		83E048C61AD5F6B9003533C9 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E048C51AD5F6B9003533C9 /* Property.swift */; };
 		83E305DD19CB6E7300213B1C /* MultiString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305DC19CB6E7300213B1C /* MultiString.swift */; };
-		83E305DF19CB6F6100213B1C /* RelatedName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305DE19CB6F6100213B1C /* RelatedName.swift */; };
 		83E305E119CB71AC00213B1C /* MultiDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E305E019CB71AC00213B1C /* MultiDate.swift */; };
 		83EB751A19BC891B007F98CC /* Gulliver.h in Headers */ = {isa = PBXBuildFile; fileRef = 83EB751919BC891B007F98CC /* Gulliver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -83,7 +82,7 @@
 		833995FB1AD7A78800AAB9AC /* ImageFormatSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFormatSpec.swift; sourceTree = "<group>"; };
 		833995FD1AD7A83A00AAB9AC /* PersonKindSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonKindSpec.swift; sourceTree = "<group>"; };
 		833995FF1AD7AA7100AAB9AC /* PropertyKindSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyKindSpec.swift; sourceTree = "<group>"; };
-		83503BCB19C25733003F2740 /* InstantMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InstantMessage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		83503BCB19C25733003F2740 /* InstantMessageAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InstantMessageAddress.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83503BCD19C25748003F2740 /* PostalAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostalAddress.swift; sourceTree = "<group>"; };
 		83503BD319C258C3003F2740 /* SocialProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialProfile.swift; sourceTree = "<group>"; };
 		837528BF19BE7E710055C271 /* GLVExternalChangeCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVExternalChangeCallbacks.h; sourceTree = "<group>"; };
@@ -114,7 +113,6 @@
 		83D656251AD9989600F289BC /* Johnny B. Goode.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Johnny B. Goode.vcf"; sourceTree = "<group>"; };
 		83E048C51AD5F6B9003533C9 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		83E305DC19CB6E7300213B1C /* MultiString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiString.swift; sourceTree = "<group>"; };
-		83E305DE19CB6F6100213B1C /* RelatedName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedName.swift; sourceTree = "<group>"; };
 		83E305E019CB71AC00213B1C /* MultiDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MultiDate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83E6264E19C2435F00A35F37 /* PersonKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonKind.swift; sourceTree = "<group>"; };
 		83E6265019C24BC600A35F37 /* MultiValueRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiValueRepresentable.swift; sourceTree = "<group>"; };
@@ -201,11 +199,10 @@
 		83503BD219C257CD003F2740 /* Multi Value Types */ = {
 			isa = PBXGroup;
 			children = (
-				83503BCB19C25733003F2740 /* InstantMessage.swift */,
+				83503BCB19C25733003F2740 /* InstantMessageAddress.swift */,
 				83E305E019CB71AC00213B1C /* MultiDate.swift */,
 				83E305DC19CB6E7300213B1C /* MultiString.swift */,
 				83503BCD19C25748003F2740 /* PostalAddress.swift */,
-				83E305DE19CB6F6100213B1C /* RelatedName.swift */,
 				83503BD319C258C3003F2740 /* SocialProfile.swift */,
 			);
 			path = "Multi Value Types";
@@ -551,7 +548,7 @@
 				832F9F1619C4823500139D48 /* PersonKind.swift in Sources */,
 				832F9F1819C4823500139D48 /* GLVExternalChangeCallbacks.m in Sources */,
 				832F9F1919C4823500139D48 /* PostalAddress.swift in Sources */,
-				832F9F1A19C4823500139D48 /* InstantMessage.swift in Sources */,
+				832F9F1A19C4823500139D48 /* InstantMessageAddress.swift in Sources */,
 				832F9F1B19C4823500139D48 /* SocialProfile.swift in Sources */,
 				832F9F1C19C4823500139D48 /* AddressBook.swift in Sources */,
 				832F9F1D19C4823500139D48 /* Group.swift in Sources */,
@@ -574,7 +571,6 @@
 				83E305E119CB71AC00213B1C /* MultiDate.swift in Sources */,
 				832F9F0F19C47EA500139D48 /* SortOrdering.swift in Sources */,
 				83CF12C41AD33B6300F411E0 /* GroupType.swift in Sources */,
-				83E305DF19CB6F6100213B1C /* RelatedName.swift in Sources */,
 				83CF12BF1AD3380000F411E0 /* RecordKind.swift in Sources */,
 				83CF12C51AD33B6300F411E0 /* SourceType.swift in Sources */,
 				832F9F1019C47EA500139D48 /* SourceKind.swift in Sources */,

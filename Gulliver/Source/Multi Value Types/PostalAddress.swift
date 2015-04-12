@@ -1,7 +1,7 @@
 import AddressBook
 import AddressBookUI
 
-public struct PostalAddress: DebugPrintable, MultiValueRepresentable, Printable {
+public struct PostalAddress: DebugPrintable, Equatable, MultiValueRepresentable, Printable {
     public var street: String?
     public var city: String?
     public var state: String?
@@ -85,4 +85,8 @@ public struct PostalAddress: DebugPrintable, MultiValueRepresentable, Printable 
     public var debugDescription: String {
         return toDebugString(multiValueRepresentation)
     }
+}
+
+public func ==(lhs: PostalAddress, rhs: PostalAddress) -> Bool {
+    return lhs.street == rhs.street && lhs.city == rhs.city && lhs.state == rhs.state && lhs.ZIP == rhs.ZIP && lhs.country == rhs.country && lhs.countryCode == rhs.countryCode && lhs.otherFields == rhs.otherFields
 }

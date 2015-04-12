@@ -10,7 +10,7 @@ public struct PostalAddress: DebugPrintable, MultiValueRepresentable, Printable 
     public var countryCode: String?
     public var otherFields = [String : String]()
 
-    public init(street: String? = nil, city: String? = nil, state: String? = nil, ZIP: String? = nil, country: String? = nil, countryCode: String? = nil, otherFields: [String : String] = [:]) {
+    public init(street: String?, city: String?, state: String?, ZIP: String?, country: String?, countryCode: String?, otherFields: [String : String] = [:]) {
         self.street = street
         self.city = city
         self.state = state

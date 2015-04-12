@@ -16,7 +16,7 @@ public struct SocialProfile: MultiValueRepresentable {
     public var username: String?
     public var userIdentifier: String?
 
-    public init(URL: String, service: String? = nil, username: String? = nil, userIdentifier: String? = nil) {
+    public init(URL: String, service: String?, username: String?, userIdentifier: String?) {
         self.URL = URL
         self.service = service
         self.username = username

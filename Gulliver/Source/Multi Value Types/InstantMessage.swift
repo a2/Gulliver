@@ -17,7 +17,7 @@ public struct InstantMessageAddress: MultiValueRepresentable {
     public var service: String?
     public var username: String?
 
-    public init(service: String? = nil, username: String? = nil) {
+    public init(service: String?, username: String?) {
         self.service = service
         self.username = username
     }

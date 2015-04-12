@@ -28,21 +28,18 @@ As well, the `kABPersonKindProperty` property does not contain an `ABPersonKind`
 Implementation details live here, such as:
 
 * An extension for Zachary Waldowski's brilliant [Lustre](https://github.com/zwaldowski/Lustre) framework that allows easier creation of `ResultType` values with `CFErrorRef` errors.
-* Block-based external change registration (and dereigstration) for `ABAddressBookRef`s. The `ABAddressBookRegisterExternalChangeCallback` function requires a function pointer to call when an external change happens. Swift imports this required type as useless `CFunctionPointer`; for this reason, a non-lethal amount of Objective-C is used here.
+* A `ABExternalChangeCallback` that can be used for block-based external change registration (and dereigstration) for `ABAddressBookRef`s. The `ABAddressBookRegisterExternalChangeCallback` function requires a function pointer to call when an external change happens. Swift imports this required type as a useless `CFunctionPointer`; for this reason, a non-lethal amount of Objective-C is used here.
 
 ### Multi Value Types
 
 * AlternateBirthday
-* Date
-* Email
-* InstantMessage
-* PhoneNumber
+* MultiDate
+* MultiString
+* InstantMessageAddress
 * PostalAddress
-* RelatedName
 * SocialProfile
-* URL
 
-These "multi value types" are structs that represent the values in an `ABMultiValueRef`. As you may have guessed, `Date` is a wrapper around `NSDate`, and `Email`, `RelatedName`, and `URL` are wrappers around `String`. These exist for easy conversion between appropriate `CFTypeRef` values for addition to multi value objects and also for improved type safety.
+These "multi value types" are structs that represent the values in an `ABMultiValueRef`. As you may have guessed, `MultiDate` is a wrapper around `NSDate`, and `MultiString` for `String`. These exist for easy conversion between appropriate `CFTypeRef` values for addition to multi value objects and also for improved type safety.
 
 ### Protocols
 
@@ -86,8 +83,9 @@ struct PersonViewModel<AB: AddressBookType> {
 ### Types
 
 * **AddressBook, Group, Person, Record, Source:** Concrete implementations of the respective `*Type` protocols that are backed by `ABAddressBook` and `ABRecordRef` values.
-* **MultiValue:** A parameterized value that represents a type-safe view on a `ABMultiValueRef`'s labeled contents.
-* **{,Readable,Writable}PropertyType, Property, MutableProperty:** Lenses on the values contained in `RecordType` values.
+* **AlternateBirthday:** A wrapper around `NSDateComponents`-like values.
+* **LabeledValue:** A parameterized value that represents a type-safe view on a label and associated value.
+* **Property, MutableProperty, et al.:** Lenses on the values contained in `RecordType` values.
 
 ## Availability
 
@@ -95,4 +93,4 @@ Gulliver is intended for Swift 1.2. Compatibility with future versions is not gu
 
 ## Gulliver?
 
-The name "Gulliver" comes from the title of *Travels into Several Remote Nations of the World. In Four Parts. By Lemuel Gulliver, First a Surgeon, and then a Captain of Several Ships* (commonly known as *Gulliver's Travels*), a satirical novel by Jonathan Swift (a Swift famous long before Taylor).
+"Gulliver" is the main character's name in *Travels into Several Remote Nations of the World. In Four Parts. By Lemuel Gulliver, First a Surgeon, and then a Captain of Several Ships* (commonly known as *Gulliver's Travels*), a satirical novel by Jonathan Swift (a Swift famous long before Taylor).

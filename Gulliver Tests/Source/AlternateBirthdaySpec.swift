@@ -98,7 +98,7 @@ class AlternateBirthdaySpec: QuickSpec {
             }
         }
 
-        describe("init(dateComponents:") {
+        describe("init(dateComponents:)") {
             it("creates a valid AlternateBirthday") {
                 let dateComponents = NSDateComponents()
                 dateComponents.calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierHebrew)

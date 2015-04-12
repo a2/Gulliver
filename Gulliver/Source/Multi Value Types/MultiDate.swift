@@ -1,7 +1,7 @@
 import AddressBook
 import Foundation
 
-public struct MultiDate: Comparable, Equatable, Printable, MultiValueRepresentable {
+public struct MultiDate: Comparable, DebugPrintable, Equatable, Printable, MultiValueRepresentable {
     public var value: NSDate
 
     public init(_ value: NSDate) {
@@ -23,7 +23,11 @@ public struct MultiDate: Comparable, Equatable, Printable, MultiValueRepresentab
     }
 
     public var description: String {
-        return value.description
+        return toString(value)
+    }
+
+    public var debugDescription: String {
+        return toDebugString(value)
     }
 }
 

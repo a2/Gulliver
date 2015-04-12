@@ -177,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				83EB753D19BC8974007F98CC /* AddressBook.swift */,
+				83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */,
 				837E3A0E19BE8E8F00821633 /* Group.swift */,
 				8313F22119C0B59600FBF59F /* MultiValue.swift */,
 				837E3A0C19BE8E8400821633 /* Person.swift */,
@@ -200,7 +201,6 @@
 		83503BD219C257CD003F2740 /* Multi Value Types */ = {
 			isa = PBXGroup;
 			children = (
-				83B6DB1019C4A8E800EA6B64 /* AlternateBirthday.swift */,
 				83503BCB19C25733003F2740 /* InstantMessage.swift */,
 				83E305E019CB71AC00213B1C /* MultiDate.swift */,
 				83E305DC19CB6E7300213B1C /* MultiString.swift */,

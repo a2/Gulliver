@@ -29,7 +29,7 @@ public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, M
         return values.count
     }
 
-    public func multiValueRef() -> ABMutableMultiValueRef {
+    public func multiValueRef() -> ABMultiValueRef {
         var result: ABMutableMultiValueRef = ABMultiValueCreateMutable(T.multiValueType.rawValue)!.takeRetainedValue()
         for (label, value) in values {
             var identifier: MultiValueIdentifier = MultiValueIdentifierInvalid

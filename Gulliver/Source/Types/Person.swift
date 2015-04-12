@@ -69,7 +69,7 @@ public final class Person: Record, PersonType {
 
     public func linkedPeople<P: _PersonType where P.State == Person.State>() -> [P] {
         let people = ABPersonCopyArrayOfAllLinkedPeople(state)
-        let array = people!.takeRetainedValue() as [ABRecordRef]
+        let array = people.takeRetainedValue() as [ABRecordRef]
         return array.map({ P(state: $0) })
     }
 
@@ -78,12 +78,12 @@ public final class Person: Record, PersonType {
     }
 
     public var compositeNameDelimiter: String {
-        return ABPersonCopyCompositeNameDelimiterForRecord(state)!.takeRetainedValue() as String
+        return ABPersonCopyCompositeNameDelimiterForRecord(state).takeRetainedValue() as String
     }
 
     public class func vCardRepresentation<P: _PersonType where P.State == Person.State>(people: [P]) -> NSData {
         let personStates = people.map({ $0.state })
-        return ABPersonCreateVCardRepresentationWithPeople(personStates)!.takeRetainedValue() as NSData
+        return ABPersonCreateVCardRepresentationWithPeople(personStates).takeRetainedValue() as NSData
     }
 
     public class func compare<P1: _PersonType, P2: _PersonType where P1.State == Person.State, P2.State == Person.State>(person1: P1, person2: P2, ordering: SortOrdering) -> NSComparisonResult {

@@ -30,9 +30,9 @@ public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, M
     }
 
     public func multiValueRef() -> ABMultiValueRef {
-        var result: ABMutableMultiValueRef = ABMultiValueCreateMutable(T.multiValueType.rawValue)!.takeRetainedValue()
+        var result: ABMutableMultiValueRef = ABMultiValueCreateMutable(T.multiValueType.rawValue).takeRetainedValue()
         for (label, value) in values {
-            var identifier: MultiValueIdentifier = MultiValueIdentifierInvalid
+            var identifier = MultiValueIdentifierInvalid
             ABMultiValueAddValueAndLabel(result, value.multiValueRepresentation, label, &identifier)
         }
         return result
@@ -44,13 +44,12 @@ public struct MultiValue<T: MultiValueRepresentable>: ArrayLiteralConvertible, M
 
     public init(multiValue: ABMultiValueRef) {
         assert(ABMultiValueGetPropertyType(multiValue) == T.multiValueType.rawValue, "ABMultiValueRef argument has incompatible property type")
-        self.init()
 
         let count: Int = ABMultiValueGetCount(multiValue)
         for i in 0..<count {
-            let label = ABMultiValueCopyLabelAtIndex(multiValue, i)!.takeRetainedValue() as String
+            let label = ABMultiValueCopyLabelAtIndex(multiValue, i).takeRetainedValue() as String
 
-            let dictionaryRepresenation: CFTypeRef = ABMultiValueCopyValueAtIndex(multiValue, i)!.takeRetainedValue()
+            let dictionaryRepresenation: CFTypeRef = ABMultiValueCopyValueAtIndex(multiValue, i).takeRetainedValue()
             let value = T(multiValueRepresentation: dictionaryRepresenation)!
 
             values.append((label, value))

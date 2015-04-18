@@ -19,6 +19,11 @@ public class Record: RecordType {
         return RecordKind(rawValue: ABRecordGetRecordType(state))!
     }
 
+    public var compositeName: String {
+        assert(recordKind != .Source, "compositeName is undefined for Source records")
+        return ABRecordCopyCompositeName(state).takeRetainedValue() as String
+    }
+    
     public func value<P: ReadablePropertyType>(forProperty property: P) -> P.ValueType? {
         if let unmanagedValue = ABRecordCopyValue(state, property.propertyID) {
             let value: CFTypeRef = unmanagedValue.takeRetainedValue()

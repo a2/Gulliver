@@ -6,7 +6,6 @@ public protocol _PersonType: RecordType {
 }
 
 public protocol PersonType: _PersonType {
-
     var hasImageData: Bool { get }
 
     func imageData() -> NSData?

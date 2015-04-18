@@ -4,7 +4,10 @@ public protocol _RecordType: StateRepresentable {}
 
 public protocol RecordType: _RecordType {
     var recordID: RecordID { get }
+
     var recordKind: RecordKind { get }
+
+    var compositeName: String { get }
 
     func value<P: ReadablePropertyType>(forProperty property: P) -> P.ValueType?
 

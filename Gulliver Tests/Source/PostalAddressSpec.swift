@@ -1,3 +1,4 @@
+import AddressBook
 import Gulliver
 import Nimble
 import Quick
@@ -55,14 +56,14 @@ class PostalAddressSpec: QuickSpec {
             }
 
             it("works with vCard data") {
-                let fileURL = NSBundle(forClass: PostalAddressSpec.self).URLForResource("Apple Inc.", withExtension: "vcf")!
+                let fileURL = NSBundle(forClass: PostalAddressSpec.self).URLForResource("Johnny B. Goode", withExtension: "vcf")!
                 let data = NSData(contentsOfURL: fileURL)!
                 let records = ABPersonCreatePeopleInSourceWithVCardRepresentation(nil, data as CFDataRef).takeRetainedValue() as [ABRecordRef]
                 let multiValue: ABMultiValueRef = ABRecordCopyValue(records[0], kABPersonAddressProperty).takeRetainedValue()
 
                 let values = LabeledValue<PostalAddress>.read(multiValue)
                 expect(values[0].label) == kABWorkLabel as String
-                expect(values[0].value) == PostalAddress(street: "1 Infinite Loop", city: "Cupertino", state: "CA", postalCode: "95014", country: "United States", ISOCountryCode: "US")
+                expect(values[0].value) == PostalAddress(street: "1 Infinite Loop", city: "Cupertino", state: "CA", postalCode: "95014", country: "United States", ISOCountryCode: nil)
             }
         }
     }

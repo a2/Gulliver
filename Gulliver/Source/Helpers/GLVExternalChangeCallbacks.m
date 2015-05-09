@@ -1,9 +1,23 @@
-#import "GLVExternalChangeCallbacks.h"
+@import AddressBook;
 
-static void _GLVExternalChangeCallback(ABAddressBookRef addressBook, CFDictionaryRef info, void *context)
+typedef void (^ExternalChangeHandler)(NSDictionary *__nullable info);
+typedef void (^RemovalToken)(void);
+
+static void _GLVAddressBookExternalChangesCallback(ABAddressBookRef addressBook, CFDictionaryRef info, void *context)
 {
-    GLVExternalChangeHandler block = (__bridge GLVExternalChangeHandler)context;
-    block(addressBook, (__bridge NSDictionary *)info);
+    ExternalChangeHandler block = (__bridge ExternalChangeHandler)context;
+    block((__bridge NSDictionary *)info);
 }
 
-const ABExternalChangeCallback GLVExternalChangeCallback = _GLVExternalChangeCallback;
+__attribute__((used, visibility("hidden"))) __nonnull RemovalToken _GLVAddressBookRegisterExternalChangeHandler(__nonnull ABAddressBookRef addressBook, __nonnull ExternalChangeHandler handler)
+{
+    ABAddressBookRegisterExternalChangeCallback(addressBook, _GLVAddressBookExternalChangesCallback, (__bridge void *)handler);
+
+    __block dispatch_once_t onceToken;
+    RemovalToken token = ^{
+        dispatch_once(&onceToken, ^{
+            ABAddressBookUnregisterExternalChangeCallback(addressBook, _GLVAddressBookExternalChangesCallback, (__bridge void *)handler);
+        });
+    };
+    return [token copy];
+}

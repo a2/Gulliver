@@ -1,3 +1,5 @@
+import AddressBook
+
 public typealias MultiValueIdentifier = ABMultiValueIdentifier
 public let MultiValueIdentifierInvalid: MultiValueIdentifier = kABMultiValueInvalidIdentifier
 

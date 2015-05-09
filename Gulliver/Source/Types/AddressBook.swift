@@ -81,13 +81,12 @@ public final class AddressBook: AddressBookType {
         }
     }
 
-    public func observeExternalChanges(var callback: ExternalChangeHandler) -> ExternalChangeObserver {
-        ABAddressBookRegisterExternalChangeCallback(state, GLVExternalChangeCallback, &callback)
-        return Observer { [weak self] in
-            if let state: ABAddressBookRef = self?.state {
-                ABAddressBookUnregisterExternalChangeCallback(state, GLVExternalChangeCallback, &callback)
-            }
-        }
+    @asmname("_GLVAddressBookRegisterExternalChangeHandler")
+    private func RegisterExternalChangeHandler(addressBook: ABAddressBook, _ block: @objc_block (info: [NSObject : AnyObject]?) -> Void) -> Void -> Void
+
+    public func observeExternalChanges(callback: ExternalChangeHandler) -> ExternalChangeObserver {
+        let handler = RegisterExternalChangeHandler(state, callback)
+        return Observer(handler: handler)
     }
 
     public func addRecord<R: _RecordType where R.State == RecordState>(record: R) -> VoidResult {

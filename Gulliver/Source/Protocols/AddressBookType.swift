@@ -7,7 +7,7 @@ public protocol StateRepresentable {
     var state: State { get }
 }
 
-public typealias ExternalChangeHandler = GLVExternalChangeHandler
+public typealias ExternalChangeHandler = [NSObject : AnyObject]? -> Void
 public protocol ExternalChangeObserver {
     mutating func stopObserving()
 }
